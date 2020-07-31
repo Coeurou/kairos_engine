@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="freetype"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;CMake Files\extern\;CMake Files\extern\fmt\;CMake Files\extern\fmt\support\;CMake Files\extern\fmt\support\cmake\;CMake Files\extern\glfw\;CMake Files\extern\glfw\CMake\;CMake Files\extern\glfw\src\;CMake Files\extern\glad\;CMake Files\extern\freetype-2.10.0\;CMake Files\extern\freetype-2.10.0\builds\;CMake Files\extern\freetype-2.10.0\builds\cmake\;CMake Files\extern\glm\;CMake Files\extern\glm\glm\;CMake Files\extern\imgui\;CMake Files\cmake\;CMake Files\tests\;CMake Files\src\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\guill\Source\Repos\Pong\extern\freetype-2.10.0\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\guill\Source\Repos\Pong\extern\freetype-2.10.0\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\guill\Source\Repos\Pong\extern\freetype-2.10.0\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\guill\Source\Repos\Pong\extern\freetype-2.10.0\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="freetype">
+				<Option output="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/freetyped.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DFT2_BUILD_LIBRARY"/>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-D_CRT_NONSTDC_NO_WARNINGS"/>
+					<Add directory="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include"/>
+					<Add directory="C:/ProgramData/Anaconda3/Library/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\guill\Source\Repos\Pong\extern\freetype-2.10.0\Makefile VERBOSE=1 freetype"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\guill\Source\Repos\Pong\extern\freetype-2.10.0\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\guill\Source\Repos\Pong\extern\freetype-2.10.0\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\guill\Source\Repos\Pong\extern\freetype-2.10.0\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="freetype/fast">
+				<Option output="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/freetyped.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DFT2_BUILD_LIBRARY"/>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-D_CRT_NONSTDC_NO_WARNINGS"/>
+					<Add directory="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include"/>
+					<Add directory="C:/ProgramData/Anaconda3/Library/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\guill\Source\Repos\Pong\extern\freetype-2.10.0\Makefile VERBOSE=1 freetype/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\guill\Source\Repos\Pong\extern\freetype-2.10.0\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\guill\Source\Repos\Pong\extern\freetype-2.10.0\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\guill\Source\Repos\Pong\extern\freetype-2.10.0\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/builds/windows/ftdebug.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/config/ftconfig.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/config/ftheader.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/config/ftmodule.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/config/ftoption.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/config/ftstdlib.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/freetype.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftadvanc.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftbbox.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftbdf.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftbitmap.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftbzip2.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftcache.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftchapters.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftcid.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftcolor.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftdriver.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/fterrdef.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/fterrors.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftfntfmt.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftgasp.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftglyph.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftgxval.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftgzip.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftimage.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftincrem.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftlcdfil.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftlist.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftlzw.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftmac.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftmm.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftmodapi.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftmoderr.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftotval.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftoutln.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftparams.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftpfr.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftrender.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftsizes.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftsnames.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftstroke.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftsynth.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftsystem.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/fttrigon.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/fttypes.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ftwinfnt.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/autohint.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/cffotypes.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/cfftypes.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/ftcalc.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/ftdebug.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/ftdrv.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/ftgloadr.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/fthash.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/ftmemory.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/ftobjs.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/ftpsprop.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/ftrfork.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/ftserv.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/ftstream.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/fttrace.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/ftvalid.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/internal.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/psaux.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/pshints.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/sfnt.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/t1types.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/internal/tttypes.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/t1tables.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/ttnameid.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/tttables.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/freetype/tttags.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/include/ft2build.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/autofit/autofit.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftbase.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftbase.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftbbox.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftbdf.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftbitmap.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftcid.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftfstype.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftgasp.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftglyph.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftgxval.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftinit.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftmm.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftotval.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftpatent.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftpfr.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftstroke.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftsynth.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftsystem.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/fttype1.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftver.rc">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/base/ftwinfnt.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/bdf/bdf.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/bdf/bdf.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/bzip2/ftbzip2.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/cache/ftcache.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/cff/cff.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/cid/type1cid.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/gzip/ftgzip.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/lzw/ftlzw.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/pcf/pcf.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/pcf/pcf.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/pfr/pfr.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/psaux/psaux.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/pshinter/pshinter.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/psnames/psnames.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/raster/raster.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/sfnt/sfnt.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/smooth/smooth.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/truetype/truetype.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/type1/type1.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/type42/type42.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/winfonts/winfnt.c">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/src/winfonts/winfnt.h">
+			<Option target="freetype"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/fmt/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\extern\fmt\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/fmt/support/cmake/cxx14.cmake">
+			<Option virtualFolder="CMake Files\extern\fmt\support\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/glfw/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\extern\glfw\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/glfw/CMake/cmake_uninstall.cmake.in">
+			<Option virtualFolder="CMake Files\extern\glfw\CMake\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/glfw/CMake/glfw3.pc.in">
+			<Option virtualFolder="CMake Files\extern\glfw\CMake\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/glfw/CMake/glfw3Config.cmake.in">
+			<Option virtualFolder="CMake Files\extern\glfw\CMake\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/glfw/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\extern\glfw\src\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/glfw/src/glfw_config.h.in">
+			<Option virtualFolder="CMake Files\extern\glfw\src\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/glad/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\extern\glad\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\extern\freetype-2.10.0\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/freetype-2.10.0/builds/cmake/FindHarfBuzz.cmake">
+			<Option virtualFolder="CMake Files\extern\freetype-2.10.0\builds\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\extern\glm\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/glm/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\extern\glm\glm\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/extern/imgui/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\extern\imgui\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/cmake/CompilerWarnings.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/cmake/Doxygen.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/cmake/Sanitizers.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/cmake/StandardProjectSettings.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/cmake/StaticAnalyzers.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/tests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\"/>
+		</Unit>
+		<Unit filename="C:/Users/guill/Source/Repos/Pong/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
