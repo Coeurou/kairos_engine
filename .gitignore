@@ -3,3 +3,23 @@
 ################################################################################
 
 /build
+/extern/glad/CMakeFiles
+/extern/glad/PACKAGE.vcxproj.filters
+/extern/glad/PACKAGE.vcxproj
+/extern/glad/Makefile
+/extern/glad/INSTALL.vcxproj.filters
+/extern/glad/INSTALL.vcxproj
+/extern/glad/glad.vcxproj.filters
+/extern/glad/glad.vcxproj
+/extern/glad/Glad.sln
+/extern/glad/glad.lib
+/extern/glad/Glad.cbp
+/extern/glad/cmake_install.cmake
+/extern/glad/CMakeLists.txt
+/extern/glad/ALL_BUILD.vcxproj.filters
+/extern/glad/ALL_BUILD.vcxproj
+/extern/freetype-2.10.0/CMakeFiles
+/extern/freetype-2.10.0/builds
+/extern/freetype-2.10.0/freetyped.lib
+/extern/freetype-2.10.0/freetype.lib
+/extern/freetype-2.10.0/docs
