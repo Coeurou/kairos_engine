@@ -23,3 +23,17 @@
 /extern/freetype-2.10.0/freetyped.lib
 /extern/freetype-2.10.0/freetype.lib
 /extern/freetype-2.10.0/docs
+/extern/SDL2-2.0.12/acinclude
+/extern/SDL2-2.0.12/android-project
+/extern/SDL2-2.0.12/build-scripts
+/extern/SDL2-2.0.12/debian
+/extern/SDL2-2.0.12/docs
+/extern/SDL2-2.0.12/test
+/extern/SDL2-2.0.12/Xcode-iOS
+/extern/SDL2-2.0.12/Xcode
+/extern/SDL2-2.0.12/wayland-protocols
+/extern/SDL2-2.0.12/VisualC-WinRT
+/extern/SDL2-2.0.12/VisualC
+/extern/SDL2_image-2.0.5/lib
+/extern/SDL2_mixer-2.0.4/lib
+/extern/SDL2_ttf-2.0.15/lib
