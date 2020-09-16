@@ -7,6 +7,9 @@
 
 class EventListener;
 
+static constexpr int no_sender = 0;
+static constexpr int no_recipient = 0;
+
 inline std::queue<Message> messages;
 
 class MessageDispatcher {

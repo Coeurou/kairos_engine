@@ -1,8 +1,8 @@
 #pragma once
 
 #include <queue>
-#include <vector>
 #include <messages.h>
+#include <types.h>
 
 // TODO doc class is a resource with RAII for subscribe/unsubscribe to channels
 class EventListener {
@@ -16,6 +16,6 @@ class EventListener {
     EventListener(const EventListener&) = delete;
     EventListener& operator=(const EventListener&) = delete;
 
-    std::vector<MessageType> subscriptions{};
-    std::queue<Message> pending_messages{};
+    array<MessageType> my_subscriptions{};
+    std::queue<Message> my_pending_messages{};
 };

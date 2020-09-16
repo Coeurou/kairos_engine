@@ -3,7 +3,7 @@
 static constexpr size_t subscription_reservation = 4;
 
 EventListener::EventListener() { 
-    subscriptions.reserve(subscription_reservation); 
+    my_subscriptions.reserve(subscription_reservation); 
 }
 
 EventListener::EventListener(std::initializer_list<MessageType> channels) : EventListener() {

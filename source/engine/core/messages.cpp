@@ -5,6 +5,7 @@
 #include <nameof.hpp>
 
 #include <event_listener.h>
+#include <formattable.h>
 #include <logger.h>
 
 MessageDispatcher::MessageDispatcher() {
@@ -28,8 +29,8 @@ void send_message(variant sender, variant recipient, MessageType type) {
 }
 
 void send_message(variant sender, variant recipient, MessageType type, const array<variant>& message_data) {
-    log(LoggerName::MESSAGE, "receive {} message from {} to {}\n", NAMEOF_ENUM(type), to_string(sender), to_string(recipient));
     messages.emplace(Message{sender, recipient, type, message_data});
+    log(LoggerName::MESSAGE, "receive {} message from {} to {}\n", NAMEOF_ENUM(type), to_string(&messages.back().sender), to_string(&messages.back().recipient));
 }
 
 void subscribe(EventListener& listener, std::initializer_list<MessageType> channels) {
@@ -41,7 +42,7 @@ void subscribe(EventListener& listener, std::initializer_list<MessageType> chann
 }
 
 void unsubscribe(EventListener& listener) {
-    for (auto subscription : listener.subscriptions) {
+    for (auto subscription : listener.my_subscriptions) {
         auto& channel_subscriptions = message_dispatcher[static_cast<size_t>(subscription)];
         channel_subscriptions.erase(
             std::remove(channel_subscriptions.begin(), channel_subscriptions.end(), &listener));
@@ -54,7 +55,7 @@ void dispatch_messages() {
     while (!messages.empty()) {
         auto& message = messages.front();
         for (auto listener : message_dispatcher[static_cast<size_t>(message.type)]) {
-            listener->pending_messages.emplace(message);
+            listener->my_pending_messages.emplace(message);
         }
         messages.pop();
     }

@@ -10,8 +10,8 @@ enum class layer_type {
 };
 
 struct rendering_layer {
-    layer_type type{ layer_type::count };
-    std::function<void()> render_function{};
+    layer_type my_type{ layer_type::count };
+    std::function<void()> my_render_function{};
 
     void render();
 };

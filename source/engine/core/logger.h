@@ -11,6 +11,7 @@ enum class LoggerName {
     ENGINE,
     GRAPHICS,
     MESSAGE,
+    SYSTEM,
     MISC
 };
 

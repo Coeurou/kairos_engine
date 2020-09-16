@@ -5684,8 +5684,8 @@ static void* stbi__bmp_parse_header(stbi__context* s, stbi__bmp_data* info) {
                 stbi__get32le(s); // discard color space parameters
             if (hsz == 124) {
                 stbi__get32le(s); // discard rendering intent
-                stbi__get32le(s); // discard offset of profile data
-                stbi__get32le(s); // discard size of profile data
+                stbi__get32le(s); // discard offset of my_profile data
+                stbi__get32le(s); // discard size of my_profile data
                 stbi__get32le(s); // discard reserved
             }
         }

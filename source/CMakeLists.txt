@@ -1,4 +1,4 @@
-add_executable(game gameplay/main.cpp)
+add_executable(game engine/main.cpp)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
     if (MSVC)
