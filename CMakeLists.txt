@@ -24,20 +24,20 @@ function(add_headers VAR)
   set(${VAR} ${all_files} PARENT_SCOPE)
 endfunction()
 
-add_sources(KAIROS_SOURCES editor/imgui_console_command editor/error_command editor/command_parser 
+add_sources(KAIROS_SOURCES engine/graphics/opengl/opengl_draw_data engine/core/opengl_renderer editor/imgui_console_command editor/error_command editor/command_parser 
                            editor/log_command editor/editor editor/imgui_opengl_renderer editor/imgui_sdl_backend
                            engine/window/sdl_window engine/application/sdl_application engine/application/log_application
                            engine/application/core_application  engine/application/command_line_parser
                            engine/math/transform engine/graphics/log_renderer engine/systems/shader_system
-                           engine/graphics/font engine/graphics/program engine/graphics/shader
-                           engine/graphics/vao engine/graphics/buffer_object engine/graphics/texture
+                           engine/graphics/font engine/graphics/opengl/program engine/graphics/opengl/shader
+                           engine/graphics/opengl/vao engine/graphics/opengl/buffer_object engine/graphics/texture
                            engine/graphics/brush engine/graphics/painter engine/graphics/canvas
-                           engine/graphics/rendering_layer engine/graphics/opengl_helper 
-                           engine/graphics/opengl_context
+                           engine/graphics/rendering_layer
+                           engine/graphics/opengl/opengl_context
                            engine/core/event_listener engine/core/logger engine/math/mathlib engine/core/messages
                            )
 
-add_headers(KAIROS_HEADERS editor/imgui_console_command editor/error_command editor/command_parser
+add_headers(KAIROS_HEADERS engine/graphics/material engine/graphics/opengl/opengl_draw_data engine/core/opengl_renderer editor/imgui_console_command editor/error_command editor/command_parser
                            editor/log_command editor/command_interface editor/command_history 
                            editor/editor editor/imgui_backend editor/imgui_renderer editor/imgui_opengl_renderer
                            editor/imgui_sdl_backend engine/core/contract 
@@ -47,11 +47,11 @@ add_headers(KAIROS_HEADERS editor/imgui_console_command editor/error_command edi
                            engine/serialization/serialization_strategy engine/serialization/serializer engine/math/transform 
                            engine/core/formattable engine/core/makable engine/graphics/log_renderer 
                            engine/graphics/2d_renderer_interface engine/systems/shader_system engine/core/kairos_lib 
-                           engine/graphics/vertex engine/graphics/font engine/graphics/program engine/graphics/shader 
-                           engine/graphics/vao engine/graphics/buffer_object engine/graphics/texture 
+                           engine/graphics/vertex engine/graphics/font engine/graphics/opengl/program engine/graphics/opengl/shader 
+                           engine/graphics/opengl/vao engine/graphics/opengl/buffer_object engine/graphics/texture 
                            engine/graphics/brush engine/math/rect engine/graphics/pen engine/graphics/painter 
-                           engine/graphics/canvas engine/graphics/rendering_layer engine/graphics/opengl_helper 
-                           engine/graphics/opengl_context
+                           engine/graphics/canvas engine/graphics/rendering_layer
+                           engine/graphics/opengl/opengl_context
                            engine/core/filesystem engine/core/globals
                            engine/core/event_listener engine/core/error
                            engine/core/json engine/core/logger
@@ -77,6 +77,7 @@ target_include_directories(kairos_engine PUBLIC
         ${PROJECT_SOURCE_DIR}/source/engine/application
         ${PROJECT_SOURCE_DIR}/source/engine/core
         ${PROJECT_SOURCE_DIR}/source/engine/graphics
+        ${PROJECT_SOURCE_DIR}/source/engine/graphics/opengl
         ${PROJECT_SOURCE_DIR}/source/engine/math
         ${PROJECT_SOURCE_DIR}/source/engine/serialization
         ${PROJECT_SOURCE_DIR}/source/engine/systems

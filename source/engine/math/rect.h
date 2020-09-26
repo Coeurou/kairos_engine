@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <type_traits>
+
 #include <formattable.h>
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
@@ -87,6 +88,54 @@ struct rect {
 
 using rectf = rect<float>;
 
-template<> inline string to_string(rectf r) {
+template<>
+inline string to_string(rect<int> r) {
     return fmt::format("Rectangle - x: {}, y: {}, width: {}, height: {}", r.my_top_left.x, r.my_top_left.y, r.width(), r.height());
+}
+
+template<>
+inline string to_string(const rect<int>& r) {
+    return fmt::format("Rectangle - x: {}, y: {}, width: {}, height: {}", r.my_top_left.x, r.my_top_left.y, r.width(), r.height());
+}
+
+template<>
+inline string to_string(rectf r) {
+    return fmt::format("Rectangle - x: {}, y: {}, width: {}, height: {}", r.my_top_left.x, r.my_top_left.y, r.width(), r.height());
+}
+
+template<>
+inline string to_string(const rectf& r) {
+    return fmt::format("Rectangle - x: {}, y: {}, width: {}, height: {}", r.my_top_left.x, r.my_top_left.y, r.width(), r.height());
+}
+
+template<>
+inline rectf from_string(string s) {
+    std::regex rgx("[+-]?([0-9]*[.])?[0-9]+");
+    std::smatch match;
+
+    if (std::regex_search(s, match, rgx)) {
+        expects(match.size() == 4);
+        return rectf{ 
+            { std::stof(match[0]), std::stof(match[1]) },
+            { std::stof(match[2]), std::stof(match[3]) }
+        };
+    }
+
+    return rectf{};
+}
+
+template<>
+inline rect<int> from_string(string s) {
+    std::regex rgx("[+-]?([0-9]*[.])?[0-9]+");
+    std::smatch match;
+
+    if (std::regex_search(s, match, rgx)) {
+        expects(match.size() == 4);
+        return rect<int>{
+            { std::stoi(match[0]), std::stoi(match[1]) },
+            { std::stoi(match[2]), std::stoi(match[3]) }
+        };
+    }
+
+    return rect<int>{};
 }

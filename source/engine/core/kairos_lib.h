@@ -13,13 +13,18 @@ auto find_if(array<Value>& array, Predicate&& predicate) {
 }
 
 template<typename Value, typename Predicate>
-auto find(const array<Value>& array, const Value& value) {
-    return std::find(array.begin(), array.end(), std::forward(value));
+auto remove_if(array<Value>& array, Predicate&& predicate) {
+    return std::remove_if(array.begin(), array.end(), std::forward<Predicate>(predicate));
 }
 
-template<typename Value, typename Predicate>
-auto find(array<Value>& array, const Value& value) {
-    return std::find(array.begin(), array.end(), std::forward(value));
+template<typename Value>
+auto find(const array<Value>& array, const Value& value) {
+    return std::find(array.begin(), array.end(), value);
+}
+
+template<typename Value>
+auto remove(array<Value>& array, const Value& value) {
+    return std::remove(array.begin(), array.end(), value);
 }
 
 template<typename FunctorCreation, typename FunctorDestruction>

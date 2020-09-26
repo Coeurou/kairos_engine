@@ -2,15 +2,18 @@
 
 #include <memory>
 
-#include <application.h>
 #include <2d_renderer_interface.h>
+#include <application.h>
 #include <brush.h>
+#include <canvas.h>
 #include <pen.h>
+#include <texture.h>
 
 class painter {
 public:
     painter();
     painter(renderer_engine engine);
+    ~painter();
 
     void draw_line(const linef& line);
 
@@ -32,6 +35,7 @@ public:
 
     void draw_text(pointf pos, string_view text);
 
+    void set_canvas(canvas* canvas);
     void set_pen_color(color pen_color);
     void set_line_width(float line_width);
     void set_pen_opacity(float opacity);
@@ -43,4 +47,5 @@ private:
     std::unique_ptr<renderer_interface> my_renderer;
     pen my_pen{};
     brush my_brush{};
+    canvas* my_canvas{};
 };

@@ -35,7 +35,7 @@ void transform::set_matrix(const mat4f& matrix)
 
 pointf transform::map(const pointf& p) const
 {
-    return my_matrix * vec4f(p.x, p.y, 0.f, 0.f);
+    return vec4f(p.x, p.y, 0.f, 0.f) * my_matrix;
 }
 
 linef transform::map(const linef& line) const

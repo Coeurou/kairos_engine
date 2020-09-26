@@ -5,6 +5,7 @@
 #include <imgui.h>
 
 #include <contract.h>
+#include <painter.h>
 
 bool sdl_application::init() {
     my_type = implementation_type::SDL;
@@ -13,6 +14,13 @@ bool sdl_application::init() {
 }
 
 void sdl_application::exec() {
+    painter p(renderer_engine::opengl);
+    p.set_line_width(4.f);
+    p.set_pen_color(color{1.f});
+    p.draw_lines({ linef{ {100.f, 100.f}, {200.4f, 200.5f} }, linef{ {400.f, 400.f}, {200.4f, 0.5f} } });
+    p.set_pen_color(color{ 1.f, 0.f, 0.f, 1.f });
+    p.draw_line(linef{ {1200.f, 800.f}, {200.4f, 900.5f} });
+    p.set_line_width(1.f);
 }
 
 void sdl_application::exit() {

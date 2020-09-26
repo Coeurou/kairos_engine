@@ -152,13 +152,13 @@ bool imgui_opengl_renderer::setup_opengl_data()
     my_fragment_shader.my_shader_source = fmt::format("{}\n{}", gl_version, fragment_shader);
     ensures(my_fragment_shader.setup());
 
-    ensures(my_program.setup({ my_vertex_shader.my_gl_id, my_fragment_shader.my_gl_id }));
+    ensures(my_program.setup({ my_vertex_shader, my_fragment_shader }));
 
-    my_attribute_location_texture = glGetUniformLocation(my_program.my_gl_id, "Texture");
-    my_attribute_location_projection_matrix = glGetUniformLocation(my_program.my_gl_id, "ProjMtx");
-    my_attribute_location_vertex_pos = static_cast<GLuint>(glGetAttribLocation(my_program.my_gl_id, "Position"));
-    my_attribute_location_vertex_uv = static_cast<GLuint>(glGetAttribLocation(my_program.my_gl_id, "UV"));
-    my_attribute_location_vertex_color = static_cast<GLuint>(glGetAttribLocation(my_program.my_gl_id, "Color"));
+    my_attribute_location_texture = glGetUniformLocation(my_program, "Texture");
+    my_attribute_location_projection_matrix = glGetUniformLocation(my_program, "ProjMtx");
+    my_attribute_location_vertex_pos = static_cast<GLuint>(glGetAttribLocation(my_program, "Position"));
+    my_attribute_location_vertex_uv = static_cast<GLuint>(glGetAttribLocation(my_program, "UV"));
+    my_attribute_location_vertex_color = static_cast<GLuint>(glGetAttribLocation(my_program, "Color"));
 
     // Create buffers
     glGenBuffers(1, &my_vbo.my_gl_id);
@@ -392,7 +392,7 @@ void imgui_opengl_renderer::setup_render_state(ImDrawData* draw_data, int fb_wid
         { 0.0f,         0.0f,        -1.0f,   0.0f },
         { (R+L)/(L-R),  (T+B)/(B-T),  0.0f,   1.0f },
     };
-    glUseProgram(my_program.my_gl_id);
+    glUseProgram(my_program);
     glUniform1i(my_attribute_location_texture, 0);
     glUniformMatrix4fv(my_attribute_location_projection_matrix, 1, GL_FALSE, &ortho_projection[0][0]);
 #ifdef GL_SAMPLER_BINDING

@@ -1,8 +1,10 @@
 #pragma once
 
 #include <2d_renderer_interface.h>
+#include <material.h>
+#include <opengl_draw_data.h>
 
-class log_renderer : public renderer_interface {
+class opengl_renderer : public renderer_interface {
 public:
     void setup() override;
     void cleanup() override;
@@ -28,11 +30,22 @@ public:
 
     void draw_text(pointf pos, string_view text) override;
 
+    // start_idx & end_idx are the range of indices in the IBO where the draw data are located. 
+    // it is useful for rendering only one shape at the time
+    void render(material material, uint32 start_idx, uint32 end_idx) const;
+
 private:
-    string my_color_value{ "" };
-    string my_line_width_value{ "" };
-    string my_pen_opacity_value{ "" };
+    float my_line_width_value{ 0.f };
+    float my_pen_opacity_value{ 0.f };
+    float my_brush_opacity_value{ 0.f };
+    color my_fill_color_value{ 0.f };
+    color my_color_value{ 0.f };
     string my_fill_texture_value{ "" };
-    string my_fill_color_value{ "" };
-    string my_brush_opacity_value{ "" };
+
+    dictionary<string, opengl_draw_data> my_draw_data;
 };
+
+inline void check_gl_error() {
+    auto error = glGetError();
+    ensures(error == GL_NO_ERROR, fmt::format("Last GL error: {}", error));
+}

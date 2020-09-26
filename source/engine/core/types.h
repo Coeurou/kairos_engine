@@ -5,6 +5,7 @@
 #include <string_view>
 #include <type_traits>
 #include <utility>
+#include <unordered_map>
 #include <variant>
 #include <vector>
 
@@ -30,6 +31,7 @@ using pointf = vec2f;
 using linef = std::pair<vec2f, vec2f>;
 template<class T> using array = std::vector<T>;
 template<class T, size_t N> using static_array = std::array<T, N>;
+template<class Key, class Value> using dictionary = std::unordered_map<Key, Value>;
 using string = std::string;
 using string_view = std::string_view;
 using native_window = SDL_Window;

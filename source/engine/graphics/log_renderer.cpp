@@ -11,8 +11,21 @@
 #include <logger.h>
 #include <pen.h>
 
-void log_renderer::update_state(renderer_dirty_flag flag, const variant& value)
-{
+void log_renderer::setup() {
+    log(LoggerName::GRAPHICS, "Log renderer successfully setup\n");
+}
+
+void log_renderer::cleanup() {
+    my_color_value = "";
+    my_line_width_value = "";
+    my_pen_opacity_value = "";
+    my_fill_texture_value = "";
+    my_fill_color_value = "";
+    my_brush_opacity_value = "";
+    log(LoggerName::GRAPHICS, "Log renderer successfully cleanup\n");
+}
+
+void log_renderer::update_state(renderer_dirty_flag flag, const variant& value) {
     string_view state_updated{};
 
     switch (flag) {
@@ -41,101 +54,89 @@ void log_renderer::update_state(renderer_dirty_flag flag, const variant& value)
         state_updated = my_fill_texture_value;
         break;
     default:
-        ASSERT_MSG(false, fmt::format("Unimplemented rendering state, you shouldn't enter here: {}", NAMEOF_ENUM(flag)).c_str());
+        ASSERT_MSG(false, fmt::format("Unimplemented rendering state, you shouldn't enter here: {}\n", NAMEOF_ENUM(flag)).c_str());
         break;
     }
 
-    log(LoggerName::GRAPHICS, "Flag {} has been updated with value {}", NAMEOF_ENUM(flag), state_updated.data());
+    log(LoggerName::GRAPHICS, "Flag {} has been updated with value {}\n", NAMEOF_ENUM(flag), state_updated.data());
 }
 
-void log_renderer::draw_line(const linef& line)
-{
-    log(LoggerName::GRAPHICS, "Draw {}, frame: {}", to_string(line), frame_number);
+void log_renderer::draw_line(const linef& line) {
+    log(LoggerName::GRAPHICS, "Draw {}, frame: {}\n", to_string(line), frame_number);
 }
 
-void log_renderer::draw_lines(const array<linef>& lines)
-{
+void log_renderer::draw_lines(const array<linef>& lines) {
     string msg = fmt::format("{} lines drawn, frame: {}\n", lines.size(), frame_number);
     for (const auto& line : lines) {
         msg = fmt::format("{}- {}\n", msg, to_string(line));
     }
-    log(LoggerName::GRAPHICS, "{}", msg);
+    log(LoggerName::GRAPHICS, "{}\n", msg);
 }
 
-void log_renderer::draw_lines(const array<std::pair<linef, color>>& colored_lines)
-{
+void log_renderer::draw_lines(const array<std::pair<linef, color>>& colored_lines) {
     string msg = fmt::format("{} colored lines drawn, frame: {}\n", colored_lines.size(), frame_number);
     for (const auto& [line, color] : colored_lines) {
         msg = fmt::format("{}- at {}, color: {}\n", msg, to_string(line), to_string(color));
     }
-    log(LoggerName::GRAPHICS, "{}", msg);
+    log(LoggerName::GRAPHICS, "{}\n", msg);
 }
 
-void log_renderer::draw_rect(const rectf& rect)
-{
-    log(LoggerName::GRAPHICS, "Draw {}, frame: {}", to_string(rect), frame_number);
+void log_renderer::draw_rect(const rectf& rect) {
+    log(LoggerName::GRAPHICS, "Draw {}, frame: {}\n", to_string(rect), frame_number);
 }
 
-void log_renderer::draw_rects(const array<rectf>& rects)
-{
+void log_renderer::draw_rects(const array<rectf>& rects) {
     string msg = fmt::format("{} rectangles drawn, frame: {}\n", rects.size(), frame_number);
     for (const auto& rect : rects) {
         msg = fmt::format("{}- {}\n", msg, to_string(rect));
     }
-    log(LoggerName::GRAPHICS, "{}", msg);
+    log(LoggerName::GRAPHICS, "{}\n", msg);
 }
 
-void log_renderer::draw_rects(const array<std::pair<rectf, color>>& colored_rects)
-{
+void log_renderer::draw_rects(const array<std::pair<rectf, color>>& colored_rects) {
     string msg = fmt::format("{} colored rectangles drawn, frame: {}\n", colored_rects.size(), frame_number);
     for (const auto& [rect, color] : colored_rects) {
         msg = fmt::format("{}- {}, color: {}\n", msg, to_string(rect), to_string(color));
     }
-    log(LoggerName::GRAPHICS, "{}", msg);
+    log(LoggerName::GRAPHICS, "{}\n", msg);
 }
 
-void log_renderer::draw_rects(const array<std::pair<rectf, texture>>& textured_rects)
-{
+void log_renderer::draw_rects(const array<std::pair<rectf, texture>>& textured_rects) {
     string msg = fmt::format("{} textured rectangles drawn, frame: {}\n", textured_rects.size(), frame_number);
     for (const auto& [rect, texture] : textured_rects) {
         msg = fmt::format("{}- {}, texture: {}\n", msg, to_string(rect), to_string(texture));
     }
-    log(LoggerName::GRAPHICS, "{}", msg);
+    log(LoggerName::GRAPHICS, "{}\n", msg);
 }
 
-void log_renderer::draw_ellipse(pointf center, float rx, float ry)
-{
-    log(LoggerName::GRAPHICS, "Draw ellipse with center: {} radius x: {}, y: {}, frame: {}", to_string(center), rx, ry, frame_number);
+void log_renderer::draw_ellipse(pointf center, float rx, float ry) {
+    log(LoggerName::GRAPHICS, "Draw ellipse with center: {} radius x: {}, y: {}, frame: {}\n", to_string(center), rx, ry, frame_number);
 }
 
-void log_renderer::draw_ellipses(const array<rectf>& rects)
-{
+void log_renderer::draw_ellipses(const array<rectf>& rects) {
     string msg = fmt::format("{} ellipses drawn, frame: {}\n", rects.size(), frame_number);
     for (const auto& rect : rects) {
         msg = fmt::format("{}- contained in {}\n", msg, to_string(rect));
     }
-    log(LoggerName::GRAPHICS, "{}", msg);
+    log(LoggerName::GRAPHICS, "{}\n", msg);
 }
 
-void log_renderer::draw_ellipses(const array<std::pair<rectf, color>>& colored_ellipses)
-{
+void log_renderer::draw_ellipses(const array<std::pair<rectf, color>>& colored_ellipses) {
     string msg = fmt::format("{} colored rectangles drawn, frame: {}\n", colored_ellipses.size(), frame_number);
     for (const auto& [rect, color] : colored_ellipses) {
         msg = fmt::format("{}- contained in {}, color: {}\n", msg, to_string(rect), to_string(color));
     }
-    log(LoggerName::GRAPHICS, "{}", msg);
+    log(LoggerName::GRAPHICS, "{}\n", msg);
 }
 
-void log_renderer::draw_ellipses(const array<std::pair<rectf, texture>>& textured_ellipses)
-{
+void log_renderer::draw_ellipses(const array<std::pair<rectf, texture>>& textured_ellipses) {
     string msg = fmt::format("{} textured ellipses drawn, frame: {}\n", textured_ellipses.size(), frame_number);
     for (const auto& [rect, texture] : textured_ellipses) {
         msg = fmt::format("{}- contained in {}, texture: {}\n", msg, to_string(rect), to_string(texture));
     }
-    log(LoggerName::GRAPHICS, "{}", msg);
+    log(LoggerName::GRAPHICS, "{}\n", msg);
 }
 
-void log_renderer::draw_text(pointf pos, string_view text)
-{
-    log(LoggerName::GRAPHICS, "Draw text {} at position {}, frame {}", text.data(), to_string(pos), frame_number);
+void log_renderer::draw_text(pointf pos, string_view text) {
+    log(LoggerName::GRAPHICS, "Draw text {} at position {}, frame {}\n", text.data(), to_string(pos), frame_number);
 }

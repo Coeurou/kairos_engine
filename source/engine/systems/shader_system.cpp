@@ -32,7 +32,7 @@ bool shader_system::setup_shaders() {
         gl_Position = mvp_matrix * vec4(position, 1.0f);
     })";
     res &= vertex_shader.setup();
-    our_vertex_shaders.emplace_back(vertex_shader);
+    our_vertex_shaders.emplace_back(std::move(vertex_shader));
 
     shader fragment_shader;
     fragment_shader.my_shader_type = GL_FRAGMENT_SHADER;
@@ -54,12 +54,12 @@ bool shader_system::setup_shaders() {
         frag_color = texture(textures[vs_texid], vs_texcoords) * vs_color;
     })";
     res &= fragment_shader.setup();
-    our_fragment_shaders.emplace_back(fragment_shader);
+    our_fragment_shaders.emplace_back(std::move(fragment_shader));
 
     program program;
     program.my_name = "default_program";
-    res &= program.setup({ vertex_shader.my_gl_id, fragment_shader.my_gl_id });
-    our_programs.emplace_back(program);
+    res &= program.setup({ vertex_shader, fragment_shader });
+    our_programs.emplace_back(std::move(program));
 
     return res;
 }
@@ -67,9 +67,9 @@ bool shader_system::setup_shaders() {
 bool shader_system::setup_vaos() {
     bool res = true;
     vao vao;
-    vao::setup(vao);
+    vao.setup();
 
-    our_vaos.emplace_back(vao);
+    our_vaos.emplace_back(std::move(vao));
 
     return !our_vaos.empty();
 }

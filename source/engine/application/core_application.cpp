@@ -44,9 +44,9 @@ void core_application::exec() {
     auto main_window = our_application->my_main_window.get();
     while (!main_window->should_close()) {
         process_events();
-        our_application->exec();
 
         main_window->start_frame();
+        our_application->exec();
         for (const auto& callback : our_application->my_execution_callbacks) {
             callback();
         }

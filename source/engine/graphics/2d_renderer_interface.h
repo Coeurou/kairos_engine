@@ -12,6 +12,7 @@ enum class renderer_dirty_flag {
     brush_color,
     texture,
     brush_opacity,
+    viewport,
     count
 };
 
@@ -20,6 +21,11 @@ class pen;
 
 class renderer_interface {
 public:
+    virtual ~renderer_interface() {}
+
+    virtual void setup() = 0;
+    virtual void cleanup() = 0;
+
     virtual void update_state(renderer_dirty_flag flag, const variant& value) = 0;
 
     virtual void draw_line(const linef& line) = 0;

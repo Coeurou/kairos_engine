@@ -8,9 +8,19 @@ struct shader {
     string my_shader_name{ "" };
     string my_shader_source{ "" };
 
+    shader() = default;
+    shader(const shader & other) = delete;
+    shader& operator=(const shader & other) = delete;
+
+    shader(shader&& other) noexcept;
+    shader& operator=(shader&& other) noexcept;
+
     ~shader();
+
+    operator uint32() const { return my_gl_id; }
+
     bool setup();
-    bool compile();
+    bool compile() const;
     void cleanup();
 };
 
