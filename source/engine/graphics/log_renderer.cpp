@@ -6,7 +6,7 @@
 
 #include <application.h>
 #include <brush.h>
-#include <error.h>
+#include <contract.h>
 #include <formattable.h>
 #include <logger.h>
 #include <pen.h>
@@ -54,7 +54,7 @@ void log_renderer::update_state(renderer_dirty_flag flag, const variant& value) 
         state_updated = my_fill_texture_value;
         break;
     default:
-        ASSERT_MSG(false, fmt::format("Unimplemented rendering state, you shouldn't enter here: {}\n", NAMEOF_ENUM(flag)).c_str());
+        ensures(false, fmt::format("Unimplemented rendering state, you shouldn't enter here: {}\n", NAMEOF_ENUM(flag)).c_str());
         break;
     }
 

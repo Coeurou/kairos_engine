@@ -43,7 +43,7 @@ void vao::setup() const {
     glEnableVertexAttribArray(color_attrib_index);
     glVertexAttribPointer(texcoords_attrib_index, 2, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, tex_coords));
     glEnableVertexAttribArray(texcoords_attrib_index);
-    glVertexAttribPointer(tex_id_attrib_index, 1, GL_INT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, texture_id));
+    glVertexAttribPointer(tex_id_attrib_index, 1, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, texture_id));
     glEnableVertexAttribArray(tex_id_attrib_index);
 }
 
@@ -65,6 +65,6 @@ void vao::cleanup() {
 
 vao* vao::find(string_view name) {
     auto vao_it = find_if(our_vaos, [&name](vao& vao) { return vao.my_name == name; });
-    ensures(vao_it != our_vaos.end(), "Couldn't find the veretx array object in container");
+    ensures(vao_it != our_vaos.end(), "Couldn't find the vertex array object in container");
     return &(*vao_it);
 }

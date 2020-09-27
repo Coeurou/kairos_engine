@@ -40,6 +40,11 @@ void sdl_opengl_context::setup_gl_context() {
 
 void sdl_opengl_context::setup_gl_functions() const {
     ensures(gladLoadGLLoader(reinterpret_cast<GLADloadproc>(SDL_GL_GetProcAddress)) != 0, "Fail when loading GL functions from GLAD.");
+
+    int major_version = 0, minor_version = 0;
+    glGetIntegerv(GL_MAJOR_VERSION, &major_version);
+    glGetIntegerv(GL_MINOR_VERSION, &minor_version);
+    ensures(major_version == my_major_version && minor_version == my_minor_version, "Mismatch between GL version stored in application and the one return with OpenGL API.");
 }
 
 void sdl_opengl_context::swap_buffers() const {

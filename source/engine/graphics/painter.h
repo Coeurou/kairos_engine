@@ -40,7 +40,7 @@ public:
     void set_line_width(float line_width);
     void set_pen_opacity(float opacity);
     void set_brush_color(color fill_color);
-    void set_brush_texture(texture fill_texture);
+    void set_brush_texture(int fill_texture_id);
     void set_brush_opacity(float opacity);
 
 private:

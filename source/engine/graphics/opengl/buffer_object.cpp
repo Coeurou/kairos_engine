@@ -4,6 +4,8 @@
 
 #include <nameof.hpp>
 
+#include <contract.h>
+
 buffer_object::buffer_object(buffer_object&& other) noexcept :
     my_gl_id(std::move(other.my_gl_id)), my_usage(std::move(other.my_usage)),
     my_target(std::move(other.my_target)), my_size(std::move(other.my_size)) {
@@ -54,7 +56,7 @@ GLenum buffer_object::as_gl_target(buffer_target target) {
         break;
     }
     default: {
-        log_error(LoggerName::GRAPHICS, "Unhandled buffer target {}", NAMEOF_ENUM(target));
+        ensures(false, fmt::format("Unhandled buffer target {}", NAMEOF_ENUM(target)));
         break;
     }
     }

@@ -4,7 +4,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-#include <logger.h>
+#include <nameof.hpp>
 
 void transform::to_identity()
 {
@@ -182,7 +182,7 @@ vec3f to_vec3f(axis axis)
         res.z = 1.f;
         break;
     default:
-        log_error(LoggerName::MISC, "Unknown axis value found: {}", axis);
+        ensures(false, fmt::format("Unimplemented axis enum, you shouldn't enter here: {}\n", NAMEOF_ENUM(axis)).c_str());
         break;
     }
     return res;

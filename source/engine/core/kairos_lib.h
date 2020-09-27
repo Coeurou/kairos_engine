@@ -2,28 +2,29 @@
 
 #include <types.h>
 
-template<typename Value, typename Predicate>
-auto find_if(const array<Value>& array, Predicate&& predicate) {
+template <typename Array, typename Predicate>
+auto find_if(const Array& array, Predicate&& predicate) {
     return std::find_if(array.begin(), array.end(), std::forward<Predicate>(predicate));
 }
 
-template<typename Value, typename Predicate>
-auto find_if(array<Value>& array, Predicate&& predicate) {
+template <typename Array, typename Predicate> auto find_if(Array& array, Predicate&& predicate) {
     return std::find_if(array.begin(), array.end(), std::forward<Predicate>(predicate));
 }
 
-template<typename Value, typename Predicate>
-auto remove_if(array<Value>& array, Predicate&& predicate) {
+template <typename Array, typename Predicate>
+auto remove_if(Array& array, Predicate&& predicate) {
     return std::remove_if(array.begin(), array.end(), std::forward<Predicate>(predicate));
 }
 
-template<typename Value>
-auto find(const array<Value>& array, const Value& value) {
+template <typename Array, typename Value> auto find(const Array& array, const Value& value) {
     return std::find(array.begin(), array.end(), value);
 }
 
-template<typename Value>
-auto remove(array<Value>& array, const Value& value) {
+template <typename Array, typename Value> auto find(Array& array, const Value& value) {
+    return std::find(array.begin(), array.end(), value);
+}
+
+template <typename Array, typename Value> auto remove(Array& array, const Value& value) {
     return std::remove(array.begin(), array.end(), value);
 }
 

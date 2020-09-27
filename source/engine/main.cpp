@@ -41,14 +41,14 @@ int main(int argc, char* argv[]) {
     command_line_parser options(argv[0], " - game");
     options.add_options()("resolution", "Window resolution",
         cxxopts::value<array<int>>()->default_value("1920,1080"))
-        ("gl", "The OpenGL version for creating context", cxxopts::value<array<unsigned char>>()->default_value("4,1"))
+        ("gl", "The OpenGL version for creating context", cxxopts::value<array<unsigned char>>()->default_value("4,5"))
         ("help", "Show help");
 
     window_params window_params{};
     window_params.my_title = our_application->my_name;
 
     try {
-        parse_result arguments = options.parse(argc, argv);
+        const parse_result arguments = options.parse(argc, argv);
 
         // create window
         {
@@ -82,7 +82,7 @@ int main(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
-    vec2i framebuffer = core_application::window()->size();
+    const vec2i framebuffer = core_application::window()->size();
     globals::pixel_size = { static_cast<float>(framebuffer.x) / window_params.my_size.x,
                            static_cast<float>(framebuffer.y) / window_params.my_size.y };
     log(LoggerName::ENGINE, "Pixel size set to {}\n", to_string(globals::pixel_size));

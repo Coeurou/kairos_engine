@@ -101,9 +101,9 @@ void painter::set_brush_color(color fill_color) {
     my_renderer->update_state(renderer_dirty_flag::brush_color, static_cast<vec3f>(my_brush.my_fill_color));
 }
 
-void painter::set_brush_texture(texture fill_texture) {
-    my_brush.my_fill_texture = fill_texture;
-    my_renderer->update_state(renderer_dirty_flag::texture, static_cast<int64>(my_brush.my_fill_texture.id));
+void painter::set_brush_texture(int fill_texture_id) {
+    my_brush.my_fill_texture_id = fill_texture_id;
+    my_renderer->update_state(renderer_dirty_flag::texture, my_brush.my_fill_texture_id);
 }
 
 void painter::set_brush_opacity(float opacity) {
