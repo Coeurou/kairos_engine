@@ -37,13 +37,13 @@ void vao::unbind() const {
 }
 
 void vao::setup() const {
-    glVertexAttribPointer(position_attrib_index, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, position));
+    glVertexAttribPointer(position_attrib_index, 4, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, my_position));
     glEnableVertexAttribArray(position_attrib_index);
-    glVertexAttribPointer(color_attrib_index, 4, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, color));
+    glVertexAttribPointer(color_attrib_index, 4, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, my_color));
     glEnableVertexAttribArray(color_attrib_index);
-    glVertexAttribPointer(texcoords_attrib_index, 2, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, tex_coords));
+    glVertexAttribPointer(texcoords_attrib_index, 2, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, my_tex_coords));
     glEnableVertexAttribArray(texcoords_attrib_index);
-    glVertexAttribPointer(tex_id_attrib_index, 1, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, texture_id));
+    glVertexAttribPointer(tex_id_attrib_index, 1, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, my_texture_id));
     glEnableVertexAttribArray(tex_id_attrib_index);
 }
 

@@ -18,6 +18,8 @@ class opengl_texture : public texture_impl {
     void setup(texture& t, const path& img_path) override;
     void bind(uint32 index, uint32 texture_id) override;
     void cleanup(texture& t) override;
+
+    static uint32 get_texture_units_count();
 };
 
 class texture {
@@ -28,7 +30,7 @@ public:
     vec2i my_size{0, 0};
 
     static std::shared_ptr<texture_impl> our_impl;
-    static constexpr uint32 our_limit = 16;
+    static constexpr uint32 our_limit = 8;
     static static_array<uint32, our_limit> our_textures_idx;
 
     void setup(const path& img_path);

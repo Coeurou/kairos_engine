@@ -28,11 +28,15 @@ void sdl_application::exec() {
     p.draw_lines({ linef{ {100.f, 100.f}, {200.4f, 200.5f} }, linef{ {400.f, 400.f}, {200.4f, 0.5f} } });
     p.draw_lines({ { linef{ {400.f, 700.f}, {1800.4f, 900.5f} }, color{ 1.f, 0.8f, 0.3f, 1.f } },
                    { linef{ {1400.f, 600.f}, {40.4f, 900.5f} }, color{ 0.f, 0.8f, 0.8f, 1.f } } });
+    p.set_line_width(1.f);
+    p.set_pen_color(color(0.214f, 0.742f, 0.963f, 1.0f));
     p.draw_rect(rectf{{500.f, 500.f}, {700.f, 850.f}});
     p.set_brush_texture(t.my_index);
     p.draw_rect(rectf{{900.f, 300.f}, {1412.f, 812.f}});
     p.set_brush_color(color{1.f, 0.f, 0.f, 1.f});
+    p.set_line_width(10.2f);
     p.draw_line(linef{{1200.f, 800.f}, {200.4f, 900.5f}});
+    //p.set_line_width(0.2f);
     p.set_brush_color(color{0.6f, 0.f, 1.f, 1.f});
     p.set_brush_texture(-1);
     p.draw_rects({
@@ -48,6 +52,12 @@ void sdl_application::exec() {
         {rectf{{600.f, 200.f}, {750.f, 300.f}}, t1},
         {rectf{{800.f, 50.f}, {850.f, 150.f}}, t},
     });
+
+    rectf bounds{{100.f, 500.f}, {300.f, 700.f}};
+    sprite grass_sprite{&t1, bounds, rect<int>{{0, 0}, t1.my_size},
+                        color{1.f}};
+    //grass_sprite.my_rotation = 45.f;
+    p.draw_sprite(grass_sprite);
 
     t.cleanup();
     t1.cleanup();

@@ -109,6 +109,18 @@ void log_renderer::draw_rects(const array<std::pair<rectf, texture>>& textured_r
     log(LoggerName::GRAPHICS, "{}\n", msg);
 }
 
+void log_renderer::draw_sprite(const sprite& sprite) {
+    log(LoggerName::GRAPHICS, "Draw {}, frame: {}\n", to_string(sprite), frame_number);
+}
+
+void log_renderer::draw_sprites(const array<sprite>& sprites) {
+    string msg = fmt::format("{} sprites drawn, frame: {}\n", sprites.size(), frame_number);
+    for (const auto& sprite : sprites) {
+        msg = fmt::format("{} - {}\n", msg, to_string(sprite));
+    }
+    log(LoggerName::GRAPHICS, "{}\n", msg);
+}
+
 void log_renderer::draw_ellipse(pointf center, float rx, float ry) {
     log(LoggerName::GRAPHICS, "Draw ellipse with center: {} radius x: {}, y: {}, frame: {}\n", to_string(center), rx, ry, frame_number);
 }

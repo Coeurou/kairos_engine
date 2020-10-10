@@ -46,5 +46,5 @@ public:
     static transform from_translate(float dx, float dy);
 
 private:
-    mat4f my_matrix;
+    mat4f my_matrix{1.f};
 };

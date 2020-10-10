@@ -20,6 +20,7 @@ using vec3f = glm::vec3;
 using vec4f = glm::vec4;
 using color = glm::vec4;
 using mat4f = glm::mat4;
+using mat3f = glm::mat3;
 using int64 = std::int64_t;
 using uint64 = std::uint64_t;
 using int8 = char;
