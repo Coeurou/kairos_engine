@@ -50,30 +50,30 @@ rectf transform::map(const rectf& rectangle) const
 
 transform& transform::rotate(float angle_in_degrees, axis axis)
 {
-    my_matrix *= glm::rotate(mat4f(1.0f), glm::radians(angle_in_degrees), to_vec3f(axis));
+    my_matrix = glm::rotate(my_matrix, glm::radians(angle_in_degrees), to_vec3f(axis));
     return *this;
 }
 
 transform& transform::rotate_radians(float angle_in_radians, axis axis)
 {
-    my_matrix *= glm::rotate(mat4f(1.0f), angle_in_radians, to_vec3f(axis));
+    my_matrix = glm::rotate(my_matrix, angle_in_radians, to_vec3f(axis));
     return *this;
 }
 
 transform& transform::scale(vec2f scale)
 {
-    my_matrix *= glm::scale(mat4f(1.0f), vec3f(scale, 0.f));
+    my_matrix = glm::scale(mat4f(1.0f), vec3f(scale, 0.f));
     return *this;
 }
 
 transform& transform::scale(float sx, float sy)
 {
-    return translate(vec2f(sx, sy));
+    return scale(vec2f(sx, sy));
 }
 
 transform& transform::translate(vec2f translation)
 {
-    my_matrix *= glm::translate(mat4f(1.0f), vec3f(translation, 0.f));
+    my_matrix = glm::translate(my_matrix, vec3f(translation, 0.f));
     return *this;
 }
 
@@ -94,8 +94,8 @@ bool transform::operator!=(const transform& other) const
 
 transform transform::operator*(const transform& other) const
 {
-    transform res = other;
-    res.my_matrix *= my_matrix;
+    transform res = *this;
+    res.my_matrix *= other.my_matrix;
     return res;
 }
 

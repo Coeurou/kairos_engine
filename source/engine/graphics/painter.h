@@ -7,7 +7,6 @@
 #include <brush.h>
 #include <canvas.h>
 #include <pen.h>
-#include <texture.h>
 
 class painter {
 public:
@@ -16,19 +15,19 @@ public:
     ~painter();
 
     void draw_line(const linef& line);
-
     void draw_lines(const array<linef>& lines);
     void draw_lines(const array<std::pair<linef, color>>& colored_lines);
 
     void draw_rect(const rectf& rect);
-
     void draw_rects(const array<rectf>& rects);
     void draw_rects(const array<std::pair<rectf, color>>& colored_rects);
     void draw_rects(const array<std::pair<rectf, texture>>& textured_rects);
 
+    void draw_sprite(const sprite& sprite);
+    void draw_sprites(const array<sprite>& sprites);
+
     void draw_ellipse(pointf center, float rx, float ry);
     void draw_ellipse(const rectf& rect);
-
     void draw_ellipses(const array<rectf>& rects);
     void draw_ellipses(const array<std::pair<rectf, color>>& colored_ellipses);
     void draw_ellipses(const array<std::pair<rectf, texture>>& textured_ellipses);

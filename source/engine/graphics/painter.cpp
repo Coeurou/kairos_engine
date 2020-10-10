@@ -54,6 +54,14 @@ void painter::draw_ellipse(pointf center, float rx, float ry) {
     my_renderer->draw_ellipse(center, rx, ry);
 }
 
+void painter::draw_sprite(const sprite& sprite) {
+    my_renderer->draw_sprite(sprite);
+}
+
+void painter::draw_sprites(const array<sprite>& sprites) {
+    my_renderer->draw_sprites(sprites);
+}
+
 void painter::draw_ellipse(const rectf& rect) {
     draw_ellipse(rect.center(), rect.width(), rect.height());
 }

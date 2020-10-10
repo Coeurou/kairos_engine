@@ -34,7 +34,7 @@ public:
     void swap_buffers() const override;
 
     const sdl_window* my_window = nullptr;
-    SDL_GLContext my_sdl_gl_context;
+    SDL_GLContext my_sdl_gl_context{};
 };
 
 void setup_default_gl_rendering_options();

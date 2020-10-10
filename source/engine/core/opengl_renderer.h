@@ -21,6 +21,9 @@ public:
     void draw_rects(const array<rectf>& rects) override;
     void draw_rects(const array<std::pair<rectf, color>>& colored_rects) override;
     void draw_rects(const array<std::pair<rectf, texture>>& textured_rects) override;
+    
+    void draw_sprite(const sprite& sprite) override;
+    void draw_sprites(const array<sprite>& sprites) override;
 
     void draw_ellipse(pointf center, float rx, float ry) override;
 
@@ -30,9 +33,10 @@ public:
 
     void draw_text(pointf pos, string_view text) override;
 
-    // start_idx & end_idx are the range of indices in the IBO where the draw data are located. 
+    // indices_count is the number of indices in the IBO to consider & 
+    // vertices_offset is the offset applied to indices for subgeometry.
     // it is useful for rendering only one shape at the time
-    void render(material material, uint32 start_idx, uint32 end_idx) const;
+    void render(material material, uint32 indices_count, uint32 vertices_offset) const;
 
 private:
     float my_line_width_value{ 0.f };
@@ -44,21 +48,57 @@ private:
 
     dictionary<string, opengl_draw_data> my_draw_data;
 
+    void render_lines(const program& program, uint32 indices_count, uint32 vertices_offset) const;
+
     // the way we use to_vertices define how we render a shape, it is the main
     // difference between each version of draw_ function
     template <typename T>
     auto to_vertices(const T& geometry, const color& color, float texture_index) {
         if constexpr (std::is_same_v<std::decay_t<T>, linef>) {
-            return static_array<vertex, 2>{vertex{vec3f(geometry.first, 0.f), color},
-                                           vertex{vec3f(geometry.second, 0.f), color}};
-        } else if constexpr (std::is_same_v<std::decay_t<T>, rectf>) {
+            return static_array<vertex, 2>{vertex{vec4f(geometry.first, 0.f, 1.f), color},
+                                           vertex{vec4f(geometry.second, 0.f, 1.f), color}};
+        }
+        else if constexpr (std::is_same_v<std::decay_t<T>, rectf>) {
+            auto rect_size = geometry.size();
             return static_array<vertex, 4>{
-                vertex{vec3f(geometry.right(), geometry.top(), 0.f), color, {1.f, 1.f}, texture_index},
-                vertex{vec3f(geometry.my_bottom_right, 0.f), color, {1.f, 0.f}, texture_index},
-                vertex{
-                    vec3f(geometry.left(), geometry.bottom(), 0.f), color, {0.f, 0.f}, texture_index},
-                vertex{vec3f(geometry.my_top_left, 0.f), color, {0.f, 1.f}, texture_index}};
-        } else {
+                vertex{vec4f(geometry.right(), geometry.top(), rect_size.x, rect_size.y),
+                       color,
+                       {1.f, 1.f},
+                       texture_index},
+                vertex{vec4f(geometry.my_bottom_right, rect_size.x, rect_size.y),
+                       color,
+                       {1.f, 0.f},
+                       texture_index},
+                vertex{vec4f(geometry.left(), geometry.bottom(), rect_size.x, rect_size.y),
+                       color,
+                       {0.f, 0.f},
+                       texture_index},
+                vertex{vec4f(geometry.my_top_left, rect_size.x, rect_size.y),
+                       color,
+                       {0.f, 1.f},
+                       texture_index}};
+        } else if constexpr (std::is_same_v<std::decay_t<T>, sprite>) {
+            const auto rect_size = geometry.my_bounds.size();
+            static_array<pointf, 4> rotated_geometry = rotate(geometry);
+            return static_array<vertex, 4>{
+                vertex{vec4f(rotated_geometry[0], rect_size.x, rect_size.y),
+                       color,
+                       {1.f, 1.f},
+                       texture_index},
+                vertex{vec4f(rotated_geometry[1], rect_size.x, rect_size.y),
+                       color,
+                       {1.f, 0.f},
+                       texture_index},
+                vertex{vec4f(rotated_geometry[2], rect_size.x, rect_size.y),
+                       color,
+                       {0.f, 0.f},
+                       texture_index},
+                vertex{vec4f(rotated_geometry[3], rect_size.x, rect_size.y),
+                       color,
+                       {0.f, 1.f},
+                       texture_index}};
+        }
+        else {
             static_assert(false, "Geometry type not supported");
         }
     }

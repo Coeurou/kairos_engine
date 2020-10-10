@@ -40,8 +40,9 @@ public:
         my_ibo.unbind();
     }
 
-    template<class Vertices, class Indices>
-    std::pair<uint32, uint32> add_draw_data(Vertices&& vertices, Indices&& indices) {
+    // Fill a specific part of the VBO and IBO by indexing the count of vertices and indices already in place
+    template<class Vertices>
+    void add_draw_data(Vertices&& vertices) {
         my_vao.bind();
         my_vbo.bind();
         using vertices_container = std::remove_reference<Vertices>::type;
@@ -50,19 +51,8 @@ public:
         my_vertices_count += vertices.size();
         check_gl_error();
 
-        my_ibo.bind();
-        using indices_container = std::remove_reference<Indices>::type;
-        using index_type = indices_container::value_type;
-        uint32 nb_indices = static_cast<uint32>(indices.size());
-        glBufferSubData(buffer_object::as_gl_target(my_ibo.my_target), my_indices_count * sizeof(index_type), nb_indices * sizeof(index_type), indices.data());
-        my_indices_count += nb_indices;
-        check_gl_error();
-
         my_vao.unbind();
         my_vbo.unbind();
-        my_ibo.unbind();
-
-        return { my_indices_count - nb_indices, my_indices_count };
     }
 
     void cleanup();

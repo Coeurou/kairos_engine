@@ -11,7 +11,8 @@ struct rect {
     glm::vec<2, T, glm::defaultp> my_bottom_right{ T{} };
 
     inline pointf center() const {
-        return my_top_left + pointf{ (my_bottom_right.x - my_top_left.x) * 0.5f, (my_top_left.y - my_bottom_right.y) * 0.5f };
+        return my_top_left + pointf{(my_bottom_right.x - my_top_left.x) * 0.5f,
+                                    (my_bottom_right.y - my_top_left.y) * 0.5f};
     }
 
     inline sizef size() const {
@@ -23,7 +24,7 @@ struct rect {
     }
 
     inline T height() const {
-        return (my_top_left.y - my_bottom_right.y);
+        return (my_bottom_right.y - my_top_left.y);
     }
     
     inline T left() const {
