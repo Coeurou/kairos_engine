@@ -3,9 +3,9 @@
 #include <formattable.h>
 #include <types.h>
 
-class command_interface {
+class abstract_command {
 public:
-    virtual ~command_interface() {};
+    virtual ~abstract_command() {};
 
     virtual string to_string() const = 0;
     virtual bool undo() = 0;
@@ -13,7 +13,7 @@ public:
     virtual bool execute() = 0;
 };
 
-template<> inline string to_string(command_interface* command) {
+template<> inline string to_string(abstract_command* command) {
     return command->to_string();
 }
 

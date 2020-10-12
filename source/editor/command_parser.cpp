@@ -10,7 +10,7 @@
 
 array<string_view> command_parser::our_command_names = { log_command::name(), error_command::name() };
 
-std::unique_ptr<command_interface> command_parser::parse(const string& command) {
+std::unique_ptr<abstract_command> command_parser::parse(const string& command) {
     const auto command_type = command.substr(0, command.find_first_of(' ')-1);
     if (command_type == log_command::name()) {
         return make<log_command>(from_string<log_command>(command));

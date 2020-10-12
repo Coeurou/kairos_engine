@@ -20,9 +20,9 @@ enum class renderer_dirty_flag {
 class brush;
 class pen;
 
-class renderer_interface {
+class abstract_renderer {
 public:
-    virtual ~renderer_interface() {}
+    virtual ~abstract_renderer() {}
 
     virtual void setup() = 0;
     virtual void cleanup() = 0;
@@ -41,10 +41,10 @@ public:
     virtual void draw_sprite(const sprite& sprite) = 0;
     virtual void draw_sprites(const array<sprite>& sprites) = 0;
 
-    virtual void draw_ellipse(pointf center, float rx, float ry) = 0;
+    virtual void draw_ellipse(const pointf& center, float rx, float ry) = 0;
     virtual void draw_ellipses(const array<rectf>& rects) = 0;
     virtual void draw_ellipses(const array<std::pair<rectf, color>>& colored_ellipses) = 0;
     virtual void draw_ellipses(const array<std::pair<rectf, texture>>& textured_ellipses) = 0;
 
-    virtual void draw_text(pointf pos, string_view text) = 0;
+    virtual void draw_text(const pointf& pos, string_view text) = 0;
 };

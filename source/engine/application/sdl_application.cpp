@@ -1,11 +1,14 @@
 #pragma once
 
 #include <sdl_application.h>
+#include <chrono>
+#include <random>
 
 #include <imgui.h>
 
 #include <contract.h>
 #include <painter.h>
+#include <transform.h>
 
 bool sdl_application::init() {
     my_type = implementation_type::SDL;
@@ -56,11 +59,15 @@ void sdl_application::exec() {
     rectf bounds{{100.f, 500.f}, {300.f, 700.f}};
     sprite grass_sprite{&t1, bounds, rect<int>{{0, 0}, t1.my_size},
                         color{1.f}};
-    //grass_sprite.my_rotation = 45.f;
+    
+    grass_sprite.set_origin(grass_sprite.my_bounds.center());
+    transform<sprite> tr;
+    grass_sprite.my_rotation = tr.rotate(grass_sprite, std::sin(frame_number) * 360.f, grass_sprite.my_origin);
     p.draw_sprite(grass_sprite);
 
     t.cleanup();
     t1.cleanup();
+    frame_number++;
 }
 
 void sdl_application::exit() {

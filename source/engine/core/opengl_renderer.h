@@ -1,10 +1,11 @@
 #pragma once
 
-#include <2d_renderer_interface.h>
+#include <abstract_2d_renderer.h>
 #include <material.h>
+#include <mathlib.h>
 #include <opengl_draw_data.h>
 
-class opengl_renderer : public renderer_interface {
+class opengl_renderer : public abstract_renderer {
 public:
     void setup() override;
     void cleanup() override;
@@ -25,13 +26,13 @@ public:
     void draw_sprite(const sprite& sprite) override;
     void draw_sprites(const array<sprite>& sprites) override;
 
-    void draw_ellipse(pointf center, float rx, float ry) override;
+    void draw_ellipse(const pointf& center, float rx, float ry) override;
 
     void draw_ellipses(const array<rectf>& rects) override;
     void draw_ellipses(const array<std::pair<rectf, color>>& colored_ellipses) override;
     void draw_ellipses(const array<std::pair<rectf, texture>>& textured_ellipses) override;
 
-    void draw_text(pointf pos, string_view text) override;
+    void draw_text(const pointf& pos, string_view text) override;
 
     // indices_count is the number of indices in the IBO to consider & 
     // vertices_offset is the offset applied to indices for subgeometry.
@@ -77,9 +78,26 @@ private:
                        color,
                        {0.f, 1.f},
                        texture_index}};
-        } else if constexpr (std::is_same_v<std::decay_t<T>, sprite>) {
-            const auto rect_size = geometry.my_bounds.size();
-            static_array<pointf, 4> rotated_geometry = rotate(geometry);
+        }
+        else if constexpr (std::is_same_v<std::decay_t<T>, sprite>) {
+            const rectf& bounds = geometry.my_bounds;
+            const auto rect_size = bounds.size();            
+            float angle = to_radians(geometry.my_rotation);
+            const pointf rotation_center = bounds.my_top_left + geometry.my_origin;
+
+            const auto rotate_point = [](const pointf& p, float angle,
+                                         const pointf& rotation_center) {
+                return pointf{rotation_center.x + (p.x - rotation_center.x) * cos(angle) -
+                                  (p.y - rotation_center.y) * sin(angle),
+                              rotation_center.y + (p.x - rotation_center.x) * sin(angle) +
+                                  (p.y - rotation_center.y) * cos(angle)};
+            };
+            const static_array<pointf, 4> rotated_geometry = {
+                rotate_point(pointf(bounds.right(), bounds.top()), angle, rotation_center),
+                rotate_point(bounds.my_bottom_right, angle, rotation_center),
+                rotate_point(pointf(bounds.left(), bounds.bottom()), angle, rotation_center),
+                rotate_point(bounds.my_top_left, angle, rotation_center)};
+
             return static_array<vertex, 4>{
                 vertex{vec4f(rotated_geometry[0], rect_size.x, rect_size.y),
                        color,

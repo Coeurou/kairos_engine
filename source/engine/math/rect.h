@@ -43,8 +43,9 @@ struct rect {
         return my_bottom_right.y;
     }
 
-    inline bool contains(pointf point) const {
-        return (point.x >= my_top_left.x && point.x <= my_bottom_right.x) && (point.y <= my_top_left.y && point.y >= my_bottom_right.y)
+    inline bool contains(const pointf& point) const {
+        return (point.x >= my_top_left.x && point.x <= my_bottom_right.x) &&
+               (point.y <= my_top_left.y && point.y >= my_bottom_right.y);
     }
 
     inline void intersect(const rect& rectangle) {
@@ -75,12 +76,12 @@ struct rect {
         return res;
     }
 
-    inline void translate(pointf point) {
+    inline void translate(const pointf& point) {
         my_top_left += point;
         my_bottom_right += point;
     }
 
-    inline rect translated(pointf point) const {
+    inline rect translated(const pointf& point) const {
         rect res = *this;
         res.translate(point);
         return res;

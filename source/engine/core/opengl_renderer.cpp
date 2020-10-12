@@ -119,13 +119,15 @@ void opengl_renderer::setup() {
     const array<vertex> vertices(max_vertices);
     array<uint32> indices_line(max_vertices * nb_points_line);
     expects(indices_line.size() % nb_points_line == 0);
+    size_t vertex_offset = 0;
     for (size_t i = 0; i < indices_line.size(); i += nb_points_line) {
-        indices_line[i] = 0;
-        indices_line[i+1] = 1;
+        indices_line[i] = vertex_offset + 0;
+        indices_line[i + 1] = vertex_offset + 1;
+        vertex_offset += nb_points_line;
     }
     array<uint32> indices_rectangle(max_vertices * nb_indices_rect);
     expects(indices_rectangle.size() % nb_indices_rect == 0);
-    size_t vertex_offset = 0;
+    vertex_offset = 0;
     for (size_t i = 0; i < indices_rectangle.size(); i += nb_indices_rect) {
         indices_rectangle[i] = vertex_offset;
         indices_rectangle[i + 1] = vertex_offset + 1;
@@ -380,7 +382,7 @@ void opengl_renderer::draw_sprites(const array<sprite>& sprites) {
            sprites.size() * nb_indices_rect, vertex_offset);
 }
 
-void opengl_renderer::draw_ellipse(pointf center, float rx, float ry) {
+void opengl_renderer::draw_ellipse(const pointf& center, float rx, float ry) {
 }
 
 void opengl_renderer::draw_ellipses(const array<rectf>& rects) {
@@ -398,7 +400,7 @@ void opengl_renderer::draw_ellipses(const array<std::pair<rectf, texture>>& text
     }
 }
 
-void opengl_renderer::draw_text(pointf pos, string_view text) {
+void opengl_renderer::draw_text(const pointf& pos, string_view text) {
 }
 
 void opengl_renderer::render(material material, uint32 indices_count,

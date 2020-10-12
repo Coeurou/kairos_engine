@@ -1,8 +1,8 @@
 #pragma once
 
-#include <command_interface.h>
+#include <abstract_command.h>
 
-class error_command : public command_interface {
+class error_command : public abstract_command {
 public:
     error_command() = default;
     error_command(string error_message);

@@ -50,7 +50,7 @@ void painter::draw_rects(const array<std::pair<rectf, texture>>& textured_rects)
     my_renderer->draw_rects(textured_rects);
 }
 
-void painter::draw_ellipse(pointf center, float rx, float ry) {
+void painter::draw_ellipse(const pointf& center, float rx, float ry) {
     my_renderer->draw_ellipse(center, rx, ry);
 }
 
@@ -78,7 +78,7 @@ void painter::draw_ellipses(const array<std::pair<rectf, texture>>& textured_ell
     my_renderer->draw_ellipses(textured_ellipses);
 }
 
-void painter::draw_text(pointf pos, string_view text) {
+void painter::draw_text(const pointf& pos, string_view text) {
     my_renderer->draw_text(pos, text);
 }
 
@@ -89,7 +89,7 @@ void painter::set_canvas(canvas* canvas) {
     }
 }
 
-void painter::set_pen_color(color pen_color) {
+void painter::set_pen_color(const color& pen_color) {
     my_pen.my_color = pen_color;
     my_renderer->update_state(renderer_dirty_flag::pen_color, static_cast<vec3f>(my_pen.my_color));
 }
@@ -104,7 +104,7 @@ void painter::set_pen_opacity(float opacity) {
     my_renderer->update_state(renderer_dirty_flag::pen_opacity, static_cast<float>(my_pen.my_opacity));
 }
 
-void painter::set_brush_color(color fill_color) {
+void painter::set_brush_color(const color& fill_color) {
     my_brush.my_fill_color = fill_color;
     my_renderer->update_state(renderer_dirty_flag::brush_color, static_cast<vec3f>(my_brush.my_fill_color));
 }

@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-#include <command_interface.h>
+#include <abstract_command.h>
 #include <contract.h>
 #include <types.h>
 
@@ -42,7 +42,7 @@ public:
         return my_command_logs.end();
     }
 
-    void add(std::unique_ptr<command_interface>&& log) {
+    void add(std::unique_ptr<abstract_command>&& log) {
         my_command_history[my_last_command_index] = std::move(log);
         my_command_logs.emplace_back(my_command_history[my_last_command_index]->to_string());
         my_last_command_index++;
@@ -65,7 +65,7 @@ public:
     }
 
 private:
-    static_array<std::unique_ptr<command_interface>, N> my_command_history;
+    static_array<std::unique_ptr<abstract_command>, N> my_command_history;
     int my_last_command_index = 0;
     int my_current_command_index = 0;
     array<string> my_command_logs;

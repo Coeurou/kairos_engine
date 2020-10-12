@@ -38,7 +38,7 @@ add_sources(KAIROS_SOURCES engine/graphics/sprite engine/graphics/opengl/opengl_
                            )
 
 add_headers(KAIROS_HEADERS engine/graphics/sprite engine/graphics/material engine/graphics/opengl/opengl_draw_data engine/core/opengl_renderer editor/imgui_console_command editor/error_command editor/command_parser
-                           editor/log_command editor/command_interface editor/command_history 
+                           editor/log_command editor/abstract_command editor/command_history 
                            editor/editor editor/imgui_backend editor/imgui_renderer editor/imgui_opengl_renderer
                            editor/imgui_sdl_backend engine/core/contract 
                            engine/window/window engine/window/sdl_window 
@@ -46,7 +46,7 @@ add_headers(KAIROS_HEADERS engine/graphics/sprite engine/graphics/material engin
                            engine/application/log_application engine/application/core_application engine/application/command_line_parser 
                            engine/serialization/serialization_strategy engine/serialization/serializer engine/math/transform 
                            engine/core/formattable engine/core/makable engine/graphics/log_renderer 
-                           engine/graphics/2d_renderer_interface engine/systems/shader_system engine/core/kairos_lib 
+                           engine/graphics/abstract_2d_renderer engine/systems/shader_system engine/core/kairos_lib 
                            engine/graphics/vertex engine/graphics/font engine/graphics/opengl/program engine/graphics/opengl/shader 
                            engine/graphics/opengl/vao engine/graphics/opengl/buffer_object engine/graphics/texture 
                            engine/graphics/brush engine/math/rect engine/graphics/pen engine/graphics/painter 

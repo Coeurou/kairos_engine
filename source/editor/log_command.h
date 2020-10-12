@@ -1,8 +1,8 @@
 #pragma once
 
-#include <command_interface.h>
+#include <abstract_command.h>
 
-class log_command : public command_interface {
+class log_command : public abstract_command {
 public:
     static constexpr string_view name() {
         return "log_command";

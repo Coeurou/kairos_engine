@@ -121,7 +121,7 @@ void log_renderer::draw_sprites(const array<sprite>& sprites) {
     log(LoggerName::GRAPHICS, "{}\n", msg);
 }
 
-void log_renderer::draw_ellipse(pointf center, float rx, float ry) {
+void log_renderer::draw_ellipse(const pointf& center, float rx, float ry) {
     log(LoggerName::GRAPHICS, "Draw ellipse with center: {} radius x: {}, y: {}, frame: {}\n", to_string(center), rx, ry, frame_number);
 }
 
@@ -149,6 +149,6 @@ void log_renderer::draw_ellipses(const array<std::pair<rectf, texture>>& texture
     log(LoggerName::GRAPHICS, "{}\n", msg);
 }
 
-void log_renderer::draw_text(pointf pos, string_view text) {
+void log_renderer::draw_text(const pointf& pos, string_view text) {
     log(LoggerName::GRAPHICS, "Draw text {} at position {}, frame {}\n", text.data(), to_string(pos), frame_number);
 }
