@@ -15,6 +15,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, INT) { return main(__argc, __arg
 #include <command_line_parser.h>
 #include <editor.h>
 #include <formattable.h>
+#include <game.h>
 #include <globals.h>
 #include <logger.h>
 #include <sdl_application.h>
@@ -28,7 +29,7 @@ int main(int argc, char* argv[]) {
         our_application->my_name = "GameEngine";
         our_application->my_version = "0.0.1";
         our_application->my_organisation = "Kairos";
-        our_application->my_execution_callbacks.emplace_back([&engine_editor]() { 
+        our_application->my_processes.emplace_back([&engine_editor]() { 
             engine_editor.update();
             engine_editor.render();
         });
@@ -36,6 +37,12 @@ int main(int argc, char* argv[]) {
             engine_editor.poll_event(e);
         });
     }
+
+    game game;
+    our_application->my_processes.emplace_back([&game]() {
+        game.update();
+    });
+
     core_application::init();
 
     command_line_parser options(argv[0], " - game");
@@ -86,7 +93,6 @@ int main(int argc, char* argv[]) {
     globals::pixel_size = { static_cast<float>(framebuffer.x) / window_params.my_size.x,
                            static_cast<float>(framebuffer.y) / window_params.my_size.y };
     log(LoggerName::ENGINE, "Pixel size set to {}\n", to_string(globals::pixel_size));
-
 
     engine_editor.setup();
     core_application::exec();

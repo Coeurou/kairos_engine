@@ -24,7 +24,7 @@ function(add_headers VAR)
   set(${VAR} ${all_files} PARENT_SCOPE)
 endfunction()
 
-add_sources(KAIROS_SOURCES engine/graphics/sprite engine/graphics/opengl/opengl_draw_data engine/core/opengl_renderer editor/imgui_console_command editor/error_command editor/command_parser 
+add_sources(KAIROS_SOURCES engine/core/game engine/core/easing_curve engine/core/easing_lib engine/core/animation engine/graphics/sprite engine/graphics/opengl/opengl_draw_data engine/core/opengl_renderer editor/imgui_console_command editor/error_command editor/command_parser 
                            editor/log_command editor/editor editor/imgui_opengl_renderer editor/imgui_sdl_backend
                            engine/window/sdl_window engine/application/sdl_application engine/application/log_application
                            engine/application/core_application  engine/application/command_line_parser
@@ -37,7 +37,7 @@ add_sources(KAIROS_SOURCES engine/graphics/sprite engine/graphics/opengl/opengl_
                            engine/core/event_listener engine/core/logger engine/math/mathlib engine/core/messages
                            )
 
-add_headers(KAIROS_HEADERS engine/graphics/sprite engine/graphics/material engine/graphics/opengl/opengl_draw_data engine/core/opengl_renderer editor/imgui_console_command editor/error_command editor/command_parser
+add_headers(KAIROS_HEADERS engine/core/game engine/core/easing_curve engine/core/easing_lib engine/core/animation engine/graphics/sprite engine/graphics/material engine/graphics/opengl/opengl_draw_data engine/core/opengl_renderer editor/imgui_console_command editor/error_command editor/command_parser
                            editor/log_command editor/abstract_command editor/command_history 
                            editor/editor editor/imgui_backend editor/imgui_renderer editor/imgui_opengl_renderer
                            editor/imgui_sdl_backend engine/core/contract 

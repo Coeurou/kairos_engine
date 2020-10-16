@@ -13,10 +13,11 @@ std::shared_ptr<texture_impl> texture::our_impl = nullptr;
 
 void opengl_texture::setup(texture& t, const path& img_path) {
     const auto available_unit = find(texture::our_textures_idx, 0);
-    expects(available_unit != texture::our_textures_idx.end(), "Couldn't find an available texture unit, consider freeing some before adding a new one.");
+    expects(
+        available_unit != texture::our_textures_idx.end(),
+        "Couldn't find an available texture unit, consider freeing some before adding a new one.");
     t.my_index = std::distance(texture::our_textures_idx.begin(), available_unit);
 
-    stbi_set_flip_vertically_on_load(true);
     unsigned char* image =
         stbi_load(img_path.string().c_str(), &t.my_size.x, &t.my_size.y, &t.my_channels, 0);
     {
@@ -31,8 +32,8 @@ void opengl_texture::setup(texture& t, const path& img_path) {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, t.my_size.x, t.my_size.y, 0, GL_RGBA,
-                     GL_UNSIGNED_BYTE, image);
+        glTexImage2D(GL_TEXTURE_2D, 0, (t.my_channels == 4) ? GL_RGBA : GL_RGB, t.my_size.x,
+                     t.my_size.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     stbi_image_free(image);

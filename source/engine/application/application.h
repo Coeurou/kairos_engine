@@ -27,7 +27,7 @@ public:
     uint64 my_session_id{ 0 };
     std::unique_ptr<window_interface> my_main_window;
     std::unique_ptr<opengl_context> my_gl_context;
-    array<std::function<void(void)>> my_execution_callbacks;
+    array<std::function<void(void)>> my_processes;
     array<std::function<void(const variant_event&)>> my_events_callbacks;
     //clipboard my_clipboard;
     //cursor my_cursor;

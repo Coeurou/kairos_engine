@@ -47,8 +47,8 @@ void core_application::exec() {
 
         main_window->start_frame();
         our_application->exec();
-        for (const auto& callback : our_application->my_execution_callbacks) {
-            callback();
+        for (const auto& process : our_application->my_processes) {
+            process();
         }
         main_window->end_frame();
     }
