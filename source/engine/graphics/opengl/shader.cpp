@@ -1,8 +1,8 @@
 #pragma once
 
-#include <shader.h>
+#include <graphics/opengl/shader.h>
 
-#include <logger.h>
+#include <core/logger.h>
 
 shader::shader(shader&& other) noexcept :
     my_gl_id(std::move(other.my_gl_id)), my_shader_name(std::move(other.my_shader_name)),

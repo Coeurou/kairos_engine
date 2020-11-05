@@ -1,10 +1,10 @@
 #pragma once
 
-#include <vao.h>
+#include <graphics/opengl/vao.h>
 
-#include <contract.h>
-#include <kairos_lib.h>
-#include <vertex.h>
+#include <core/contract.h>
+#include <core/kairos_lib.h>
+#include <graphics/vertex.h>
 
 vao::vao() {
     glGenVertexArrays(1, &my_gl_id);

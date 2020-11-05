@@ -1,6 +1,6 @@
 #pragma once
 
-#include <types.h>
+#include <core/types.h>
 
 static constexpr float default_line_width = 1.f;
 

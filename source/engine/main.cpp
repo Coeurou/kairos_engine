@@ -12,14 +12,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, INT) { return main(__argc, __arg
 #include <SDL.h>
 #undef main
 
-#include <command_line_parser.h>
+#include <application/command_line_parser.h>
 #include <editor.h>
-#include <formattable.h>
-#include <game.h>
-#include <globals.h>
-#include <logger.h>
-#include <sdl_application.h>
-#include <sdl_window.h>
+#include <core/formattable.h>
+#include <core/game.h>
+#include <core/globals.h>
+#include <core/logger.h>
+#include <application/sdl_application.h>
+#include <window/sdl_window.h>
 
 int main(int argc, char* argv[]) {
     // init app data

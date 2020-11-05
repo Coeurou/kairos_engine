@@ -1,15 +1,15 @@
 #pragma once
 
-#include <log_renderer.h>
+#include <graphics/log_renderer.h>
 
 #include <nameof.hpp>
 
-#include <application.h>
-#include <brush.h>
-#include <contract.h>
-#include <formattable.h>
-#include <logger.h>
-#include <pen.h>
+#include <application/application.h>
+#include <graphics/brush.h>
+#include <core/contract.h>
+#include <core/formattable.h>
+#include <core/logger.h>
+#include <graphics/pen.h>
 
 void log_renderer::setup() {
     log(LoggerName::GRAPHICS, "Log renderer successfully setup\n");

@@ -1,12 +1,12 @@
 #pragma once
 
-#include <sdl_window.h>
+#include <window/sdl_window.h>
 
-#include <contract.h>
-#include <core_application.h>
-#include <logger.h>
-#include <messages.h>
-#include <opengl_context.h>
+#include <core/contract.h>
+#include <application/core_application.h>
+#include <core/logger.h>
+#include <core/messages.h>
+#include <graphics/opengl/opengl_context.h>
 
 sdl_window::sdl_window(SDL_Window* native_window) : my_native_window(native_window) {
 }

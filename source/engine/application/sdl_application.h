@@ -1,6 +1,6 @@
 #pragma once
 
-#include <application.h>
+#include <application/application.h>
 
 class sdl_application : public application {
     bool init() override;

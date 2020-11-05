@@ -2,8 +2,8 @@
 
 #include <queue>
 
-#include <message.h>
-#include <types.h>
+#include <core/message.h>
+#include <core/types.h>
 
 class EventListener;
 

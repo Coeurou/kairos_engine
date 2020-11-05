@@ -3,10 +3,9 @@
 #include <variant>
 #include <SDL.h>
 
-#include <command_line_parser.h>
-#include <core_application.h>
-#include <opengl_context.h>
-#include <window.h>
+#include <application/core_application.h>
+#include <graphics/opengl/opengl_context.h>
+#include <window/window.h>
 
 using variant_event = std::variant<SDL_Event, std::monostate>;
 

@@ -6,7 +6,7 @@
 
 #include <error_command.h>
 #include <log_command.h>
-#include <makable.h>
+#include <core/makable.h>
 
 array<string_view> command_parser::our_command_names = { log_command::name(), error_command::name() };
 

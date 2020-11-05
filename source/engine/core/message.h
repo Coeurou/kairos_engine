@@ -1,6 +1,6 @@
 #pragma once
 
-#include <types.h>
+#include <core/types.h>
 
 enum class MessageType {
     key_pressed = 0,

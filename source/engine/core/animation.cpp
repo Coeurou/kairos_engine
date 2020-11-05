@@ -1,6 +1,6 @@
-#include <animation.h>
-#include <contract.h>
-#include <easing_lib.h>
+#include <core/animation.h>
+#include <core/contract.h>
+#include <core/easing_lib.h>
 
 void variant_animation::start_impl() {
     expects(my_value != nullptr, "Nothing to animate");

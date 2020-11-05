@@ -1,8 +1,8 @@
 #pragma once
 
-#include <filesystem.h>
-#include <formattable.h>
-#include <core_application.h>
+#include <core/filesystem.h>
+#include <core/formattable.h>
+#include <application/core_application.h>
 
 class texture;
 

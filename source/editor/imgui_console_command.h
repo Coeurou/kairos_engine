@@ -1,7 +1,7 @@
 #pragma once
 
 #include <command_history.h>
-#include <types.h>
+#include <core/types.h>
 
 class imgui_console_command {
 public:

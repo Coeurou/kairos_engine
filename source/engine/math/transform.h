@@ -1,8 +1,8 @@
 #pragma once
 
-#include <rect.h>
-#include <sprite.h>
-#include <types.h>
+#include <math/rect.h>
+#include <graphics/sprite.h>
+#include <core/types.h>
 
 template <class Shape> class transform {
 public:

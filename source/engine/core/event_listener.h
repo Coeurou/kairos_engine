@@ -1,8 +1,8 @@
 #pragma once
 
 #include <queue>
-#include <messages.h>
-#include <types.h>
+#include <core/messages.h>
+#include <core/types.h>
 
 // TODO doc class is a resource with RAII for subscribe/unsubscribe to channels
 class EventListener {

@@ -3,8 +3,8 @@
 #include <cmath>
 #include <glm/gtx/transform.hpp>
 
-#include <rect.h>
-#include <types.h>
+#include <math/rect.h>
+#include <core/types.h>
 
 float square_distance(const vec2f& point_a, const vec2f& point_b);
 

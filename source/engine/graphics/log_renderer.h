@@ -1,6 +1,6 @@
 #pragma once
 
-#include <abstract_2d_renderer.h>
+#include <graphics/abstract_2d_renderer.h>
 
 class log_renderer : public abstract_renderer {
 public:

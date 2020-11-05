@@ -1,9 +1,9 @@
 #pragma once
 
-#include <abstract_2d_renderer.h>
-#include <material.h>
-#include <mathlib.h>
-#include <opengl_draw_data.h>
+#include <graphics/abstract_2d_renderer.h>
+#include <graphics/material.h>
+#include <math/mathlib.h>
+#include <graphics/opengl/opengl_draw_data.h>
 
 class opengl_renderer : public abstract_renderer {
 public:

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <program.h>
-#include <contract.h>
-#include <logger.h>
+#include <graphics/opengl/program.h>
+#include <core/contract.h>
+#include <core/logger.h>
 
 program::program(program&& other) noexcept :
     my_gl_id(std::move(other.my_gl_id)), my_name(std::move(other.my_name)),

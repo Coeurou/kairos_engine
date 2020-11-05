@@ -1,9 +1,9 @@
-#include <core_application.h>
+#include <application/core_application.h>
 
-#include <application.h>
-#include <contract.h>
-#include <opengl_context.h>
-#include <window.h>
+#include <application/application.h>
+#include <core/contract.h>
+#include <graphics/opengl/opengl_context.h>
+#include <window/window.h>
 
 bool core_application::is_application_initialized = false;
 renderer_engine core_application::our_graphics_impl = renderer_engine::no_render;

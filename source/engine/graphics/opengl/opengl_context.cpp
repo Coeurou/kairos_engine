@@ -1,9 +1,9 @@
 #pragma once
 
-#include <opengl_context.h>
+#include <graphics/opengl/opengl_context.h>
 
-#include <application.h>
-#include <contract.h>
+#include <application/application.h>
+#include <core/contract.h>
 
 sdl_opengl_context::sdl_opengl_context(const window_interface& window) {
     expects(core_application::is_initialized(implementation_type::SDL), "Cannot create a SDL OpenGL context, if SDL is not initialized");

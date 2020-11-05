@@ -1,7 +1,7 @@
 #pragma once
 
-#include <mathlib.h>
-#include <types.h>
+#include <math/mathlib.h>
+#include <core/types.h>
 
 class shader_system {
 public:

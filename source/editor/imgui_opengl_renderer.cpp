@@ -25,8 +25,8 @@
 #include <stdint.h>     // intptr_t
 #include <imgui.h>
 
-#include <contract.h>
-#include <opengl_context.h>
+#include <core/contract.h>
+#include <graphics/opengl/opengl_context.h>
 
 // GL includes
 #if defined(IMGUI_IMPL_OPENGL_ES2)

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <types.h>
+#include <core/types.h>
 
 struct vertex {
     vec4f my_position{ 0.f };

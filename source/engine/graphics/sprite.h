@@ -1,9 +1,9 @@
 #pragma once
 
-#include <formattable.h>
-#include <rect.h>
-#include <texture.h>
-#include <types.h>
+#include <core/formattable.h>
+#include <math/rect.h>
+#include <graphics/texture.h>
+#include <core/types.h>
 
 class sprite {
 public:

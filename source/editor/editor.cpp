@@ -4,7 +4,7 @@
 
 #include <algorithm>
 
-#include <contract.h>
+#include <core/contract.h>
 #include <imgui_opengl_renderer.h>
 #include <imgui_sdl_backend.h>
 #include <imgui_internal.h>

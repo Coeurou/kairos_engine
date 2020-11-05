@@ -3,8 +3,8 @@
 #include <algorithm>
 
 #include <abstract_command.h>
-#include <contract.h>
-#include <types.h>
+#include <core/contract.h>
+#include <core/types.h>
 
 template<size_t N>
 class command_history {

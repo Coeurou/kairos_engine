@@ -3,7 +3,7 @@
 #include <imgui.h>
 
 #include <imgui_backend.h>
-#include <types.h>
+#include <core/types.h>
 
 class sdl_window;
 struct SDL_Cursor;

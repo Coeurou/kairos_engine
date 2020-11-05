@@ -1,9 +1,9 @@
 #pragma once
 
 
-#include <logger.h>
-#include <types.h>
-#include <vertex.h>
+#include <core/logger.h>
+#include <core/types.h>
+#include <graphics/vertex.h>
 
 enum class buffer_target {
     geometry,

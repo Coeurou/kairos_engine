@@ -2,7 +2,7 @@
 
 #include <log_command.h>
 
-#include <logger.h>
+#include <core/logger.h>
 
 string log_command::to_string() const {
     return name().data();

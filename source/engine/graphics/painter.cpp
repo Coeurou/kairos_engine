@@ -1,12 +1,12 @@
 #pragma once
 
-#include <painter.h>
-#include <logger.h>
-#include <makable.h>
-#include <kairos_lib.h>
-#include <log_renderer.h>
-#include <opengl_renderer.h>
-#include <rect.h>
+#include <graphics/painter.h>
+#include <core/logger.h>
+#include <core/makable.h>
+#include <core/kairos_lib.h>
+#include <graphics/log_renderer.h>
+#include <core/opengl_renderer.h>
+#include <math/rect.h>
 
 painter::painter() : my_renderer(make<log_renderer>()) {}
 
@@ -80,13 +80,6 @@ void painter::draw_ellipses(const array<std::pair<rectf, texture>>& textured_ell
 
 void painter::draw_text(const pointf& pos, string_view text) {
     my_renderer->draw_text(pos, text);
-}
-
-void painter::set_canvas(canvas* canvas) {
-    my_canvas = canvas;
-    if (canvas != nullptr) {
-        my_renderer->update_state(renderer_dirty_flag::viewport, to_string(canvas->my_viewport));
-    }
 }
 
 void painter::set_pen_color(const color& pen_color) {

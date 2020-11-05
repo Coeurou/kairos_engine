@@ -1,6 +1,6 @@
 #pragma once
 
-#include <types.h>
+#include <core/types.h>
 
 struct material {
     uint32 my_id = 0;

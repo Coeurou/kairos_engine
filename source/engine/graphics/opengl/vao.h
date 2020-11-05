@@ -1,7 +1,7 @@
 #pragma once
 
-#include <types.h>
-#include <buffer_object.h>
+#include <core/types.h>
+#include <graphics/opengl/buffer_object.h>
 
 class vao {
 public:

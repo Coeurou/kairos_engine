@@ -6,10 +6,10 @@
 #include <TargetConditionals.h>
 #endif
 
-#include <types.h>
-#include <contract.h>
-#include <core_application.h>
-#include <sdl_window.h>
+#include <core/types.h>
+#include <core/contract.h>
+#include <application/core_application.h>
+#include <window/sdl_window.h>
 
 static const char* get_clipboard_text(void*)
 {

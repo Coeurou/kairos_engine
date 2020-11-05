@@ -1,6 +1,6 @@
 #pragma once
 
-#include <opengl_draw_data.h>
+#include <graphics/opengl/opengl_draw_data.h>
 
 opengl_draw_data::opengl_draw_data(opengl_draw_data&& other) noexcept :
     my_indices_count(std::move(other.my_indices_count)),

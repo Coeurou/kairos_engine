@@ -1,12 +1,12 @@
 #pragma once
 
-#include <sdl_application.h>
+#include <application/sdl_application.h>
 #include <chrono>
 #include <random>
 
 #include <imgui.h>
 
-#include <contract.h>
+#include <core/contract.h>
 
 bool sdl_application::init() {
     my_type = implementation_type::SDL;

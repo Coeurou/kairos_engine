@@ -3,7 +3,7 @@
 #include <cmath>
 #include <type_traits>
 
-#include <formattable.h>
+#include <core/formattable.h>
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 struct rect {

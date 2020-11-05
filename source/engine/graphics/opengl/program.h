@@ -1,6 +1,6 @@
 #pragma once
 
-#include <types.h>
+#include <core/types.h>
 
 struct program {
     static constexpr uint32 max_shaders = 4;

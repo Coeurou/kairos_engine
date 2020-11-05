@@ -1,10 +1,10 @@
 #pragma once
 
-#include <buffer_object.h>
+#include <graphics/opengl/buffer_object.h>
 
 #include <nameof.hpp>
 
-#include <contract.h>
+#include <core/contract.h>
 
 buffer_object::buffer_object(buffer_object&& other) noexcept :
     my_gl_id(std::move(other.my_gl_id)), my_usage(std::move(other.my_usage)),

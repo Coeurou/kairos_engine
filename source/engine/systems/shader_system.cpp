@@ -1,10 +1,10 @@
 #pragma once
 
-#include <shader_system.h>
-#include <program.h>
-#include <shader.h>
-#include <types.h>
-#include <vao.h>
+#include <systems/shader_system.h>
+#include <graphics/opengl/program.h>
+#include <graphics/opengl/shader.h>
+#include <core/types.h>
+#include <graphics/opengl/vao.h>
 
 bool shader_system::setup_shaders() {
     bool res = true;

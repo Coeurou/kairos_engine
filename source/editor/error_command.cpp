@@ -2,7 +2,7 @@
 
 #include <error_command.h>
 
-#include <logger.h>
+#include <core/logger.h>
 
 error_command::error_command(string error_message) : my_error_message(error_message) {
 }

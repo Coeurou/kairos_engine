@@ -1,10 +1,10 @@
 #pragma once
 
-#include <rect.h>
-#include <sprite.h>
-#include <texture.h>
-#include <types.h>
-#include <vertex.h>
+#include <math/rect.h>
+#include <graphics/sprite.h>
+#include <graphics/texture.h>
+#include <core/types.h>
+#include <graphics/vertex.h>
 
 enum class renderer_dirty_flag {
     pen_color,

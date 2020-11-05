@@ -1,12 +1,12 @@
 #pragma once
 
-#include <texture.h>
+#include <graphics/texture.h>
 
 #include <nameof.hpp>
 #define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
+#include <graphics/stb_image.h>
 
-#include <kairos_lib.h>
+#include <core/kairos_lib.h>
 
 static_array<uint32, texture::our_limit> texture::our_textures_idx = {0};
 std::shared_ptr<texture_impl> texture::our_impl = nullptr;

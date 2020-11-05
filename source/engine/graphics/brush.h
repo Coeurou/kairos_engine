@@ -1,7 +1,7 @@
 #pragma once
 
-#include <texture.h>
-#include <types.h>
+#include <graphics/texture.h>
+#include <core/types.h>
 
 struct brush {
     int my_fill_texture_id{-1};

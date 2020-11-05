@@ -2,7 +2,7 @@
 
 #include <SDL.h>
 
-#include <window.h>
+#include <window/window.h>
 
 class sdl_window : public window_interface {
 public:

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <formattable.h>
-#include <types.h>
+#include <core/formattable.h>
+#include <core/types.h>
 
 class window_interface {
 public:

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <types.h>
+#include <core/types.h>
 
 struct shader {
     uint32 my_gl_id{ 0 };

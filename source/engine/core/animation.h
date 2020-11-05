@@ -1,8 +1,8 @@
 #pragma once
 
-#include <types.h>
-#include <easing_curve.h>
-#include <sprite.h>
+#include <core/types.h>
+#include <core/easing_curve.h>
+#include <graphics/sprite.h>
 
 enum class animation_direction {
     forward,

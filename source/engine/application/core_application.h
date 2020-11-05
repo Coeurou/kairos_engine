@@ -1,8 +1,8 @@
 #pragma once
 
-#include <command_line_parser.h>
-#include <filesystem.h>
-#include <types.h>
+#include <application/command_line_parser.h>
+#include <core/filesystem.h>
+#include <core/types.h>
 
 class opengl_context;
 class window_interface;

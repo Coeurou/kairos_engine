@@ -1,9 +1,9 @@
 #pragma once
 
-#include <buffer_object.h>
+#include <graphics/opengl/buffer_object.h>
 #include <imgui_renderer.h>
-#include <program.h>
-#include <shader.h>
+#include <graphics/opengl/program.h>
+#include <graphics/opengl/shader.h>
 
 class opengl_context;
 

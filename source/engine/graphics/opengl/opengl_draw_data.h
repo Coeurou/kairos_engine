@@ -1,9 +1,9 @@
 #pragma once
 
-#include <types.h>
-#include <buffer_object.h>
-#include <program.h>
-#include <vao.h>
+#include <core/types.h>
+#include <graphics/opengl/buffer_object.h>
+#include <graphics/opengl/program.h>
+#include <graphics/opengl/vao.h>
 
 class opengl_draw_data {
 public:

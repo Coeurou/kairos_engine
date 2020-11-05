@@ -1,4 +1,4 @@
-#include <easing_lib.h>
+#include <core/easing_lib.h>
 #include <cmath>
 
 static constexpr float c1 = 1.70158f;

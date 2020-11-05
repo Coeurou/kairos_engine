@@ -1,7 +1,7 @@
 #pragma once
 
-#include <sdl_window.h>
-#include <types.h>
+#include <window/sdl_window.h>
+#include <core/types.h>
 
 class opengl_context {
 public:

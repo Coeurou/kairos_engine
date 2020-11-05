@@ -1,11 +1,11 @@
 #pragma once
 
-#include <log_application.h>
+#include <application/log_application.h>
 
 #include <cstdio>
 
-#include <logger.h>
-#include <sdl_window.h>
+#include <core/logger.h>
+#include <window/sdl_window.h>
 
 bool log_application::init() {
     my_type = implementation_type::NO_IMPL;

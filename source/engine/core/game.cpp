@@ -1,9 +1,9 @@
 #pragma once
 
-#include <game.h>
+#include <core/game.h>
 
-#include <painter.h>
-#include <transform.h>
+#include <graphics/painter.h>
+#include <math/transform.h>
 
 void game::update() {
     texture::set_implementation(renderer_engine::opengl);

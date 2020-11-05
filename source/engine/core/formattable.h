@@ -2,8 +2,8 @@
 
 #include <regex>
 
-#include <contract.h>
-#include <types.h>
+#include <core/contract.h>
+#include <core/types.h>
 
 template<class T> string to_string(T value) {
     return std::to_string(value);

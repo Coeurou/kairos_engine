@@ -1,12 +1,12 @@
-#include <messages.h>
+#include <core/messages.h>
 
 #include <algorithm>
 
 #include <nameof.hpp>
 
-#include <event_listener.h>
-#include <formattable.h>
-#include <logger.h>
+#include <core/event_listener.h>
+#include <core/formattable.h>
+#include <core/logger.h>
 
 MessageDispatcher::MessageDispatcher() {
     for (auto& listener : my_listeners) {

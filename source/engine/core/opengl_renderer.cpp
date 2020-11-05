@@ -1,14 +1,14 @@
 #pragma once
 
-#include <opengl_renderer.h>
+#include <core/opengl_renderer.h>
 
 #include <nameof.hpp>
 
-#include <core_application.h>
-#include <contract.h>
-#include <mathlib.h>
-#include <shader.h>
-#include <window.h>
+#include <application/core_application.h>
+#include <core/contract.h>
+#include <math/mathlib.h>
+#include <graphics/opengl/shader.h>
+#include <window/window.h>
 
 static constexpr float no_texture = -1.f;
 static constexpr size_t max_vertices = 8192;
