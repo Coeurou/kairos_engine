@@ -44,7 +44,7 @@ bool program::link() const {
     glGetProgramiv(my_gl_id, GL_LINK_STATUS, &success);
     if (success == GL_FALSE) {
         static_array<char, 512> info_log = { 0 };
-        glGetProgramInfoLog(my_gl_id, info_log.size(), nullptr, info_log.data());
+        glGetProgramInfoLog(my_gl_id, static_cast<GLsizei>(info_log.size()), nullptr, info_log.data());
         log_error(LoggerName::GRAPHICS, "Program link failed: {}\n", info_log.data());
     }
 

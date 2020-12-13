@@ -12,3 +12,7 @@ namespace detail {
 constexpr uint32 operator"" _hash(char const* s, size_t count) {
     return detail::fnv1a_32(s, count);
 }
+
+constexpr uint32 hash(string_view s) {
+    return detail::fnv1a_32(s.data(), s.size());
+}

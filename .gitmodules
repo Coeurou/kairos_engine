@@ -19,3 +19,6 @@
 [submodule "extern/Nuklear"]
 	path = extern/Nuklear
 	url = https://github.com/Immediate-Mode-UI/Nuklear.git
+[submodule "extern/Catch2"]
+	path = extern/Catch2
+	url = https://github.com/catchorg/Catch2.git

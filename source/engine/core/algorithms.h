@@ -2,6 +2,7 @@
 
 #include <core/types.h>
 
+// in c++20 all this should be constexpr
 template <typename Array, typename Predicate>
 auto find_if(const Array& array, Predicate&& predicate) {
     return std::find_if(array.begin(), array.end(), std::forward<Predicate>(predicate));
@@ -28,6 +29,15 @@ template <typename Array, typename Value> auto remove(Array& array, const Value&
     return std::remove(array.begin(), array.end(), value);
 }
 
+template <typename Container, typename Value> bool contains(Container& container, const Value& value) {
+    return find(container, value) != container.end();
+}
+
+template <typename Container, typename Predicate>
+bool contains(Container& container, Predicate&& predicate) {
+    return find_if(container, std::forward<Predicate>(predicate)) != container.end();
+}
+
 template<typename FunctorCreation, typename FunctorDestruction>
 class scoped_object {
 public:
@@ -36,7 +46,7 @@ public:
     }
 
     ~scoped_object() {
-        this->on_destroy();
+        on_destroy();
     }
 
 private:

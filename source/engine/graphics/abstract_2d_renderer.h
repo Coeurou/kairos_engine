@@ -17,14 +17,14 @@ enum class renderer_dirty_flag {
     count
 };
 
-class brush;
-class pen;
+struct brush;
+struct pen;
 
 class abstract_renderer {
 public:
     virtual ~abstract_renderer() {}
 
-    virtual void setup() = 0;
+    virtual void setup(const sizef& window_size) = 0;
     virtual void cleanup() = 0;
 
     virtual void update_state(renderer_dirty_flag flag, const variant& value) = 0;

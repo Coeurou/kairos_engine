@@ -4,7 +4,7 @@
 
 class log_renderer : public abstract_renderer {
 public:
-    void setup() override;
+    void setup(const sizef& window_size) override;
     void cleanup() override;
 
     void update_state(renderer_dirty_flag flag, const variant& value) override;

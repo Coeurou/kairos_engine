@@ -2,15 +2,17 @@
 
 #include <memory>
 
+#include <core/renderer_engine.h>
 #include <graphics/abstract_2d_renderer.h>
-#include <application/application.h>
 #include <graphics/brush.h>
 #include <graphics/pen.h>
 
+namespace kairos {
+
 class painter {
-public:
+  public:
     painter();
-    painter(renderer_engine engine);
+    painter(const sizef& window_size, renderer_engine engine);
     ~painter();
 
     void draw_line(const linef& line);
@@ -40,8 +42,10 @@ public:
     void set_brush_texture(int fill_texture_id);
     void set_brush_opacity(float opacity);
 
-private:
+  private:
     std::unique_ptr<abstract_renderer> my_renderer;
     pen my_pen{};
     brush my_brush{};
 };
+
+} // namespace kairos

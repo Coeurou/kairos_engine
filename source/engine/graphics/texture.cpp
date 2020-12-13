@@ -6,17 +6,17 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <graphics/stb_image.h>
 
-#include <core/kairos_lib.h>
+#include <core/algorithms.h>
 
 static_array<uint32, texture::our_limit> texture::our_textures_idx = {0};
 std::shared_ptr<texture_impl> texture::our_impl = nullptr;
 
 void opengl_texture::setup(texture& t, const path& img_path) {
-    const auto available_unit = find(texture::our_textures_idx, 0);
+    const auto available_unit = find(texture::our_textures_idx, uint32{0});
     expects(
         available_unit != texture::our_textures_idx.end(),
         "Couldn't find an available texture unit, consider freeing some before adding a new one.");
-    t.my_index = std::distance(texture::our_textures_idx.begin(), available_unit);
+    t.my_index = static_cast<uint32>(std::distance(texture::our_textures_idx.begin(), available_unit));
 
     unsigned char* image =
         stbi_load(img_path.string().c_str(), &t.my_size.x, &t.my_size.y, &t.my_channels, 0);

@@ -33,9 +33,9 @@ public:
         GLenum gl_target = as_gl_target(my_target);
 
         glBindBuffer(gl_target, my_gl_id);
-        using data_container = std::remove_reference<container>::type;
-        using data_type = data_container::value_type;
-        my_size = data.size();
+        using data_container = typename std::remove_reference_t<container>;
+        using data_type = typename data_container::value_type;
+        my_size = static_cast<uint32>(data.size());
         glBufferData(gl_target, my_size * sizeof(data_type), data.data(), my_usage);
     }
 

@@ -3,7 +3,7 @@
 #include <graphics/opengl/vao.h>
 
 #include <core/contract.h>
-#include <core/kairos_lib.h>
+#include <core/algorithms.h>
 #include <graphics/vertex.h>
 
 vao::vao() {

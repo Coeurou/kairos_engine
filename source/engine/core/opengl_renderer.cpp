@@ -4,11 +4,11 @@
 
 #include <nameof.hpp>
 
-#include <application/core_application.h>
 #include <core/contract.h>
 #include <math/mathlib.h>
 #include <graphics/opengl/shader.h>
-#include <window/window.h>
+
+namespace kairos {
 
 static constexpr float no_texture = -1.f;
 static constexpr size_t max_vertices = 8192;
@@ -18,7 +18,7 @@ static constexpr uint32 nb_indices_rect = 6;
 static constexpr const char* line_data = "line";
 static constexpr const char* rectangle_data = "rectangle";
 
-void opengl_renderer::setup() {
+void opengl_renderer::setup(const sizef& window_size) {
     // Define default shader for line and rectangle
     auto vertex_shader_source = R"(
     #version 130
@@ -100,12 +100,11 @@ void opengl_renderer::setup() {
         default_rect_fs.setup();
     }
 
-    const auto setup_uniforms = [](uint32 program) {
+    const auto setup_uniforms = [&window_size](uint32 program) {
         glUseProgram(program);
-        const auto window_size = core_application::window()->size();
         mat4f orthographic_projection = ortho(rectf{{0.f, 0.f}, window_size});
-        glUniformMatrix4fv(glGetUniformLocation(program, "projection_matrix"), 1,
-            GL_FALSE, &orthographic_projection[0][0]);
+        glUniformMatrix4fv(glGetUniformLocation(program, "projection_matrix"), 1, GL_FALSE,
+                           &orthographic_projection[0][0]);
         glUniform1f(glGetUniformLocation(program, "border_width"), 0.f);
         glUniform4f(glGetUniformLocation(program, "border_color"), 0.f, 0.f, 0.f, 0.f);
         for (auto i = 0; i < texture::our_limit; i++) {
@@ -119,7 +118,7 @@ void opengl_renderer::setup() {
     const array<vertex> vertices(max_vertices);
     array<uint32> indices_line(max_vertices * nb_points_line);
     expects(indices_line.size() % nb_points_line == 0);
-    size_t vertex_offset = 0;
+    uint32 vertex_offset = 0;
     for (size_t i = 0; i < indices_line.size(); i += nb_points_line) {
         indices_line[i] = vertex_offset + 0;
         indices_line[i + 1] = vertex_offset + 1;
@@ -151,11 +150,11 @@ void opengl_renderer::setup() {
     opengl_draw_data rectangle_draw_data;
     {
         rectangle_draw_data.setup(vertices, GL_DYNAMIC_DRAW, indices_rectangle,
-                                  {default_vs, default_rect_fs},
-                                  rectangle_data, GL_TRIANGLES);
+                                  {default_vs, default_rect_fs}, rectangle_data, GL_TRIANGLES);
         setup_uniforms(rectangle_draw_data.my_program);
 
-        my_draw_data.emplace(rectangle_draw_data.my_program.my_name, std::move(rectangle_draw_data));
+        my_draw_data.emplace(rectangle_draw_data.my_program.my_name,
+                             std::move(rectangle_draw_data));
     }
 }
 
@@ -172,7 +171,7 @@ void opengl_renderer::update_state(renderer_dirty_flag flag, const variant& valu
     case renderer_dirty_flag::brush_color: {
         const auto brush_color = std::get_if<vec3f>(&value);
         expects(brush_color != nullptr, "Non-color value passed as argument for brush color");
-        my_fill_color_value = color{ *brush_color, 1.f };
+        my_fill_color_value = color{*brush_color, 1.f};
         break;
     }
     case renderer_dirty_flag::brush_opacity: {
@@ -187,7 +186,8 @@ void opengl_renderer::update_state(renderer_dirty_flag flag, const variant& valu
         my_line_width_value = *line_width;
         for (auto& [_, draw_data] : my_draw_data) {
             glUseProgram(draw_data.my_program);
-            glUniform1f(glGetUniformLocation(draw_data.my_program, "border_width"), my_line_width_value);
+            glUniform1f(glGetUniformLocation(draw_data.my_program, "border_width"),
+                        my_line_width_value);
         }
         glUseProgram(0);
         break;
@@ -195,10 +195,11 @@ void opengl_renderer::update_state(renderer_dirty_flag flag, const variant& valu
     case renderer_dirty_flag::pen_color: {
         const auto pen_color = std::get_if<vec3f>(&value);
         expects(pen_color != nullptr, "Non-color value passed as argument for pen color");
-        my_color_value = color{ *pen_color, 1.f };
+        my_color_value = color{*pen_color, 1.f};
         for (auto& [_, draw_data] : my_draw_data) {
             glUseProgram(draw_data.my_program);
-            glUniform4fv(glGetUniformLocation(draw_data.my_program, "border_color"), 1, &my_color_value[0]);
+            glUniform4fv(glGetUniformLocation(draw_data.my_program, "border_color"), 1,
+                         &my_color_value[0]);
         }
         break;
     }
@@ -221,13 +222,16 @@ void opengl_renderer::update_state(renderer_dirty_flag flag, const variant& valu
             glUseProgram(draw_data.my_program);
             const rectf viewport_rect = from_string<rectf>(*viewport);
             mat4f orthographic_projection = ortho(viewport_rect);
-            glUniformMatrix4fv(glGetUniformLocation(draw_data.my_program, "projection_matrix"), 1, GL_FALSE, &orthographic_projection[0][0]);
+            glUniformMatrix4fv(glGetUniformLocation(draw_data.my_program, "projection_matrix"), 1,
+                               GL_FALSE, &orthographic_projection[0][0]);
         }
         glUseProgram(0);
         break;
     }
     default: {
-        ensures(false, fmt::format("Unimplemented rendering state, you shouldn't enter here: {}\n", NAMEOF_ENUM(flag)).c_str());
+        ensures(false, fmt::format("Unimplemented rendering state, you shouldn't enter here: {}\n",
+                                   NAMEOF_ENUM(flag))
+                           .c_str());
         break;
     }
     }
@@ -255,7 +259,7 @@ void opengl_renderer::draw_line(const linef& line) {
 }
 
 void opengl_renderer::draw_lines(const array<linef>& lines) {
-    const size_t nb_points = lines.size() * nb_points_line;
+    const uint32 nb_points = static_cast<uint32>(lines.size()) * nb_points_line;
     array<vertex> vertices{};
     vertices.reserve(nb_points);
 
@@ -272,7 +276,7 @@ void opengl_renderer::draw_lines(const array<linef>& lines) {
 }
 
 void opengl_renderer::draw_lines(const array<std::pair<linef, color>>& colored_lines) {
-    const size_t nb_points = colored_lines.size() * nb_points_line;
+    const uint32 nb_points = static_cast<uint32>(colored_lines.size()) * nb_points_line;
     array<vertex> vertices{};
     vertices.reserve(nb_points);
 
@@ -311,8 +315,8 @@ void opengl_renderer::draw_rects(const array<rectf>& rects) {
     geometry.add_draw_data(vertices);
     check_gl_error();
 
-    render(material{geometry.my_program.my_gl_id, geometry.my_program.my_name}, rects.size() * nb_indices_rect,
-           vertex_offset);
+    render(material{geometry.my_program.my_gl_id, geometry.my_program.my_name},
+           static_cast<uint32>(rects.size()) * nb_indices_rect, vertex_offset);
 }
 
 void opengl_renderer::draw_rects(const array<std::pair<rectf, color>>& colored_rects) {
@@ -329,8 +333,7 @@ void opengl_renderer::draw_rects(const array<std::pair<rectf, color>>& colored_r
     check_gl_error();
 
     render(material{geometry.my_program.my_gl_id, geometry.my_program.my_name},
-           colored_rects.size() * nb_indices_rect,
-           vertex_offset);
+           static_cast<uint32>(colored_rects.size()) * nb_indices_rect, vertex_offset);
 }
 
 void opengl_renderer::draw_rects(const array<std::pair<rectf, texture>>& textured_rects) {
@@ -348,16 +351,15 @@ void opengl_renderer::draw_rects(const array<std::pair<rectf, texture>>& texture
     check_gl_error();
 
     render(material{geometry.my_program.my_gl_id, geometry.my_program.my_name},
-           textured_rects.size() * nb_indices_rect,
-           vertex_offset);
+           static_cast<uint32>(textured_rects.size()) * nb_indices_rect, vertex_offset);
 }
 
 void opengl_renderer::draw_sprite(const sprite& sprite) {
     auto& geometry = my_draw_data[rectangle_data];
     const uint32 vertex_offset = geometry.my_vertices_count;
-    geometry.add_draw_data(
-        to_vertices(sprite, sprite.my_color,
-                    (sprite.my_texture != nullptr) ? sprite.my_texture->my_index : -1));
+    geometry.add_draw_data(to_vertices(
+        sprite, sprite.my_color,
+        (sprite.my_texture != nullptr) ? static_cast<float>(sprite.my_texture->my_index) : -1.f));
     check_gl_error();
 
     render(material{geometry.my_program.my_gl_id, geometry.my_program.my_name}, nb_indices_rect,
@@ -371,41 +373,34 @@ void opengl_renderer::draw_sprites(const array<sprite>& sprites) {
     auto& geometry = my_draw_data[rectangle_data];
     const uint32 vertex_offset = geometry.my_vertices_count;
     for (const auto& sprite : sprites) {
-        const auto sprite_vertices = to_vertices(sprite.my_bounds, sprite.my_color,
-                                                 (sprite.my_texture != nullptr) ? sprite.my_texture->my_index : -1);
+        const auto sprite_vertices = to_vertices(
+            sprite.my_bounds, sprite.my_color,
+            (sprite.my_texture != nullptr) ? static_cast<float>(sprite.my_texture->my_index)
+                                           : -1.f);
         vertices.insert(vertices.end(), sprite_vertices.begin(), sprite_vertices.end());
     }
     geometry.add_draw_data(vertices);
     check_gl_error();
 
     render(material{geometry.my_program.my_gl_id, geometry.my_program.my_name},
-           sprites.size() * nb_indices_rect, vertex_offset);
+           static_cast<uint32>(sprites.size()) * nb_indices_rect, vertex_offset);
 }
 
-void opengl_renderer::draw_ellipse(const pointf& center, float rx, float ry) {
+void opengl_renderer::draw_ellipse(const pointf& /*center*/, float /*rx*/, float /*ry*/) {}
+
+void opengl_renderer::draw_ellipses(const array<rectf>& /*rects*/) {}
+
+void opengl_renderer::draw_ellipses(const array<std::pair<rectf, color>>& /*colored_ellipses*/) {}
+
+void opengl_renderer::draw_ellipses(const array<std::pair<rectf, texture>>& /*textured_ellipses*/) {
 }
 
-void opengl_renderer::draw_ellipses(const array<rectf>& rects) {
-    for (const auto& rect : rects) {
-    }
-}
-
-void opengl_renderer::draw_ellipses(const array<std::pair<rectf, color>>& colored_ellipses) {
-    for (const auto& [rect, color] : colored_ellipses) {
-    }
-}
-
-void opengl_renderer::draw_ellipses(const array<std::pair<rectf, texture>>& textured_ellipses) {
-    for (const auto& [rect, texture] : textured_ellipses) {
-    }
-}
-
-void opengl_renderer::draw_text(const pointf& pos, string_view text) {
-}
+void opengl_renderer::draw_text(const pointf& /*pos*/, string_view /*text*/) {}
 
 void opengl_renderer::render(material material, uint32 indices_count,
                              uint32 vertices_offset) const {
-    expects(my_draw_data.find(material.my_name) != my_draw_data.end(), "Unknown material cannot be rendered without its parameters");
+    expects(my_draw_data.find(material.my_name) != my_draw_data.end(),
+            "Unknown material cannot be rendered without its parameters");
 
     const auto& draw_data = my_draw_data.at(material.my_name);
     draw_data.my_vao.bind();
@@ -417,3 +412,5 @@ void opengl_renderer::render(material material, uint32 indices_count,
     draw_data.my_vao.unbind();
     glUseProgram(0);
 }
+
+} // namespace kairos

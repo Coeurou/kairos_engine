@@ -7,7 +7,7 @@
 inline void expects(bool condition, string_view message) noexcept {
     if (!condition) {
         log_error(LoggerName::SYSTEM, "Pre-condition not satisfied: {}", message.data());
-        std::terminate();
+        std::quick_exit(EXIT_FAILURE);
     }
 }
 
@@ -18,7 +18,7 @@ inline void expects(bool condition) noexcept {
 inline void ensures(bool condition, string_view message) noexcept {
     if (!condition) {
         log_error(LoggerName::SYSTEM, "Post-condition not satisfied: {}", message.data());
-        std::terminate();
+        std::quick_exit(EXIT_FAILURE);
     }
 }
 

@@ -5,9 +5,11 @@
 #include <math/mathlib.h>
 #include <graphics/opengl/opengl_draw_data.h>
 
+namespace kairos {
+
 class opengl_renderer : public abstract_renderer {
-public:
-    void setup() override;
+  public:
+    void setup(const sizef& window_size) override;
     void cleanup() override;
 
     void update_state(renderer_dirty_flag flag, const variant& value) override;
@@ -22,7 +24,7 @@ public:
     void draw_rects(const array<rectf>& rects) override;
     void draw_rects(const array<std::pair<rectf, color>>& colored_rects) override;
     void draw_rects(const array<std::pair<rectf, texture>>& textured_rects) override;
-    
+
     void draw_sprite(const sprite& sprite) override;
     void draw_sprites(const array<sprite>& sprites) override;
 
@@ -34,18 +36,18 @@ public:
 
     void draw_text(const pointf& pos, string_view text) override;
 
-    // indices_count is the number of indices in the IBO to consider & 
+    // indices_count is the number of indices in the IBO to consider &
     // vertices_offset is the offset applied to indices for subgeometry.
     // it is useful for rendering only one shape at the time
     void render(material material, uint32 indices_count, uint32 vertices_offset) const;
 
-private:
-    float my_line_width_value{ 0.f };
-    float my_pen_opacity_value{ 0.f };
-    float my_brush_opacity_value{ 0.f };
-    color my_fill_color_value{ 0.f };
-    color my_color_value{ 0.f };
-    float my_fill_texture_value{ -1.f };
+  private:
+    float my_line_width_value{0.f};
+    float my_pen_opacity_value{0.f};
+    float my_brush_opacity_value{0.f};
+    color my_fill_color_value{0.f};
+    color my_color_value{0.f};
+    float my_fill_texture_value{-1.f};
 
     dictionary<string, opengl_draw_data> my_draw_data;
 
@@ -58,8 +60,7 @@ private:
         if constexpr (std::is_same_v<std::decay_t<T>, linef>) {
             return static_array<vertex, 2>{vertex{vec4f(geometry.first, 0.f, 1.f), color},
                                            vertex{vec4f(geometry.second, 0.f, 1.f), color}};
-        }
-        else if constexpr (std::is_same_v<std::decay_t<T>, rectf>) {
+        } else if constexpr (std::is_same_v<std::decay_t<T>, rectf>) {
             auto rect_size = geometry.size();
             return static_array<vertex, 4>{
                 vertex{vec4f(geometry.right(), geometry.top(), rect_size.x, rect_size.y),
@@ -78,8 +79,7 @@ private:
                        color,
                        {0.f, 1.f},
                        texture_index}};
-        }
-        else if constexpr (std::is_same_v<std::decay_t<T>, sprite>) {
+        } else if constexpr (std::is_same_v<std::decay_t<T>, sprite>) {
             const rectf& bounds = geometry.my_bounds;
             const auto rect_size = bounds.size();
             float angle = to_radians(geometry.my_rotation);
@@ -101,7 +101,8 @@ private:
             const sizef spritesheet_size =
                 sizef{float(geometry.my_texture->my_size.x), float(geometry.my_texture->my_size.y)};
             const sizef texture_rect = geometry.my_texture_rect.size();
-            // sprite texture rect is r(tx, ty, bx, by) => min uv x = tx / spritesheet.size.x, min uv y = ty / spritesheet.size.y
+            // sprite texture rect is r(tx, ty, bx, by) => min uv x = tx / spritesheet.size.x, min
+            // uv y = ty / spritesheet.size.y
 
             // don't like this name it must express the fact that we select a section from a
             // spritesheet to deduce uv
@@ -112,24 +113,19 @@ private:
                  geometry.my_texture_rect.bottom() / float(geometry.my_texture->my_size.y)}};
 
             return static_array<vertex, 4>{
-                vertex{vec4f(rotated_geometry[0], rect_size.x, rect_size.y),
-                       color,
-                       uv_texture_selection.my_bottom_right,
-                       texture_index},
+                vertex{vec4f(rotated_geometry[0], rect_size.x, rect_size.y), color,
+                       uv_texture_selection.my_bottom_right, texture_index},
                 vertex{vec4f(rotated_geometry[1], rect_size.x, rect_size.y),
                        color,
                        {uv_texture_selection.right(), uv_texture_selection.top()},
                        texture_index},
-                vertex{vec4f(rotated_geometry[2], rect_size.x, rect_size.y),
-                       color,
-                       uv_texture_selection.my_top_left,
-                       texture_index},
+                vertex{vec4f(rotated_geometry[2], rect_size.x, rect_size.y), color,
+                       uv_texture_selection.my_top_left, texture_index},
                 vertex{vec4f(rotated_geometry[3], rect_size.x, rect_size.y),
                        color,
                        {uv_texture_selection.left(), uv_texture_selection.bottom()},
                        texture_index}};
-        }
-        else {
+        } else {
             static_assert(false, "Geometry type not supported");
         }
     }
@@ -146,7 +142,4 @@ private:
     }
 };
 
-inline void check_gl_error() {
-    auto error = glGetError();
-    ensures(error == GL_NO_ERROR, fmt::format("Last GL error: {}", error));
-}
+} // namespace kairos

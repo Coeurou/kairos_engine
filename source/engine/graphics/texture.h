@@ -2,7 +2,7 @@
 
 #include <core/filesystem.h>
 #include <core/formattable.h>
-#include <application/core_application.h>
+#include <core/renderer_engine.h>
 
 class texture;
 

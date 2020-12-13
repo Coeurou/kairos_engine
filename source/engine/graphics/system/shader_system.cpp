@@ -1,6 +1,6 @@
 #pragma once
 
-#include <systems/shader_system.h>
+#include <graphics/system/shader_system.h>
 #include <graphics/opengl/program.h>
 #include <graphics/opengl/shader.h>
 #include <core/types.h>
@@ -65,7 +65,6 @@ bool shader_system::setup_shaders() {
 }
 
 bool shader_system::setup_vaos() {
-    bool res = true;
     vao vao;
     vao.setup();
 

@@ -6,7 +6,7 @@ void variant_animation::start_impl() {
     expects(my_value != nullptr, "Nothing to animate");
 }
 
-void variant_animation::update_impl(float dt) {
+void variant_animation::update_impl(float /*dt*/) {
     expects(my_value != nullptr, "Nothing to animate");
 
     float abscissa = 0.f;
@@ -16,7 +16,7 @@ void variant_animation::update_impl(float dt) {
     else if (const auto duration_in_frames = std::get_if<int>(&my_duration)) {
         abscissa = (std::get<int>(my_current_timestamp) / static_cast<float>(*duration_in_frames));
     }
-    float t = my_easing_curve.evaluate(abscissa);
+    //float t = my_easing_curve.evaluate(abscissa);
     /*std::visit(
         [&](auto&& val) {
             using T = std::decay_t<decltype(val)>;

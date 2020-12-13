@@ -2,21 +2,25 @@
 
 #include <memory>
 
-#include <application/application.h>
+#include <core/result.h>
 #include <imgui_backend.h>
 #include <imgui_console_command.h>
 #include <imgui_renderer.h>
 
+namespace kairos {
+
 class editor {
-public:
+  public:
     void setup();
-    void update();
-    void poll_event(const variant_event& e);
-    void render();
+    result<uint32> update();
+    // void poll_event(const variant_event& e);
+    result<uint32> render();
     void cleanup();
 
-private:
+  private:
     std::unique_ptr<imgui_backend> my_imgui_backend;
     std::unique_ptr<imgui_renderer> my_imgui_renderer;
     imgui_console_command my_imgui_console_command;
 };
+
+} // namespace kairos
