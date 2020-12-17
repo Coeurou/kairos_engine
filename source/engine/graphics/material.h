@@ -2,7 +2,11 @@
 
 #include <core/types.h>
 
+namespace kairos {
+
 struct material {
     uint32 my_id = 0;
-    string my_name = "";
+    uint32 my_hash = 0;
 };
+
+} // namespace kairos

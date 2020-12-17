@@ -8,6 +8,8 @@
 #include <core/formattable.h>
 #include <core/logger.h>
 
+namespace kairos {
+
 MessageDispatcher::MessageDispatcher() {
     for (auto& listener : my_listeners) {
         listener.reserve(8);
@@ -28,9 +30,11 @@ void send_message(variant sender, variant recipient, MessageType type) {
     send_message(sender, recipient, type, array<variant>());
 }
 
-void send_message(variant sender, variant recipient, MessageType type, const array<variant>& message_data) {
+void send_message(variant sender, variant recipient, MessageType type,
+                  const array<variant>& message_data) {
     messages.emplace(Message{sender, recipient, type, message_data});
-    log(LoggerName::MESSAGE, "receive {} message from {} to {}\n", NAMEOF_ENUM(type), to_string(&messages.back().sender), to_string(&messages.back().recipient));
+    log(LoggerName::MESSAGE, "receive {} message from {} to {}\n", NAMEOF_ENUM(type),
+        to_string(&messages.back().sender), to_string(&messages.back().recipient));
 }
 
 void subscribe(EventListener& listener, std::initializer_list<MessageType> channels) {
@@ -47,7 +51,8 @@ void unsubscribe(EventListener& listener) {
         channel_subscriptions.erase(
             std::remove(channel_subscriptions.begin(), channel_subscriptions.end(), &listener));
         log(LoggerName::MESSAGE, "listener removed of {} channel. channel listeners count: {}\n",
-            NAMEOF_ENUM(subscription), message_dispatcher[static_cast<size_t>(subscription)].size());
+            NAMEOF_ENUM(subscription),
+            message_dispatcher[static_cast<size_t>(subscription)].size());
     }
 }
 
@@ -60,3 +65,5 @@ void dispatch_messages() {
         messages.pop();
     }
 }
+
+} // namespace kairos

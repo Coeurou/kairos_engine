@@ -4,9 +4,9 @@
 
 #include <core/logger.h>
 
-string log_command::to_string() const {
-    return name().data();
-}
+namespace kairos {
+
+string log_command::to_string() const { return name().data(); }
 
 bool log_command::undo() {
     log(LoggerName::EDITOR, "Undo a log command");
@@ -22,3 +22,5 @@ bool log_command::execute() {
     log(LoggerName::EDITOR, "Executing a log command");
     return true;
 }
+
+} // namespace kairos

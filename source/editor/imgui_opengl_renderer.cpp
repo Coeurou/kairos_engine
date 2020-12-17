@@ -26,7 +26,6 @@
 #include <imgui.h>
 
 #include <core/contract.h>
-#include <graphics/opengl/opengl_context.h>
 
 // GL includes
 #if defined(IMGUI_IMPL_OPENGL_ES2)
@@ -48,16 +47,14 @@
 
 namespace kairos {
 
-imgui_opengl_renderer::imgui_opengl_renderer(const opengl_context* gl_context)
+imgui_opengl_renderer::imgui_opengl_renderer(const opengl_context& gl_context)
     : my_gl_context(gl_context) {}
 
 bool imgui_opengl_renderer::setup() {
-    expects(my_gl_context != nullptr, "Cannot initialize imgui without an OpenGL context active");
-
     ImGuiIO& io = ImGui::GetIO();
     io.BackendRendererName = "imgui_impl_opengl";
 #if IMGUI_IMPL_OPENGL_MAY_HAVE_VTX_OFFSET
-    if (my_gl_context->get_version() >= 320)
+    if (version(my_gl_context) >= 320)
         io.BackendFlags |=
             ImGuiBackendFlags_RendererHasVtxOffset; // We can honor the ImDrawCmd::VtxOffset field,
                                                     // allowing for large meshes.
@@ -77,7 +74,7 @@ bool imgui_opengl_renderer::setup_opengl_data() {
     glGetIntegerv(GL_VERTEX_ARRAY_BINDING, &last_vertex_array);
 #endif
 
-    string gl_version = fmt::format("#version {}", my_gl_context->get_version());
+    string gl_version = fmt::format("#version {}", version(my_gl_context));
 
     const GLchar* vertex_shader_glsl_300_es = "precision mediump float;\n"
                                               "layout (location = 0) in vec2 Position;\n"
@@ -131,7 +128,7 @@ bool imgui_opengl_renderer::setup_opengl_data() {
     // Select shaders matching our GLSL versions
     const GLchar* vertex_shader = nullptr;
     const GLchar* fragment_shader = nullptr;
-    if (my_gl_context->get_version() >= 410) {
+    if (version(my_gl_context) >= 410) {
         vertex_shader = vertex_shader_glsl_410_core;
         fragment_shader = fragment_shader_glsl_410_core;
     } else {
@@ -337,7 +334,7 @@ void imgui_opengl_renderer::render(ImDrawData* draw_data) {
                     // Bind texture, Draw
                     glBindTexture(GL_TEXTURE_2D, (GLuint)(intptr_t)pcmd->TextureId);
 #if IMGUI_IMPL_OPENGL_MAY_HAVE_VTX_OFFSET
-                    if (my_gl_context->get_version() >= 320)
+                    if (version(my_gl_context) >= 320)
                         glDrawElementsBaseVertex(
                             GL_TRIANGLES, (GLsizei)pcmd->ElemCount,
                             sizeof(ImDrawIdx) == 2 ? GL_UNSIGNED_SHORT : GL_UNSIGNED_INT,

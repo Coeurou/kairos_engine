@@ -4,6 +4,8 @@
 #include <core/messages.h>
 #include <core/types.h>
 
+namespace kairos {
+
 // TODO doc class is a resource with RAII for subscribe/unsubscribe to channels
 class EventListener {
   public:
@@ -19,3 +21,5 @@ class EventListener {
     array<MessageType> my_subscriptions{};
     std::queue<Message> my_pending_messages{};
 };
+
+} // namespace kairos

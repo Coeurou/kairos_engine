@@ -2,23 +2,21 @@
 
 #include <graphics/opengl/buffer_object.h>
 #include <imgui_renderer.h>
+#include <graphics/opengl/opengl_context.h>
 #include <graphics/opengl/program.h>
 #include <graphics/opengl/shader.h>
 
 namespace kairos {
 
-class opengl_context;
-
 class imgui_opengl_renderer : public imgui_renderer {
   public:
-    imgui_opengl_renderer() = default;
-    imgui_opengl_renderer(const opengl_context* gl_context);
+    imgui_opengl_renderer(const opengl_context& gl_context);
 
     bool setup() override;
     void cleanup() override;
     void render(ImDrawData* draw_data) override;
 
-    const opengl_context* my_gl_context = nullptr;
+    opengl_context my_gl_context;
 
   private:
     bool setup_opengl_data();

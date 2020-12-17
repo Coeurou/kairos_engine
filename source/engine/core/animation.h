@@ -4,23 +4,14 @@
 #include <core/easing_curve.h>
 #include <graphics/sprite.h>
 
-enum class animation_direction {
-    forward,
-    backward,
-    count
-};
+namespace kairos {
 
-enum class animation_state {
-    idle,
-    started,
-    paused,
-    stopped,
-    count
-};
+enum class animation_direction { forward, backward, count };
 
-template<class Property>
-class animation {
-public:
+enum class animation_state { idle, started, paused, stopped, count };
+
+template <class Property> class animation {
+  public:
     animation_direction my_direction{animation_direction::forward};
     std::variant<int, float> my_duration{0};
     bool should_repeat{false};
@@ -41,8 +32,7 @@ public:
                     stop();
                 }
                 my_current_timestamp += dt * sign_direction;
-            }
-            else if (const auto duration_in_frames = std::get_if<int>(&my_duration)) {
+            } else if (const auto duration_in_frames = std::get_if<int>(&my_duration)) {
                 if (my_current_timestamp >= duration_in_frames || my_current_timestamp < 0) {
                     stop();
                 }
@@ -70,12 +60,12 @@ public:
 
     void pause() {
         my_state = animation_state::paused;
-        pause_impl(); 
+        pause_impl();
     }
 
     void resume() {
         my_state = animation_state::started;
-        resume_impl(); 
+        resume_impl();
     }
 
     void stop() {
@@ -86,10 +76,10 @@ public:
 
     animation_state get_state() const { return my_state; }
 
-protected:
+  protected:
     std::variant<int, float> my_current_timestamp{0};
 
-private:
+  private:
     animation_state my_state{animation_state::idle};
 
     virtual void start_impl() = 0;
@@ -100,7 +90,7 @@ private:
 };
 
 class variant_animation : public animation<variant> {
-private:
+  private:
     variant my_start_value;
     variant* my_value{nullptr};
     variant my_end_value;
@@ -126,3 +116,5 @@ class sprite_animation : public animation<sprite> {
     void resume_impl() override;
     void stop_impl() override;
 };
+
+} // namespace kairos

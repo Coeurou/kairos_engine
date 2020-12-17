@@ -18,4 +18,4 @@ template <typename number> constexpr number to_degrees(number radians) {
     return glm::degrees(radians);
 }
 
-mat4f ortho(const rectf& bounds);
+mat4f ortho(const kairos::rectf& bounds);

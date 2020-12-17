@@ -2,12 +2,14 @@
 
 #include <core/types.h>
 
+namespace kairos {
+
 struct program {
     static constexpr uint32 max_shaders = 4;
 
-    uint32 my_gl_id{ 0 };
+    uint32 my_gl_id{0};
     static_array<uint32, max_shaders> my_shaders = {0};
-    string my_name{ "" };
+    string my_name{""};
 
     program() = default;
     program(const program& other) = delete;
@@ -26,3 +28,5 @@ struct program {
 };
 
 inline array<program> our_programs;
+
+} // namespace kairos

@@ -81,6 +81,9 @@ struct system_event {
     std::variant<window_event, keyboard_event, mouse_event> my_internal;
 };
 
+template<class SubType>
+const SubType& cast(const system_event& output) { return std::get<SubType>(output.my_internal); }
+
 /** system_event_queue is a type-erased class encapsulating any implementation of an event queue.
 * system_event_queue has value semantic, it is copyable and movable.
 * Any class with sizeof(T) == 0 and copy/move-constructible and implementing as free functions peek_events,
@@ -101,24 +104,19 @@ public:
         new (my_memory.data()) event_queue_impl<T>(std::forward<T>(eq));
     }
 
-    /** Copy constructor. Use copy on write (ref_count is incremented), if sizeof(T) > small_type_size.
-    * Use placement new otherwise (deep copy). */
+    /** Copy constructor. Copy concrete event_queue_t type. Invoke copy method. */
     system_event_queue(const system_event_queue& eq);
 
-    /** Copy assignement operator. Use copy on write (ref_count is incremented), if sizeof(T) > small_type_size.
-    * Call window_impl<T>::copy (deep copy) otherwise. */
+    /** Copy assignement operator. Copy concrete event_queue_t type. Invoke copy method. */
     system_event_queue& operator=(const system_event_queue& eq);
 
-    /** Move constructor. Move w::window_t pointer, if sizeof(T) > small_type_size.
-    * Call window_impl<T>::move otherwise. */
+    /** Move constructor. Move concrete event_queue_t type. Invoke move method. */
     system_event_queue(system_event_queue&& eq) noexcept;
 
-    /** Move assignement operator. Move w::window_t pointer, if sizeof(T) > small_type_size.
-    * Call window_impl<T>::move otherwise. */
+    /** Move assignement operator. Move concrete event_queue_t type. Invoke move method. */
     system_event_queue& operator=(system_event_queue&& eq) noexcept;
 
-    /** Destructor. If sizeof(T) > small_type_size and no other reference of window_t pointer,
-    * delete my_self.w. Call window_impl<T>::destroy otherwise */
+    /** Destructor. Call destroy method on concrete event_queue_t type. Set memory to \0. */
     ~system_event_queue();
 
 private:
@@ -156,7 +154,7 @@ private:
         void destruct() override { this->~event_queue_impl(); }
         void peek_events(array<system_event>& output) override { return ::kairos::peek_events(event_queue, output); }
 
-        /** Type instance where the logic of a window is implemented */
+        /** Type instance where the logic of an event queue is implemented */
         T event_queue;
     };
 
@@ -167,6 +165,8 @@ private:
     event_queue_t* get();
     const event_queue_t* get() const;
 };
+
+/** Non-member functions */
 
 void peek_events(system_event_queue& w, array<system_event>& output);
 

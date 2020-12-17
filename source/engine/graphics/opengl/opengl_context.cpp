@@ -3,62 +3,71 @@
 #include <graphics/opengl/opengl_context.h>
 
 #include <core/contract.h>
-#include <window/sdl_window.h>
 
 namespace kairos {
 
-sdl_opengl_context::sdl_opengl_context(const window& window)
-    : my_window(window) {}
+/** Member functions */
 
-sdl_opengl_context::~sdl_opengl_context() {
-    SDL_GL_DeleteContext(my_sdl_gl_context);
+opengl_context::opengl_context(const opengl_context& gl) { gl.get()->copy(my_memory.data()); }
+
+opengl_context& opengl_context::operator=(const opengl_context& gl) {
+    this->~opengl_context();
+    gl.get()->copy(my_memory.data());
+
+    return *this;
 }
 
-void sdl_opengl_context::setup_gl_context() {
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, my_major_version);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, my_minor_version);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, my_aa_samples);
+opengl_context::opengl_context(opengl_context&& gl) noexcept {
+    gl.get()->move(my_memory.data());
+    gl.my_memory = {'\0'};
+}
 
-    SDL_GLprofile context_profile = SDL_GL_CONTEXT_PROFILE_CORE;
-    if (my_profile == opengl_profile::compat) {
-        context_profile = SDL_GL_CONTEXT_PROFILE_COMPATIBILITY;
-    } else if (my_profile == opengl_profile::es) {
-        context_profile = SDL_GL_CONTEXT_PROFILE_ES;
+opengl_context& opengl_context::operator=(opengl_context&& gl) noexcept {
+    this->~opengl_context();
+    gl.get()->move(my_memory.data());
+
+    return *this;
+}
+
+opengl_context::~opengl_context() {
+    if (std::any_of(std::begin(my_memory), std::end(my_memory), [](char c) { return c != '\0'; })) {
+        get()->destruct();
+        my_memory = {'\0'};
     }
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, context_profile);
-
-    SDL_Window* window = SDL_GetWindowFromID(id(my_window));
-
-    my_sdl_gl_context = SDL_GL_CreateContext(window);
-
-    SDL_GL_SetSwapInterval(1); // Enable vsync
-    SDL_GL_MakeCurrent(window, my_sdl_gl_context);
-    log(LoggerName::ENGINE, "New SDL OpenGL context setup, version: {}.{}, AA samples: {}\n",
-        my_major_version, my_minor_version, my_aa_samples);
 }
 
-void sdl_opengl_context::setup_gl_functions() const {
-    ensures(gladLoadGLLoader(reinterpret_cast<GLADloadproc>(SDL_GL_GetProcAddress)) != 0,
-            "Fail when loading GL functions from GLAD.");
-
-    int major_version = 0, minor_version = 0;
-    glGetIntegerv(GL_MAJOR_VERSION, &major_version);
-    glGetIntegerv(GL_MINOR_VERSION, &minor_version);
-    ensures(
-        major_version == my_major_version && minor_version == my_minor_version,
-        "Mismatch between GL version stored in application and the one return with OpenGL API.");
+opengl_context::opengl_context_t* opengl_context::get() {
+    return reinterpret_cast<opengl_context_t*>(my_memory.data());
 }
 
-void sdl_opengl_context::swap_buffers() const { SDL_GL_SwapWindow(SDL_GetWindowFromID(id(my_window))); }
+const opengl_context::opengl_context_t* opengl_context::get() const {
+    return reinterpret_cast<const opengl_context_t*>(my_memory.data());
+}
 
-void setup_default_gl_rendering_options() {
-    glFrontFace(GL_CCW);
-    glEnable(GL_MULTISAMPLE);
-    // For freetype
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+/** Non-member functions */
+
+bool setup(opengl_context& gl_context, uint32 window_id) { return gl_context.get()->setup(window_id); }
+
+void swap_buffers(opengl_context& gl_context) { gl_context.get()->swap_buffers(); }
+
+int version(const opengl_context& gl_context) { return gl_context.get()->version(); }
+
+int get_attribute(const opengl_context& gl_context, gl_attribute attr) {
+    return gl_context.get()->get_attribute(attr);
+}
+
+void set_attribute(opengl_context& gl_context, gl_attribute attr, int value) {
+    gl_context.get()->set_attribute(attr, value);
+}
+
+void destroy(opengl_context& gl_context) {
+    gl_context.get()->destroy();
+}
+
+/** Utils */
+void check_gl_error(const char* caller) {
+    const auto error = glGetError();
+    ensures(error == GL_NO_ERROR, fmt::format("{} raises a GL error: {}", caller, gl_error_to_string.at(error)));
 }
 
 } // namespace kairos

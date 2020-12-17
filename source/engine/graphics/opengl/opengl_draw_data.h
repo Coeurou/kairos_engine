@@ -8,14 +8,8 @@
 
 namespace kairos {
 
-inline void check_gl_error() {
-    auto error = glGetError();
-    ensures(error == GL_NO_ERROR, fmt::format("Last GL error: {}", error));
-}
-
 class opengl_draw_data {
   public:
-    uint32 my_indices_count{0};
     uint32 my_vertices_count{0};
     vao my_vao{};
     buffer_object my_vbo{};
@@ -60,7 +54,7 @@ class opengl_draw_data {
                         my_vertices_count * sizeof(vertex_type),
                         vertices.size() * sizeof(vertex_type), vertices.data());
         my_vertices_count += static_cast<uint32>(vertices.size());
-        check_gl_error();
+        check_gl_error(__FUNCTION__);
 
         my_vao.unbind();
         my_vbo.unbind();

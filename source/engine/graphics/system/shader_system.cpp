@@ -6,6 +6,8 @@
 #include <core/types.h>
 #include <graphics/opengl/vao.h>
 
+namespace kairos {
+
 bool shader_system::setup_shaders() {
     bool res = true;
 
@@ -58,7 +60,7 @@ bool shader_system::setup_shaders() {
 
     program program;
     program.my_name = "default_program";
-    res &= program.setup({ vertex_shader, fragment_shader });
+    res &= program.setup({vertex_shader, fragment_shader});
     our_programs.emplace_back(std::move(program));
 
     return res;
@@ -72,3 +74,5 @@ bool shader_system::setup_vaos() {
 
     return !our_vaos.empty();
 }
+
+} // namespace kairos

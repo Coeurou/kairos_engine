@@ -5,10 +5,12 @@
 #include <core/message.h>
 #include <core/types.h>
 
-class EventListener;
-
 static constexpr int no_sender = 0;
 static constexpr int no_recipient = 0;
+
+namespace kairos {
+
+class EventListener;
 
 inline std::queue<Message> messages;
 
@@ -24,7 +26,8 @@ void allocate_memory_for_messages();
 
 void send_message(variant sender, variant recipient, MessageType type);
 
-void send_message(variant sender, variant recipient, MessageType type, const array<variant>& message_data);
+void send_message(variant sender, variant recipient, MessageType type,
+                  const array<variant>& message_data);
 
 void subscribe(EventListener& listener, std::initializer_list<MessageType> channels);
 
@@ -32,9 +35,11 @@ void unsubscribe(EventListener& listener);
 
 void dispatch_messages();
 
-template<class System> void peek_messages(System& system) {
+template <class System> void peek_messages(System& system) {
     while (!system.my_listener.pending_messages.empty()) {
         system.handle_message(system.my_listener.pending_messages.front());
         system.my_listener.pending_messages.pop();
     }
 }
+
+} // namespace kairos

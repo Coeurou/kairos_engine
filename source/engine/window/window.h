@@ -30,7 +30,6 @@ class window {
 
     /** Construct a window.
     * Will do a dynamic allocation for its internal implementation, if sizeof(T) > small_type_size.
-    * A pointer argument will be dereferenced and construct implementation with copy constructor.
     * A small type will be constructed with placement new.
     */
     template <class T> explicit window(T&& w, disable_copy<T> = nullptr) : is_allocated(false) {
@@ -112,13 +111,13 @@ class window {
             return new window_impl(concrete_window);
         }
         void destroy() override { ::kairos::destroy(concrete_window); }
-        uint32 id() const override { return ::kairos::id(concrete_window); }
-        vec2i size() const override { return ::kairos::size(concrete_window); }
-        void resize(const vec2i& size) override { ::kairos::resize(concrete_window, size); }
+        uint32 id() const override { return kairos::id(concrete_window); }
+        vec2i size() const override { return kairos::size(concrete_window); }
+        void resize(const vec2i& size) override { kairos::resize(concrete_window, size); }
         void show() override { ::kairos::show(concrete_window); }
-        bool is_shown() const override { return ::kairos::is_shown(concrete_window); }
+        bool is_shown() const override { return kairos::is_shown(concrete_window); }
         void hide() override { ::kairos::hide(concrete_window); }
-        bool is_hidden() const override { return ::kairos::is_hidden(concrete_window); }
+        bool is_hidden() const override { return kairos::is_hidden(concrete_window); }
 
         /** Type instance where the logic of a window is implemented */
         T concrete_window;
@@ -179,8 +178,8 @@ struct window_params {
 };
 
 inline string to_string(const window_params& params) {
-    return fmt::format("size: {}, pos: {}, title: {}", ::to_string(params.my_size),
-                       ::to_string(params.my_pos), params.my_title);
+    return fmt::format("size: {}, pos: {}, title: {}", to_string(params.my_size),
+                       to_string(params.my_pos), params.my_title);
 }
 
 } // namespace kairos

@@ -6,41 +6,28 @@
 #include <core/contract.h>
 #include <core/types.h>
 
-template<size_t N>
-class command_history {
-public:
-    command_history() {
-        my_command_logs.reserve(N);
-    }
+namespace kairos {
 
-    int current_command_index() const noexcept {
-        return my_current_command_index;
-    }
+template <size_t N> class command_history {
+  public:
+    command_history() { my_command_logs.reserve(N); }
 
-    void set_current_command_index(int index) {
-        my_current_command_index = index;
-    }
+    int current_command_index() const noexcept { return my_current_command_index; }
+
+    void set_current_command_index(int index) { my_current_command_index = index; }
 
     string at(int index) const noexcept {
         expects(index >= 0 && index < N);
         return my_command_history[index]->to_string();
     }
 
-    array<string>::iterator begin() noexcept {
-        return my_command_logs.begin();
-    }
+    array<string>::iterator begin() noexcept { return my_command_logs.begin(); }
 
-    array<string>::const_iterator begin() const noexcept {
-        return my_command_logs.begin();
-    }
+    array<string>::const_iterator begin() const noexcept { return my_command_logs.begin(); }
 
-    array<string>::iterator end() noexcept {
-        return my_command_logs.end();
-    }
+    array<string>::iterator end() noexcept { return my_command_logs.end(); }
 
-    array<string>::const_iterator end() const noexcept {
-        return my_command_logs.end();
-    }
+    array<string>::const_iterator end() const noexcept { return my_command_logs.end(); }
 
     void add(std::unique_ptr<abstract_command>&& log) {
         my_command_history[my_last_command_index] = std::move(log);
@@ -52,21 +39,20 @@ public:
             my_command_history[0].reset(nullptr);
             my_current_command_index = --my_last_command_index;
             // shift left
-            std::rotate(my_command_history.begin(), my_command_history.begin() + 1, my_command_history.end());
+            std::rotate(my_command_history.begin(), my_command_history.begin() + 1,
+                        my_command_history.end());
         }
     }
 
-    void clear() noexcept {
-        my_command_logs.clear();
-    }
+    void clear() noexcept { my_command_logs.clear(); }
 
-    size_t size() const noexcept {
-        return my_command_history.size();
-    }
+    size_t size() const noexcept { return my_command_history.size(); }
 
-private:
+  private:
     static_array<std::unique_ptr<abstract_command>, N> my_command_history;
     int my_last_command_index = 0;
     int my_current_command_index = 0;
     array<string> my_command_logs;
 };
+
+} // namespace kairos

@@ -6,10 +6,10 @@
 #include <input/keyboard.h>
 #include <input/mouse.h>
 
-static const std::unordered_map<int, action> our_action_adapter = {{SDL_PRESSED, action::press},
-                                                                   {SDL_RELEASED, action::release}};
+static const dictionary<int, action> our_action_adapter = {{SDL_PRESSED, action::press},
+                                                           {SDL_RELEASED, action::release}};
 
-static const std::unordered_map<SDL_GameControllerButton, controller_button>
+static const dictionary<SDL_GameControllerButton, controller_button>
     our_controller_button_adapter = {
         {SDL_CONTROLLER_BUTTON_A, controller_button::button_A},
         {SDL_CONTROLLER_BUTTON_B, controller_button::button_B},
@@ -30,7 +30,7 @@ static const std::unordered_map<SDL_GameControllerButton, controller_button>
         {SDL_CONTROLLER_BUTTON_INVALID, controller_button::count},
 };
 
-static const std::unordered_map<SDL_GameControllerAxis, controller_axis>
+static const dictionary<SDL_GameControllerAxis, controller_axis>
     our_controller_button_adapter = {
         {SDL_CONTROLLER_AXIS_LEFTX, controller_axis::left},
         {SDL_CONTROLLER_AXIS_LEFTY, controller_axis::left},
@@ -42,7 +42,7 @@ static const std::unordered_map<SDL_GameControllerAxis, controller_axis>
         {SDL_CONTROLLER_AXIS_INVALID, controller_axis::count},
 };
 
-static const std::unordered_map<int, mouse_button>
+static const dictionary<int, mouse_button>
 our_mouse_button_adapter = {
     {SDL_BUTTON_LEFT, mouse_button::left},
     {SDL_BUTTON_RIGHT, mouse_button::right},
@@ -51,7 +51,7 @@ our_mouse_button_adapter = {
     {SDL_BUTTON_X2, mouse_button::button_5},
 };
 
-static const std::unordered_map<SDL_Scancode, key> our_keyboard_adapter = {
+static const dictionary<SDL_Scancode, key> our_keyboard_adapter = {
     {SDL_SCANCODE_UNKNOWN, key::Unknown},
     {SDL_SCANCODE_A, key::A},
     {SDL_SCANCODE_B, key::B},

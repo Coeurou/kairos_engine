@@ -1,46 +1,59 @@
 #pragma once
 
 #include <core/filesystem.h>
-#include <core/formattable.h>
-#include <core/renderer_engine.h>
+#include <core/result.h>
+#include <math/rect.h>
 
-class texture;
-
-class texture_impl {
-  public:
-    virtual void setup(texture& t, const path& img_path) = 0;
-    virtual void bind(uint32 index, uint32 texture_id) = 0;
-    virtual void cleanup(texture& t) = 0;
-};
-
-class opengl_texture : public texture_impl {
-  public:
-    void setup(texture& t, const path& img_path) override;
-    void bind(uint32 index, uint32 texture_id) override;
-    void cleanup(texture& t) override;
-
-    static uint32 get_texture_units_count();
-};
+namespace kairos {
 
 class texture {
-public:
-    uint32 my_id{0};
-    int my_index{-1};
-    int my_channels{0};
-    vec2i my_size{0, 0};
+    friend result<texture> load(const path& img_path);
 
-    static std::shared_ptr<texture_impl> our_impl;
+  public:
+    /** Member functions */
+
+    texture();
+    ~texture();
+    texture(const texture& other);
+    texture(texture&& other) noexcept;
+    texture& operator=(const texture& other);
+    texture& operator=(texture&& other) noexcept;
+
+    uint32 id() const;
+    int index() const;
+    int channels() const;
+    vec2i size() const;
+
     static constexpr uint32 our_limit = 8;
+
+private:
     static static_array<uint32, our_limit> our_textures_idx;
 
-    void setup(const path& img_path);
-    void bind();
-    void unbind();
-    void cleanup();
-
-    static void set_implementation(renderer_engine backend);
+    struct texture_data {
+        uint32 my_id{0};
+        int my_index{-1};
+        int my_channels{0};
+        vec2i my_size{0, 0};
+        int my_ref_count;
+    };
+    texture_data* my_data = nullptr;
 };
 
-template <> inline string to_string(texture t) {
-    return fmt::format("Texture: {}, {}, {}", t.my_id, to_string(t.my_size), t.my_channels);
-}
+/** Non-member functions */
+
+uint32 id(const texture& texture);
+
+vec2i size(const texture& texture);
+
+void bind(const texture& texture);
+
+void unbind(const texture& texture);
+
+/** Load a texture from file, return an invalid parameter error if img_path doesn't exist. */
+result<texture> load(const path& img_path);
+
+rect<int> bounds(const texture& texture);
+
+string to_string(const texture& t);
+
+} // namespace kairos

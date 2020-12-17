@@ -5,6 +5,8 @@
 #include <imgui.h>
 #include <command_parser.h>
 
+namespace kairos {
+
 void imgui_console_command::render(bool* is_open) {
     ImGui::SetNextWindowSize(ImVec2(550, 680), ImGuiCond_FirstUseEver);
     if (ImGui::Begin("Commander", is_open, ImGuiWindowFlags_NoScrollbar)) {
@@ -29,14 +31,17 @@ void imgui_console_command::render(bool* is_open) {
 
         // Command input
         bool reclaim_focus = false;
-        ImGuiInputTextFlags input_text_flags = ImGuiInputTextFlags_EnterReturnsTrue | ImGuiInputTextFlags_CallbackCompletion | ImGuiInputTextFlags_CallbackHistory;
+        ImGuiInputTextFlags input_text_flags = ImGuiInputTextFlags_EnterReturnsTrue |
+                                               ImGuiInputTextFlags_CallbackCompletion |
+                                               ImGuiInputTextFlags_CallbackHistory;
         const auto on_text_callback = [](ImGuiInputTextCallbackData* data) {
             auto this_console = static_cast<imgui_console_command*>(data->UserData);
 
             switch (data->EventFlag) {
             case ImGuiInputTextFlags_CallbackCompletion: {
                 const auto candidates = command_parser::autocomplete(data->Buf);
-                log(LoggerName::EDITOR, "Autocompletion found {} candidates for {}:\n", candidates.size(), data->Buf);
+                log(LoggerName::EDITOR, "Autocompletion found {} candidates for {}:\n",
+                    candidates.size(), data->Buf);
                 if (candidates.size() == 1) {
                     data->DeleteChars(0, data->BufTextLen);
                     data->InsertChars(0, candidates[0].data());
@@ -47,29 +52,34 @@ void imgui_console_command::render(bool* is_open) {
                 break;
             }
             case ImGuiInputTextFlags_CallbackHistory: {
-                const int prev_command_index = this_console->my_command_history.current_command_index();
+                const int prev_command_index =
+                    this_console->my_command_history.current_command_index();
                 int current_command_index = prev_command_index;
                 if (data->EventKey == ImGuiKey_UpArrow) {
                     if (current_command_index == -1) {
-                        current_command_index = static_cast<int>(this_console->my_command_history.size()) - 1;
-                    }
-                    else if (current_command_index > 0) {
+                        current_command_index =
+                            static_cast<int>(this_console->my_command_history.size()) - 1;
+                    } else if (current_command_index > 0) {
                         current_command_index--;
                     }
-                }
-                else if (data->EventKey == ImGuiKey_DownArrow) {
-                    if (current_command_index != -1 && this_console->my_command_history.at(current_command_index) != "") {
-                        if (++current_command_index >= static_cast<int>(this_console->my_command_history.size())) {
+                } else if (data->EventKey == ImGuiKey_DownArrow) {
+                    if (current_command_index != -1 &&
+                        this_console->my_command_history.at(current_command_index) != "") {
+                        if (++current_command_index >=
+                            static_cast<int>(this_console->my_command_history.size())) {
                             current_command_index = -1;
                         }
                     }
                 }
 
-                if (prev_command_index != current_command_index)
-                {
-                    this_console->my_command_history.set_current_command_index(current_command_index);
+                if (prev_command_index != current_command_index) {
+                    this_console->my_command_history.set_current_command_index(
+                        current_command_index);
 
-                    const char* history_str = (current_command_index >= 0) ? this_console->my_command_history.at(current_command_index).data() : "";
+                    const char* history_str =
+                        (current_command_index >= 0)
+                            ? this_console->my_command_history.at(current_command_index).data()
+                            : "";
                     data->DeleteChars(0, data->BufTextLen);
                     data->InsertChars(0, history_str);
                 }
@@ -77,7 +87,8 @@ void imgui_console_command::render(bool* is_open) {
             }
             return 0;
         };
-        if (ImGui::InputText("Input", my_command_buffer.data(), my_command_buffer.size(), input_text_flags, on_text_callback, (void*)this)) {
+        if (ImGui::InputText("Input", my_command_buffer.data(), my_command_buffer.size(),
+                             input_text_flags, on_text_callback, (void*)this)) {
             my_command_history.add(command_parser::parse(my_command_buffer.data()));
             my_command_buffer[0] = 0;
             reclaim_focus = true;
@@ -90,7 +101,8 @@ void imgui_console_command::render(bool* is_open) {
         }
 
         // Log command history widget
-        ImGui::BeginChild("ScrollingRegion", ImVec2(0, 0), false, ImGuiWindowFlags_HorizontalScrollbar);
+        ImGui::BeginChild("ScrollingRegion", ImVec2(0, 0), false,
+                          ImGuiWindowFlags_HorizontalScrollbar);
         if (ImGui::BeginPopupContextWindow()) {
             if (ImGui::Selectable("Clear")) {
                 my_command_history.clear();
@@ -121,5 +133,6 @@ void imgui_console_command::render(bool* is_open) {
         ImGui::EndChild();
     }
     ImGui::End();
-
 }
+
+} // namespace kairos

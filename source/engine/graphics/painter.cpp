@@ -1,104 +1,68 @@
 #pragma once
 
 #include <graphics/painter.h>
-#include <core/logger.h>
-#include <core/makable.h>
-#include <core/algorithms.h>
-#include <graphics/log_renderer.h>
-#include <core/opengl_renderer.h>
-#include <math/rect.h>
+#include "painter.h"
 
 namespace kairos {
+/** Member functions */
 
-painter::painter() : my_renderer(make<log_renderer>()) {}
+painter::painter(const painter& p) {
+    this->~painter();
+    my_self = p.my_self;
+    my_self->ref_count++;
+}
 
-painter::painter(const sizef& window_size, renderer_engine engine) {
-    if (engine == renderer_engine::opengl) {
-        my_renderer = make<opengl_renderer>();
-        // TODO  this should be an application scope variable for renderer which is setup by
-        // api->video->setup
-        my_renderer->setup(window_size);
+painter& painter::operator=(const painter& p) {
+    this->~painter();
+    my_self = p.my_self;
+    my_self->ref_count++;
+
+    return *this;
+}
+
+painter::painter(painter&& p) noexcept { 
+    this->~painter();
+    my_self = std::exchange(p.my_self, nullptr);
+}
+
+painter& painter::operator=(painter&& p) noexcept {
+    this->~painter();
+    my_self = std::exchange(p.my_self, nullptr);
+
+    return *this;
+}
+
+painter::~painter() {
+    if (my_self != nullptr && --my_self->ref_count <= 0) {
+        delete my_self;
+        my_self = nullptr;
     }
 }
 
-painter::~painter() { my_renderer->cleanup(); }
+void clear(const painter& painter, const color& color) { painter.my_self->clear(color); }
 
-void painter::draw_line(const linef& line) { my_renderer->draw_line(line); }
-
-void painter::draw_lines(const array<linef>& lines) { my_renderer->draw_lines(lines); }
-
-void painter::draw_lines(const array<std::pair<linef, color>>& colored_lines) {
-    my_renderer->draw_lines(colored_lines);
+void draw(painter& painter, const sprite& sprite) {
+    painter.my_self->draw(painter::drawable::sprite, &sprite, 1);
 }
 
-void painter::draw_rect(const rectf& rect) { my_renderer->draw_rect(rect); }
-
-void painter::draw_rects(const array<rectf>& rects) { my_renderer->draw_rects(rects); }
-
-void painter::draw_rects(const array<std::pair<rectf, color>>& colored_rects) {
-    my_renderer->draw_rects(colored_rects);
+void draw(painter& painter, const array<sprite>& sprites) {
+    painter.my_self->draw(painter::drawable::sprite, &sprites, sprites.size());
 }
 
-void painter::draw_rects(const array<std::pair<rectf, texture>>& textured_rects) {
-    my_renderer->draw_rects(textured_rects);
+void draw(painter& painter, const rectf& rect) {
+    painter.my_self->draw(painter::drawable::rectangle, &rect, 1);
 }
 
-void painter::draw_ellipse(const pointf& center, float rx, float ry) {
-    my_renderer->draw_ellipse(center, rx, ry);
+void draw(painter& painter, const array<rectf>& rects) {
+    painter.my_self->draw(painter::drawable::rectangle, &rects, rects.size());
 }
 
-void painter::draw_sprite(const sprite& sprite) { my_renderer->draw_sprite(sprite); }
-
-void painter::draw_sprites(const array<sprite>& sprites) { my_renderer->draw_sprites(sprites); }
-
-void painter::draw_ellipse(const rectf& rect) {
-    draw_ellipse(rect.center(), rect.width(), rect.height());
+void draw(painter& painter, const linef& line) {
+    painter.my_self->draw(painter::drawable::line, &line, 1);
 }
 
-void painter::draw_ellipses(const array<rectf>& rects) { my_renderer->draw_ellipses(rects); }
-
-void painter::draw_ellipses(const array<std::pair<rectf, color>>& colored_ellipses) {
-    my_renderer->draw_ellipses(colored_ellipses);
-}
-
-void painter::draw_ellipses(const array<std::pair<rectf, texture>>& textured_ellipses) {
-    my_renderer->draw_ellipses(textured_ellipses);
-}
-
-void painter::draw_text(const pointf& pos, string_view text) { my_renderer->draw_text(pos, text); }
-
-void painter::set_pen_color(const color& pen_color) {
-    my_pen.my_color = pen_color;
-    my_renderer->update_state(renderer_dirty_flag::pen_color, static_cast<vec3f>(my_pen.my_color));
-}
-
-void painter::set_line_width(float line_width) {
-    my_pen.my_line_width = line_width;
-    my_renderer->update_state(renderer_dirty_flag::line_width,
-                              static_cast<float>(my_pen.my_line_width));
-}
-
-void painter::set_pen_opacity(float opacity) {
-    my_pen.my_opacity = opacity;
-    my_renderer->update_state(renderer_dirty_flag::pen_opacity,
-                              static_cast<float>(my_pen.my_opacity));
-}
-
-void painter::set_brush_color(const color& fill_color) {
-    my_brush.my_fill_color = fill_color;
-    my_renderer->update_state(renderer_dirty_flag::brush_color,
-                              static_cast<vec3f>(my_brush.my_fill_color));
-}
-
-void painter::set_brush_texture(int fill_texture_id) {
-    my_brush.my_fill_texture_id = fill_texture_id;
-    my_renderer->update_state(renderer_dirty_flag::texture, my_brush.my_fill_texture_id);
-}
-
-void painter::set_brush_opacity(float opacity) {
-    my_brush.my_opacity = opacity;
-    my_renderer->update_state(renderer_dirty_flag::brush_opacity,
-                              static_cast<float>(my_brush.my_opacity));
+void draw(painter& painter, const array<linef>& lines) {
+    painter.my_self->draw(painter::drawable::line, &lines, lines.size());
 }
 
 } // namespace kairos

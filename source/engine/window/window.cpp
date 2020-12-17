@@ -10,6 +10,7 @@ namespace kairos {
 window::window(const window& w) : is_allocated(w.is_allocated) {
     if (w.is_allocated) {
         my_self.w = w.my_self.w;
+        my_self.w->ref_count++;
     } else {
         w.get()->copy(my_self.memory.data());
     }
