@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="library">
+      <UniqueIdentifier>{a8d4b793-6708-490f-8360-6f55ab80650f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\error.h">
+      <Filter>library</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\filesystem.h">
+      <Filter>library</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\hash.h">
+      <Filter>library</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\json.h">
+      <Filter>library</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\makable.h">
+      <Filter>library</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\contract.h">
+      <Filter>library</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\animation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\component.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\easing_curve.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\easing_lib.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\event_listener.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\formattable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\globals.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\logger.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\messages.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\opengl_renderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\types.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\result.h">
+      <Filter>library</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\algorithms.h">
+      <Filter>library</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\member_object.h">
+      <Filter>library</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\type_object.h">
+      <Filter>library</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\renderer_engine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\windowing_implementation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\time.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\service.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\system.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\security.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\enum_utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\animation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\easing_lib.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\event_listener.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\logger.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\messages.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\opengl_renderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\security.cpp" />
+  </ItemGroup>
+</Project>

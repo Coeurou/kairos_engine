@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="opengl">
+      <UniqueIdentifier>{43e530c2-9368-4e4b-bc06-b91a50f9ad46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service">
+      <UniqueIdentifier>{08ddf5b9-1c37-4b20-ac6a-40c2201ca1a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service\detail">
+      <UniqueIdentifier>{d1e42cd7-a89c-4338-9c48-77c512342203}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="opengl\SDL">
+      <UniqueIdentifier>{cab4318b-4608-4adf-9ec4-d7706f072f77}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\opengl_draw_data.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\program.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\shader.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\vao.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\buffer_object.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\opengl_context.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\brush.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\material.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\painter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\pen.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\sprite.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\stb_image.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\texture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\vertex.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\service\video_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\service\detail\video_service_helpers.h">
+      <Filter>service\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\SDL\sdl_opengl_context.h">
+      <Filter>opengl\SDL</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\opengl_draw_data.cpp">
+      <Filter>opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\program.cpp">
+      <Filter>opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\shader.cpp">
+      <Filter>opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\vao.cpp">
+      <Filter>opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\buffer_object.cpp">
+      <Filter>opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\opengl_context.cpp">
+      <Filter>opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\painter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\sprite.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\texture.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\service\video_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\service\detail\video_service_helpers.cpp">
+      <Filter>service\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\SDL\sdl_opengl_context.cpp">
+      <Filter>opengl\SDL</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

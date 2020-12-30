@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D61C58DF-1088-395D-B697-634940F4ABE9}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>game</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+    <Import Project="..\core\core.vcxitems" Label="Shared" />
+    <Import Project="..\mathlib\mathlib.vcxitems" Label="Shared" />
+    <Import Project="..\renderer\renderer.vcxitems" Label="Shared" />
+    <Import Project="..\event\event.vcxitems" Label="Shared" />
+    <Import Project="..\input\input.vcxitems" Label="Shared" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">game.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">game</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">game.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">game</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\guill\Source\Repos\kairos_engine\build\source\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">game.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">game</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\guill\Source\Repos\kairos_engine\build\source\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">game.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">game</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\gameplay;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;FMT_LOCALE;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;FMT_LOCALE;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\engine\application;C:\Users\guill\Source\Repos\kairos_engine\source\engine\core;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics\opengl;C:\Users\guill\Source\Repos\kairos_engine\source\engine\math;C:\Users\guill\Source\Repos\kairos_engine\source\engine\serialization;C:\Users\guill\Source\Repos\kairos_engine\source\engine\systems;C:\Users\guill\Source\Repos\kairos_engine\source\engine\window;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\engine\application;C:\Users\guill\Source\Repos\kairos_engine\source\engine\core;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics\opengl;C:\Users\guill\Source\Repos\kairos_engine\source\engine\math;C:\Users\guill\Source\Repos\kairos_engine\source\engine\serialization;C:\Users\guill\Source\Repos\kairos_engine\source\engine\systems;C:\Users\guill\Source\Repos\kairos_engine\source\engine\window;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\x64\Debug\kairos_engine.lib;..\extern\fmt\Debug\fmtd.lib;..\extern\glad\Debug\glad.lib;..\extern\SDL2-2.0.12\Debug\SDL2d.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;kernel32.lib;winspool.lib;comdlg32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/guill/Source/Repos/kairos_engine/build/source/Debug/game.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/guill/Source/Repos/kairos_engine/build/source/Debug/game.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\gameplay;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\engine\application;C:\Users\guill\Source\Repos\kairos_engine\source\engine\core;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics\opengl;C:\Users\guill\Source\Repos\kairos_engine\source\engine\math;C:\Users\guill\Source\Repos\kairos_engine\source\engine\serialization;C:\Users\guill\Source\Repos\kairos_engine\source\engine\systems;C:\Users\guill\Source\Repos\kairos_engine\source\engine\window;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\engine\application;C:\Users\guill\Source\Repos\kairos_engine\source\engine\core;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics\opengl;C:\Users\guill\Source\Repos\kairos_engine\source\engine\math;C:\Users\guill\Source\Repos\kairos_engine\source\engine\serialization;C:\Users\guill\Source\Repos\kairos_engine\source\engine\systems;C:\Users\guill\Source\Repos\kairos_engine\source\engine\window;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\Release\kairos_engine.lib;..\extern\fmt\Release\fmt.lib;..\extern\glad\Release\glad.lib;..\extern\SDL2-2.0.12\Release\SDL2.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/guill/Source/Repos/kairos_engine/build/source/Release/game.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/guill/Source/Repos/kairos_engine/build/source/Release/game.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\gameplay;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\engine\application;C:\Users\guill\Source\Repos\kairos_engine\source\engine\core;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics\opengl;C:\Users\guill\Source\Repos\kairos_engine\source\engine\math;C:\Users\guill\Source\Repos\kairos_engine\source\engine\serialization;C:\Users\guill\Source\Repos\kairos_engine\source\engine\systems;C:\Users\guill\Source\Repos\kairos_engine\source\engine\window;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\engine\application;C:\Users\guill\Source\Repos\kairos_engine\source\engine\core;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics\opengl;C:\Users\guill\Source\Repos\kairos_engine\source\engine\math;C:\Users\guill\Source\Repos\kairos_engine\source\engine\serialization;C:\Users\guill\Source\Repos\kairos_engine\source\engine\systems;C:\Users\guill\Source\Repos\kairos_engine\source\engine\window;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\MinSizeRel\kairos_engine.lib;..\extern\fmt\MinSizeRel\fmt.lib;..\extern\glad\MinSizeRel\glad.lib;..\extern\SDL2-2.0.12\MinSizeRel\SDL2.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/guill/Source/Repos/kairos_engine/build/source/MinSizeRel/game.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/guill/Source/Repos/kairos_engine/build/source/MinSizeRel/game.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\gameplay;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\engine\application;C:\Users\guill\Source\Repos\kairos_engine\source\engine\core;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics\opengl;C:\Users\guill\Source\Repos\kairos_engine\source\engine\math;C:\Users\guill\Source\Repos\kairos_engine\source\engine\serialization;C:\Users\guill\Source\Repos\kairos_engine\source\engine\systems;C:\Users\guill\Source\Repos\kairos_engine\source\engine\window;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\engine\application;C:\Users\guill\Source\Repos\kairos_engine\source\engine\core;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics;C:\Users\guill\Source\Repos\kairos_engine\source\engine\graphics\opengl;C:\Users\guill\Source\Repos\kairos_engine\source\engine\math;C:\Users\guill\Source\Repos\kairos_engine\source\engine\serialization;C:\Users\guill\Source\Repos\kairos_engine\source\engine\systems;C:\Users\guill\Source\Repos\kairos_engine\source\engine\window;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\RelWithDebInfo\kairos_engine.lib;..\extern\fmt\RelWithDebInfo\fmt.lib;..\extern\glad\RelWithDebInfo\glad.lib;..\extern\SDL2-2.0.12\RelWithDebInfo\SDL2.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/guill/Source/Repos/kairos_engine/build/source/RelWithDebInfo/game.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/guill/Source/Repos/kairos_engine/build/source/RelWithDebInfo/game.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\source\gameplay\game.cpp" />
+    <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\source\engine\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\guill\Source\Repos\kairos_engine\build\extern\SDL2-2.0.12\SDL2-static.vcxproj">
+      <Project>{B2806645-C85D-3E09-92EC-93BDE2B167C6}</Project>
+      <Name>SDL2-static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\guill\Source\Repos\kairos_engine\build\extern\fmt\fmt.vcxproj">
+      <Project>{65511564-5BA9-358E-90DD-B49A160A36EC}</Project>
+      <Name>fmt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\guill\Source\Repos\kairos_engine\build\extern\glad\glad.vcxproj">
+      <Project>{8FBA1F3E-0FF9-3A41-B71C-D6BE8238FE62}</Project>
+      <Name>glad</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\source\gameplay\game.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

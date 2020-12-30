@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\imgui_console_command.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\error_command.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\command_parser.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\log_command.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\editor.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\imgui_opengl_renderer.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\imgui_sdl_backend.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\extern\imgui\imgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\extern\imgui\imgui_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\extern\imgui\imgui_demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\extern\imgui\imgui_widgets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\editor\imgui_backend.cpp" />
+    <ClCompile Include="..\..\source\editor\imgui_renderer.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\imgui_console_command.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\error_command.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\command_parser.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\log_command.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\abstract_command.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\command_history.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\editor.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\imgui_backend.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\imgui_renderer.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\imgui_opengl_renderer.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\source\editor\imgui_sdl_backend.h">
+      <Filter>source\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\source\engine\serialization\serialization_strategy.h">
+      <Filter>source\engine\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\source\engine\serialization\serializer.h">
+      <Filter>source\engine\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\extern\imgui\imgui.h">
+      <Filter>source\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\extern\imgui\imconfig.h">
+      <Filter>source\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\extern\imgui\imgui_internal.h">
+      <Filter>source\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\extern\imgui\imstb_rectpack.h">
+      <Filter>source\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\extern\imgui\imstb_textedit.h">
+      <Filter>source\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\guill\Source\Repos\kairos_engine\extern\imgui\imstb_truetype.h">
+      <Filter>source\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\engine\data\data_algorithm.h">
+      <Filter>source\engine\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\engine\math\components\rect_component.h">
+      <Filter>source\engine\math\components</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{483C702C-EB49-33E1-8920-F16E3FB8D284}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{7627F532-418B-32E8-BF1D-6DC956343F72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\editor">
+      <UniqueIdentifier>{7447AD72-CC4E-33E2-9312-F143FF25EEB5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\engine">
+      <UniqueIdentifier>{FE49A483-11C3-3CBD-9132-F61F45FB164E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\engine\math">
+      <UniqueIdentifier>{A7603ED1-8FA9-31D9-874A-49C29BBA161E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\engine\serialization">
+      <UniqueIdentifier>{B54410F9-E7F1-3B6A-AC37-704A0B7AFE94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\engine\data">
+      <UniqueIdentifier>{3e189b1e-a32a-4ffc-ab80-323678daa903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\engine\math\components">
+      <UniqueIdentifier>{c8f3b743-1b0d-4f2f-96d0-593a1e4491a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Header Files">
+      <UniqueIdentifier>{26E022D1-1452-33F3-AD11-C48072ABF1E6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

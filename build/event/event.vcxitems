@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{43331e66-e85b-4c4f-90e1-6b85370f27ab}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\event.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\event\sdl_event.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\event.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\event\sdl_event.cpp" />
+  </ItemGroup>
+</Project>

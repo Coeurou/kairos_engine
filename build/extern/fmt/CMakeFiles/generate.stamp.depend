@@ -1,0 +1,10 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CMakeParseArguments.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CheckCXXCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CheckCXXSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CheckSymbolExists.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/GNUInstallDirs.cmake
+C:/Users/guill/Source/Repos/kairos_engine/extern/fmt/CMakeLists.txt
+C:/Users/guill/Source/Repos/kairos_engine/extern/fmt/support/cmake/JoinPaths.cmake
+C:/Users/guill/Source/Repos/kairos_engine/extern/fmt/support/cmake/cxx14.cmake

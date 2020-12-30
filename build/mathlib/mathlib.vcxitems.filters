@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)..\..\source\engine\math\requirements.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\math\mathlib.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\math\mathlib.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\math\rect.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\math\transform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\math\axis.h" />
+  </ItemGroup>
+</Project>

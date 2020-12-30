@@ -1,0 +1,11 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.16/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CTest.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CTestUseLaunchers.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/ExternalProject.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/GNUInstallDirs.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/WriteBasicConfigVersionFile.cmake
+C:/Users/guill/Source/Repos/kairos_engine/extern/json/CMakeLists.txt
+C:/Users/guill/Source/Repos/kairos_engine/extern/json/cmake/config.cmake.in
+C:/Users/guill/Source/Repos/kairos_engine/extern/json/cmake/nlohmann_jsonConfigVersion.cmake.in
+C:/Users/guill/Source/Repos/kairos_engine/extern/json/cmake/pkg-config.pc.in

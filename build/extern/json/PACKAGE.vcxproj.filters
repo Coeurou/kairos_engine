@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\guill\Source\Repos\kairos_engine\build\CMakeFiles\dea179fc84720e7355cce11c97ae0f5a\PACKAGE_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{09E84126-FA73-3E96-BB04-D3D7788E8F92}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

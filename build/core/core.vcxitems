@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{63063338-989b-4c3d-9352-d5adba223888}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\animation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\easing_lib.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\event_listener.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\logger.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\messages.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\opengl_renderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\security.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\animation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\enum_utils.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\security.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\service.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\system.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\time.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\component.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\contract.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\easing_curve.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\easing_lib.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\error.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\event_listener.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\filesystem.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\formattable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\globals.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\hash.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\json.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\algorithms.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\logger.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\makable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\member_object.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\messages.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\opengl_renderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\renderer_engine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\result.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\types.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\type_object.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\windowing_implementation.h" />
+  </ItemGroup>
+</Project>

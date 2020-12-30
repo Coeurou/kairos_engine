@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{94ed78c5-c0d6-4d95-8546-4d6fe608eb97}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\controller.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\input.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\keyboard.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\mouse.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\sdl_input_backend.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\service\detail\input_service_helpers.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\service\input_service.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\controller.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\keyboard.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\service\detail\input_service_helpers.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\service\input_service.cpp" />
+  </ItemGroup>
+</Project>

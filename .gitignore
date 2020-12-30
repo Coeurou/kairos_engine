@@ -2,7 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/build
 /extern/glad/CMakeFiles
 /extern/glad/PACKAGE.vcxproj.filters
 /extern/glad/PACKAGE.vcxproj
@@ -34,6 +33,16 @@
 /extern/SDL2-2.0.12/wayland-protocols
 /extern/SDL2-2.0.12/VisualC-WinRT
 /extern/SDL2-2.0.12/VisualC
-/extern/SDL2_image-2.0.5/lib
-/extern/SDL2_mixer-2.0.4/lib
-/extern/SDL2_ttf-2.0.15/lib
+/build/.vs
+/build/CMakeFiles
+/build/engine/kairos_engine.dir/Debug
+/build/extern/fmt/fmt.dir
+/build/extern/glad/glad.dir
+/build/extern/SDL2-2.0.12/SDL2-static.dir
+/build/extern/SDL2-2.0.12/SDL2main.dir
+/build/extern/SDL2-2.0.12/x64
+/build/source/game.dir
+/build/include
+/build/source/processes.txt
+/build/x64/Debug
+/build/CMakeCache.txt
