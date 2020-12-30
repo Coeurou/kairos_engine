@@ -8,13 +8,13 @@
 
 namespace kairos {
 
-class imgui_opengl_renderer : public imgui_renderer {
+class imgui_opengl_renderer {
   public:
     imgui_opengl_renderer(const opengl_context& gl_context);
 
-    bool setup() override;
-    void cleanup() override;
-    void render(ImDrawData* draw_data) override;
+    bool setup();
+    void cleanup();
+    void render(ImDrawData* draw_data);
 
     opengl_context my_gl_context;
 

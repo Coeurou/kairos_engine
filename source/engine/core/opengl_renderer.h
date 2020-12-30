@@ -43,11 +43,13 @@ class opengl_renderer {
     void set_pen(pen pen);
     const brush& get_brush() const;
     void set_brush(brush brush);
+    rectf canvas() const;
 
   private:
     pen my_pen;
     brush my_brush;
     dictionary<uint32, opengl_draw_data> my_draw_data;
+    rectf my_canvas{};
 };
 
 /** Non-member functions */

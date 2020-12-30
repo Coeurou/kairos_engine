@@ -7,7 +7,7 @@
 #include <graphics/stb_image.h>
 
 #include <core/algorithms.h>
-#include "texture.h"
+#include <core/formattable.h>
 
 namespace kairos {
 

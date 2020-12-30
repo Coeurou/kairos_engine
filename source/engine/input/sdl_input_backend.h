@@ -6,11 +6,13 @@
 #include <input/keyboard.h>
 #include <input/mouse.h>
 
+namespace kairos {
+
 static const dictionary<int, action> our_action_adapter = {{SDL_PRESSED, action::press},
                                                            {SDL_RELEASED, action::release}};
 
-static const dictionary<SDL_GameControllerButton, controller_button>
-    our_controller_button_adapter = {
+static const dictionary<SDL_GameControllerButton, controller_button> our_controller_button_adapter =
+    {
         {SDL_CONTROLLER_BUTTON_A, controller_button::button_A},
         {SDL_CONTROLLER_BUTTON_B, controller_button::button_B},
         {SDL_CONTROLLER_BUTTON_X, controller_button::button_X},
@@ -30,24 +32,26 @@ static const dictionary<SDL_GameControllerButton, controller_button>
         {SDL_CONTROLLER_BUTTON_INVALID, controller_button::count},
 };
 
-static const dictionary<SDL_GameControllerAxis, controller_axis>
-    our_controller_button_adapter = {
-        {SDL_CONTROLLER_AXIS_LEFTX, controller_axis::left},
-        {SDL_CONTROLLER_AXIS_LEFTY, controller_axis::left},
-        {SDL_CONTROLLER_AXIS_RIGHTX, controller_axis::right},
-        {SDL_CONTROLLER_AXIS_RIGHTY, controller_axis::right},
-        {SDL_CONTROLLER_AXIS_TRIGGERLEFT, controller_axis::trigger},
-        {SDL_CONTROLLER_AXIS_TRIGGERRIGHT, controller_axis::trigger},
-        {SDL_CONTROLLER_AXIS_MAX, controller_axis::count},
-        {SDL_CONTROLLER_AXIS_INVALID, controller_axis::count},
+static const dictionary<SDL_GameControllerAxis, controller_axis> our_controller_axis_adapter = {
+    {SDL_CONTROLLER_AXIS_LEFTX, controller_axis::left_x},
+    {SDL_CONTROLLER_AXIS_LEFTY, controller_axis::left_y},
+    {SDL_CONTROLLER_AXIS_RIGHTX, controller_axis::right_x},
+    {SDL_CONTROLLER_AXIS_RIGHTY, controller_axis::right_y},
+    {SDL_CONTROLLER_AXIS_TRIGGERLEFT, controller_axis::trigger_left},
+    {SDL_CONTROLLER_AXIS_TRIGGERRIGHT, controller_axis::trigger_right},
+    {SDL_CONTROLLER_AXIS_MAX, controller_axis::count},
+    {SDL_CONTROLLER_AXIS_INVALID, controller_axis::count},
 };
 
-static const dictionary<int, mouse_button>
-our_mouse_button_adapter = {
-    {SDL_BUTTON_LEFT, mouse_button::left},
-    {SDL_BUTTON_RIGHT, mouse_button::right},
-    {SDL_BUTTON_MIDDLE, mouse_button::middle},
-    {SDL_BUTTON_X1, mouse_button::button_4},
+static const dictionary<uint32, controller_device_state> our_controller_state_adapter = {
+    {to_index32(SDL_CONTROLLERDEVICEADDED), controller_device_state::added},
+    {to_index32(SDL_CONTROLLERDEVICEREMOVED), controller_device_state::removed},
+    {to_index32(SDL_CONTROLLERDEVICEREMAPPED), controller_device_state::remapped},
+};
+
+static const dictionary<int, mouse_button> our_mouse_button_adapter = {
+    {SDL_BUTTON_LEFT, mouse_button::left},     {SDL_BUTTON_RIGHT, mouse_button::right},
+    {SDL_BUTTON_MIDDLE, mouse_button::middle}, {SDL_BUTTON_X1, mouse_button::button_4},
     {SDL_BUTTON_X2, mouse_button::button_5},
 };
 
@@ -160,4 +164,6 @@ static const dictionary<SDL_Scancode, key> our_keyboard_adapter = {
     {SDL_SCANCODE_NUMLOCKCLEAR, key::NumLock},
     {SDL_SCANCODE_MINUS, key::Minus},
     {SDL_SCANCODE_GRAVE, key::GraveAccent},
-    {SDL_NUM_SCANCODES, key::KeyCount}};
+    {SDL_NUM_SCANCODES, key::count}};
+
+} // namespace kairos

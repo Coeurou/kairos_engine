@@ -6,10 +6,8 @@
 #include <TargetConditionals.h>
 #endif
 
-#include <core/types.h>
 #include <core/contract.h>
-#include <input/keyboard.h>
-#include <window/sdl_window.h>
+#include <core/event.h>
 
 static const char* get_clipboard_text(void*) { return SDL_GetClipboardText(); }
 
@@ -17,58 +15,66 @@ static void set_clipboard_text(void*, const char* text) { SDL_SetClipboardText(t
 
 namespace kairos {
 
-/*void imgui_sdl_backend::process_event(const variant_event& event) {
+void imgui_sdl_backend::process_event(const system_event& event) {
     ImGuiIO& io = ImGui::GetIO();
 
-    const auto to_float = [](bool condition) { return (condition) ? 1.f : 0.f; };
-    const auto on_key_event = [&](const SDL_Event& e) {
-        int key = e.key.keysym.scancode;
+    const auto sign = [](int value) { return -1 + 2 * static_cast<int>(value > 0); };
+    const auto on_key_event = [&](const keyboard_event& e) {
+        int key = static_cast<int>(e.my_key);
         IM_ASSERT(key >= 0 && key < IM_ARRAYSIZE(io.KeysDown));
-        io.KeysDown[key] = (e.type == SDL_KEYDOWN);
+        io.KeysDown[key] = (e.my_action == action::press);
         io.KeyShift = ((SDL_GetModState() & KMOD_SHIFT) != 0);
         io.KeyCtrl = ((SDL_GetModState() & KMOD_CTRL) != 0);
         io.KeyAlt = ((SDL_GetModState() & KMOD_ALT) != 0);
-    #ifdef _WIN32
+#ifdef _WIN32
         io.KeySuper = false;
-    #else
+#else
         io.KeySuper = ((SDL_GetModState() & KMOD_GUI) != 0);
-    #endif
+#endif
     };
 
-    const SDL_Event sdl_event = std::get<SDL_Event>(event);
-    switch (sdl_event.type) {
-    case SDL_MOUSEWHEEL: {
-        io.MouseWheelH += to_float(sdl_event.wheel.x > 0);
-        io.MouseWheelH -= to_float(sdl_event.wheel.x < 0);
-        io.MouseWheel += to_float(sdl_event.wheel.y > 0);
-        io.MouseWheel -= to_float(sdl_event.wheel.y < 0);
-        break;
-    }
-    case SDL_MOUSEBUTTONDOWN: {
-        my_mouse_button_pressed[0] = sdl_event.button.button == SDL_BUTTON_LEFT;
-        my_mouse_button_pressed[1] = sdl_event.button.button == SDL_BUTTON_RIGHT;
-        my_mouse_button_pressed[2] = sdl_event.button.button == SDL_BUTTON_MIDDLE;
-        break;
-    }
-    case SDL_TEXTINPUT: {
-        io.AddInputCharactersUTF8(sdl_event.text.text);
-        break;
-    }
-    case SDL_KEYDOWN: {
-        on_key_event(sdl_event);
-        break;
-    }
-    case SDL_KEYUP: {
-        on_key_event(sdl_event);
+    switch (event.my_type) {
+    case event_type::mouse_wheel: {
+        const auto& wheel_event = std::get<mouse_wheel_event>(event.my_internal);
 
-        if (sdl_event.key.keysym.scancode == SDL_SCANCODE_E && io.KeyCtrl) {
+        io.MouseWheelH += static_cast<float>(sign(wheel_event.my_scroll.x));
+        io.MouseWheel += static_cast<float>(sign(wheel_event.my_scroll.y));
+        break;
+    }
+    case event_type::mouse_button_press: {
+        const auto& m = cast<mouse_event>(event);
+        my_mouse_button_pressed[0] = m.my_button == mouse_button::left;
+        my_mouse_button_pressed[1] = m.my_button == mouse_button::right;
+        my_mouse_button_pressed[2] = m.my_button == mouse_button::middle;
+        break;
+    }
+    case event_type::text_input: {
+        const auto& text = cast<text_input_event>(event);
+        io.AddInputCharactersUTF8(text.my_text.c_str());
+        break;
+    }
+    case event_type::key_press: {
+        on_key_event(cast<keyboard_event>(event));
+        break;
+    }
+    case event_type::key_release: {
+        const keyboard_event& k = cast<keyboard_event>(event);
+        on_key_event(k);
+
+        if (k.my_key == key::E && io.KeyCtrl) {
             is_imgui_visible = !is_imgui_visible;
         }
-
+        else if (k.my_key == key::G && io.KeyCtrl) {
+            io.BackendFlags ^= ImGuiBackendFlags_HasGamepad;
+        }
         break;
     }
     }
-}*/
+}
+
+bool imgui_sdl_backend::is_visible() const { return is_imgui_visible; }
+
+void imgui_sdl_backend::set_visible(bool visibility) { is_imgui_visible = visibility; }
 
 bool imgui_sdl_backend::setup(window window) {
     expects(SDL_WasInit(SDL_INIT_VIDEO) != 0,
@@ -86,6 +92,7 @@ bool imgui_sdl_backend::setup(window window) {
         ImGuiBackendFlags_HasMouseCursors; // We can honor GetMouseCursor() values (optional)
     io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos; // We can honor io.WantSetMousePos requests
                                                          // (optional, rarely used)
+    io.BackendFlags &= ~ImGuiBackendFlags_HasGamepad;
     io.BackendPlatformName = "imgui_kairos_sdl";
 
     // Keyboard mapping. ImGui will use those indices to peek into the io.KeysDown[] array.
@@ -183,8 +190,7 @@ void imgui_sdl_backend::update_mouse_keyboard() {
     // ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)
     if (io.WantSetMousePos) {
         SDL_WarpMouseInWindow(my_window, (int)io.MousePos.x, (int)io.MousePos.y);
-    }
-    else
+    } else
         io.MousePos = ImVec2(-FLT_MAX, -FLT_MAX);
 
     int mx = 0;
@@ -252,7 +258,7 @@ void imgui_sdl_backend::update_gamepads() {
 
     // Get gamepad
     SDL_GameController* game_controller = SDL_GameControllerOpen(0);
-    if (!game_controller) {
+    if (!game_controller || (io.BackendFlags & ImGuiBackendFlags_HasGamepad) == 0) {
         io.BackendFlags &= ~ImGuiBackendFlags_HasGamepad;
         return;
     }
@@ -287,8 +293,14 @@ void imgui_sdl_backend::update_gamepads() {
     map_analog(ImGuiNavInput_LStickRight, SDL_CONTROLLER_AXIS_LEFTX, +thumb_dead_zone, +32767);
     map_analog(ImGuiNavInput_LStickUp, SDL_CONTROLLER_AXIS_LEFTY, -thumb_dead_zone, -32767);
     map_analog(ImGuiNavInput_LStickDown, SDL_CONTROLLER_AXIS_LEFTY, +thumb_dead_zone, +32767);
-
-    io.BackendFlags |= ImGuiBackendFlags_HasGamepad;
 }
+
+void show(imgui_sdl_backend& imgui) { imgui.set_visible(true); }
+
+void hide(imgui_sdl_backend& imgui) { imgui.set_visible(false); }
+
+bool is_shown(const imgui_sdl_backend& imgui) { return imgui.is_visible(); }
+
+bool is_hidden(const imgui_sdl_backend& imgui) { return !imgui.is_visible(); }
 
 } // namespace kairos

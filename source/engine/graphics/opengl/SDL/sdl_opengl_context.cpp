@@ -35,6 +35,8 @@ bool setup(sdl_opengl_context& gl_context, uint32 window_id) {
             "Fail when loading GL functions from GLAD.");
 
     glEnable(GL_MULTISAMPLE);
+    glEnable(GL_BLEND);
+    glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     int major_version = 0, minor_version = 0;
     glGetIntegerv(GL_MAJOR_VERSION, &major_version);

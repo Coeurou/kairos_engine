@@ -14,10 +14,10 @@ namespace kairos {
  */
 class window {
     friend uint32 id(const window& w);
-    friend void show(window& w);
-    friend void hide(window& w);
     friend vec2i size(const window& w);
     friend void resize(window& w, const vec2i& size);
+    friend void show(window& w);
+    friend void hide(window& w);
     friend bool is_shown(const window& window);
     friend bool is_hidden(const window& window);
     friend void destroy(window& w);

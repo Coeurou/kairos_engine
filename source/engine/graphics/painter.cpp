@@ -46,7 +46,7 @@ void draw(painter& painter, const sprite& sprite) {
 }
 
 void draw(painter& painter, const array<sprite>& sprites) {
-    painter.my_self->draw(painter::drawable::sprite, &sprites, sprites.size());
+    painter.my_self->draw(painter::drawable::sprite, &sprites, count(sprites));
 }
 
 void draw(painter& painter, const rectf& rect) {
@@ -54,7 +54,7 @@ void draw(painter& painter, const rectf& rect) {
 }
 
 void draw(painter& painter, const array<rectf>& rects) {
-    painter.my_self->draw(painter::drawable::rectangle, &rects, rects.size());
+    painter.my_self->draw(painter::drawable::rectangle, &rects, count(rects));
 }
 
 void draw(painter& painter, const linef& line) {
@@ -62,7 +62,7 @@ void draw(painter& painter, const linef& line) {
 }
 
 void draw(painter& painter, const array<linef>& lines) {
-    painter.my_self->draw(painter::drawable::line, &lines, lines.size());
+    painter.my_self->draw(painter::drawable::line, &lines, count(lines));
 }
 
 } // namespace kairos

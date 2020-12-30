@@ -11,7 +11,7 @@ class imgui_console_command {
 
   private:
     bool enable_auto_scroll = true;
-    static_array<char, 256> my_command_buffer;
+    static_array<char, 256> my_command_buffer = {'\0'};
     command_history<128> my_command_history;
 };
 

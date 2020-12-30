@@ -11,15 +11,17 @@ namespace kairos {
 
 class editor {
   public:
-    void setup();
+    editor(imgui_backend backend, imgui_renderer renderer);
+    void setup(window w);
     result<uint32> update();
-    // void poll_event(const variant_event& e);
+    void process_event(const system_event& e);
     result<uint32> render();
     void cleanup();
 
   private:
-    std::unique_ptr<imgui_backend> my_imgui_backend;
-    std::unique_ptr<imgui_renderer> my_imgui_renderer;
+      // editor shouldn't be limited to imgui, an abstraction (GUIRenderer, GUIBackend) will help, plus an editor has a collection of widgets it renders
+    imgui_backend my_imgui_backend;
+    imgui_renderer my_imgui_renderer;
     imgui_console_command my_imgui_console_command;
 };
 

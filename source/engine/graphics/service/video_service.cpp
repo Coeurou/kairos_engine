@@ -3,7 +3,7 @@
 
 namespace kairos {
 
-result<uint32> video_service::setup() {
+result<uint32> video_service::enable() {
     if (detail::init_video_system()) {
         return result<uint32>(EXIT_SUCCESS);
     } else {

@@ -1,5 +1,11 @@
 #pragma once
 
+#include <core/types.h>
+#include <core/enum_utils.h>
+#include <input/input.h>
+
+namespace kairos {
+
 enum class key : int {
     Unknown,     //!< Unhandled key
     A,           //!< The A key
@@ -111,5 +117,16 @@ enum class key : int {
     NumLock,     //!< The NUM LOCK key
     Minus,       //!< The minus key
     GraveAccent, //!< `
-    KeyCount,    //!< Keep last -- the total number of keyboard keys
+    count,       //!< Keep last -- the total number of keyboard keys
 };
+
+struct keyboard {
+    static_array<action, to_index(key::count)> my_keys_status = {action::count};
+};
+
+bool is_pressed(const keyboard& keyboard, key key);
+bool is_released(const keyboard& keyboard, key key);
+
+int value(const keyboard& keyboard, key key);
+
+} // namespace kairos

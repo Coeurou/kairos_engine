@@ -14,5 +14,5 @@ constexpr uint32 operator"" _hash(char const* s, size_t count) {
 }
 
 constexpr uint32 hash(string_view s) {
-    return detail::fnv1a_32(s.data(), s.size());
+    return detail::fnv1a_32(s.data(), count(s));
 }

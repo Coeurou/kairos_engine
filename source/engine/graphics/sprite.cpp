@@ -1,5 +1,6 @@
 #include <graphics/sprite.h>
 
+#include <core/formattable.h>
 #include <math/mathlib.h>
 #include "sprite.h"
 
@@ -31,6 +32,10 @@ void rotate(sprite& s, float angle_in_degrees) {
 
 void rotate_radians(sprite& s, float angle_in_radians) {
     s.my_rotation = angle_in_radians;
+}
+
+void flip(sprite& s, axis axis, bool value) {
+    s.my_flip[static_cast<size_t>(axis)] = value;
 }
 
 } // namespace kairos

@@ -30,10 +30,15 @@ using sizef = vec2f;
 using pointf = vec2f;
 using linef = std::pair<vec2f, vec2f>;
 template<class T> using array = std::vector<T>;
+template<class T> inline size_t count(const array<T>& arr) noexcept { return arr.size(); }
 template<class T, size_t N> using static_array = std::array<T, N>;
+template<class T, size_t N> constexpr size_t count(const static_array<T, N>& /*arr*/) noexcept { return N; }
 template<class Key, class Value> using dictionary = std::unordered_map<Key, Value>;
+template<class Key, class Value> inline size_t count (const dictionary<Key, Value>& dict) noexcept { return dict.size(); }
 using string = std::string;
+inline size_t count(const string& str) noexcept { return str.size(); }
 using string_view = std::string_view;
+constexpr size_t count(const string_view& str) noexcept { return str.size(); }
 using variant = std::variant<int, uint32, float, size_t, int64, uint64, double, vec2f, vec2i, vec3f, string, string_view>;
 using command_line_args = std::unordered_map<string, variant>;
 

@@ -52,8 +52,8 @@ class opengl_draw_data {
         using vertex_type = typename vertices_container::value_type;
         glBufferSubData(buffer_object::as_gl_target(my_vbo.my_target),
                         my_vertices_count * sizeof(vertex_type),
-                        vertices.size() * sizeof(vertex_type), vertices.data());
-        my_vertices_count += static_cast<uint32>(vertices.size());
+                        count(vertices) * sizeof(vertex_type), vertices.data());
+        my_vertices_count += static_cast<uint32>(count(vertices));
         check_gl_error(__FUNCTION__);
 
         my_vao.unbind();

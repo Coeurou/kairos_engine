@@ -10,23 +10,26 @@
 #include <graphics/vertex.h>
 #include <math/mathlib.h>
 #include <graphics/opengl/opengl_context.h>
+#include "opengl_renderer.h"
 
 namespace kairos {
 
-static constexpr float no_texture = -1.f;
-static constexpr size_t max_vertices = 8192;
-static constexpr uint32 nb_points_line = 2;
-static constexpr uint32 nb_points_rect = 4;
-static constexpr uint32 nb_indices_rect = 6;
-static constexpr const char* line_data_name = "line";
-static constexpr const char* rectangle_data_name = "rectangle";
-static constexpr uint32 line_data = hash(line_data_name);
-static constexpr uint32 rectangle_data = hash(rectangle_data_name);
+    static constexpr float no_texture = -1.f;
+    static constexpr size_t max_vertices = 8192;
+    static constexpr uint32 nb_points_line = 2;
+    static constexpr uint32 nb_points_rect = 4;
+    static constexpr uint32 nb_indices_rect = 6;
+    static constexpr const char* line_data_name = "line";
+    static constexpr const char* rectangle_data_name = "rectangle";
+    static constexpr uint32 line_data = hash(line_data_name);
+    static constexpr uint32 rectangle_data = hash(rectangle_data_name);
 
-opengl_renderer::opengl_renderer(const sizef& canvas_size) { setup(canvas_size); }
+    opengl_renderer::opengl_renderer(const sizef& canvas_size) : my_canvas(rectf{ {0.f, 0.f}, canvas_size }) {
+        setup(canvas_size);
+    }
 
 opengl_renderer::opengl_renderer(pen pen, brush brush, const sizef& canvas_size)
-    : my_pen(std::move(pen)), my_brush(std::move(brush)) {
+    : my_pen(std::move(pen)), my_brush(std::move(brush)), my_canvas(rectf{ {0.f, 0.f}, canvas_size }) {
     setup(canvas_size);
 }
 
@@ -131,17 +134,17 @@ void opengl_renderer::setup(const sizef& canvas_size) {
     // Define default vertices and indices buffers for line and rectangle
     const array<vertex> vertices(max_vertices);
     array<uint32> indices_line(max_vertices * nb_points_line);
-    expects(indices_line.size() % nb_points_line == 0);
+    expects(count(indices_line) % nb_points_line == 0);
     uint32 vertex_offset = 0;
-    for (size_t i = 0; i < indices_line.size(); i += nb_points_line) {
+    for (size_t i = 0; i < count(indices_line); i += nb_points_line) {
         indices_line[i] = vertex_offset + 0;
         indices_line[i + 1] = vertex_offset + 1;
         vertex_offset += nb_points_line;
     }
     array<uint32> indices_rectangle(max_vertices * nb_indices_rect);
-    expects(indices_rectangle.size() % nb_indices_rect == 0);
+    expects(count(indices_rectangle) % nb_indices_rect == 0);
     vertex_offset = 0;
-    for (size_t i = 0; i < indices_rectangle.size(); i += nb_indices_rect) {
+    for (size_t i = 0; i < count(indices_rectangle); i += nb_indices_rect) {
         indices_rectangle[i] = vertex_offset;
         indices_rectangle[i + 1] = vertex_offset + 1;
         indices_rectangle[i + 2] = vertex_offset + 2;
@@ -230,6 +233,10 @@ const brush& opengl_renderer::get_brush() const { return my_brush; }
 
 void opengl_renderer::set_brush(brush brush) { my_brush = std::move(brush); }
 
+rectf opengl_renderer::canvas() const {
+    return my_canvas;
+}
+
 void draw(opengl_renderer& renderer, const linef& line) {
     const auto& geometry = renderer.get_draw_data(line_data);
     const uint32 vertex_offset = geometry.my_vertices_count;
@@ -240,7 +247,7 @@ void draw(opengl_renderer& renderer, const linef& line) {
 }
 
 void draw(opengl_renderer& renderer, const array<linef>& lines) {
-    const uint32 nb_points = static_cast<uint32>(lines.size()) * nb_points_line;
+    const uint32 nb_points = static_cast<uint32>(count(lines)) * nb_points_line;
     array<vertex> vertices{};
     vertices.reserve(nb_points);
 
@@ -270,7 +277,7 @@ void draw(opengl_renderer& renderer, const rectf& rect) {
 
 void draw(opengl_renderer& renderer, const array<rectf>& rects) {
     array<vertex> vertices{};
-    vertices.reserve(rects.size() * nb_points_rect);
+    vertices.reserve(count(rects) * nb_points_rect);
 
     auto& geometry = renderer.get_draw_data(rectangle_data);
     const uint32 vertex_offset = geometry.my_vertices_count;
@@ -284,7 +291,7 @@ void draw(opengl_renderer& renderer, const array<rectf>& rects) {
     check_gl_error(__FUNCTION__);
 
     renderer.render(material{geometry.my_program.my_gl_id, hash(geometry.my_program.my_name)},
-                    static_cast<uint32>(rects.size()) * nb_indices_rect, vertex_offset);
+                    static_cast<uint32>(count(rects)) * nb_indices_rect, vertex_offset);
 }
 
 void clear(opengl_renderer& renderer, const color& color) {
@@ -301,13 +308,42 @@ void draw(opengl_renderer& renderer, const sprite& sprite) {
         to_vertices(sprite, sprite.my_color, static_cast<float>(sprite.my_texture.index())));
     check_gl_error(__FUNCTION__);
 
+    // handle sprite flip
+    mat4f orthographic_projection = mat4f(1.f);
+    int proj_matrix_location = -1;
+    bool is_sprite_flipped = false;
+    {
+        auto canvas = renderer.canvas();
+        if (sprite.my_flip[0]) {
+            flip(canvas, axis::x);
+            is_sprite_flipped = true;
+        }
+        if (sprite.my_flip[1]) {
+            flip(canvas, axis::y);
+            is_sprite_flipped = true;
+        }
+
+        if (is_sprite_flipped) {
+            proj_matrix_location = glGetUniformLocation(geometry.my_program, "projection_matrix");
+            orthographic_projection = ortho(canvas);
+            glUseProgram(geometry.my_program);
+            glUniformMatrix4fv(proj_matrix_location, 1, GL_FALSE, &orthographic_projection[0][0]);
+        }
+    }
+
     renderer.render(material{geometry.my_program.my_gl_id, hash(geometry.my_program.my_name)},
                     nb_indices_rect, vertex_offset);
+
+    if (is_sprite_flipped) {
+        orthographic_projection = ortho(renderer.canvas());
+        glUseProgram(geometry.my_program);
+        glUniformMatrix4fv(proj_matrix_location, 1, GL_FALSE, &orthographic_projection[0][0]);
+    }
 }
 
 void draw(opengl_renderer& renderer, const array<sprite>& sprites) {
     array<vertex> vertices{};
-    vertices.reserve(sprites.size() * nb_points_rect);
+    vertices.reserve(count(sprites) * nb_points_rect);
 
     auto& geometry = renderer.get_draw_data(rectangle_data);
     const uint32 vertex_offset = geometry.my_vertices_count;
@@ -320,7 +356,7 @@ void draw(opengl_renderer& renderer, const array<sprite>& sprites) {
     check_gl_error(__FUNCTION__);
 
     renderer.render(material{geometry.my_program.my_gl_id, hash(geometry.my_program.my_name)},
-                    static_cast<uint32>(sprites.size()) * nb_indices_rect, vertex_offset);
+                    static_cast<uint32>(count(sprites)) * nb_indices_rect, vertex_offset);
 }
 
 } // namespace kairos

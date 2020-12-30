@@ -4,6 +4,7 @@
 
 #include <nameof.hpp>
 
+#include <core/enum_utils.h>
 #include <core/event_listener.h>
 #include <core/formattable.h>
 #include <core/logger.h>
@@ -39,27 +40,27 @@ void send_message(variant sender, variant recipient, MessageType type,
 
 void subscribe(EventListener& listener, std::initializer_list<MessageType> channels) {
     for (auto channel : channels) {
-        message_dispatcher[static_cast<size_t>(channel)].emplace_back(&listener);
+        message_dispatcher[to_index(channel)].emplace_back(&listener);
         log(LoggerName::MESSAGE, "new listener added to {} channel. channel listeners count: {}\n",
-            NAMEOF_ENUM(channel), message_dispatcher[static_cast<size_t>(channel)].size());
+            NAMEOF_ENUM(channel), message_dispatcher[to_index(channel)].size());
     }
 }
 
 void unsubscribe(EventListener& listener) {
     for (auto subscription : listener.my_subscriptions) {
-        auto& channel_subscriptions = message_dispatcher[static_cast<size_t>(subscription)];
+        auto& channel_subscriptions = message_dispatcher[to_index(subscription)];
         channel_subscriptions.erase(
             std::remove(channel_subscriptions.begin(), channel_subscriptions.end(), &listener));
         log(LoggerName::MESSAGE, "listener removed of {} channel. channel listeners count: {}\n",
             NAMEOF_ENUM(subscription),
-            message_dispatcher[static_cast<size_t>(subscription)].size());
+            message_dispatcher[to_index(subscription)].size());
     }
 }
 
 void dispatch_messages() {
     while (!messages.empty()) {
         auto& message = messages.front();
-        for (auto listener : message_dispatcher[static_cast<size_t>(message.type)]) {
+        for (auto listener : message_dispatcher[to_index(message.type)]) {
             listener->my_pending_messages.emplace(message);
         }
         messages.pop();

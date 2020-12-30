@@ -3,8 +3,8 @@
 #include <cmath>
 #include <type_traits>
 
-#include <core/formattable.h>
 #include <core/result.h>
+#include <math/axis.h>
 
 namespace kairos {
 
@@ -64,50 +64,44 @@ template <class T> void normalize(rect<T>& rect) {
     rect.my_bottom_right = my_top_left + glm::vec<2, T, glm::defaultp>{static_cast<T>(1)};
 }
 
-template <> inline string to_string(rect<int> r) {
+inline string to_string(const rect<int>& r) {
     return fmt::format("Rectangle - x: {}, y: {}, width: {}, height: {}", r.my_top_left.x,
                        r.my_top_left.y, width(r), height(r));
 }
 
-template <> inline string to_string(const rect<int>& r) {
+inline string to_string(const rectf& r) {
     return fmt::format("Rectangle - x: {}, y: {}, width: {}, height: {}", r.my_top_left.x,
                        r.my_top_left.y, width(r), height(r));
 }
 
-template <> inline string to_string(rectf r) {
-    return fmt::format("Rectangle - x: {}, y: {}, width: {}, height: {}", r.my_top_left.x,
-                       r.my_top_left.y, width(r), height(r));
-}
-
-template <> inline string to_string(const rectf& r) {
-    return fmt::format("Rectangle - x: {}, y: {}, width: {}, height: {}", r.my_top_left.x,
-                       r.my_top_left.y, width(r), height(r));
-}
-
-template <> inline rectf from_string(string s) {
+template<class T> inline rect<T> from_string(const string& s) {
     std::regex rgx("[+-]?([0-9]*[.])?[0-9]+");
     std::smatch match;
 
-    if (std::regex_search(s, match, rgx)) {
-        expects(match.size() == 4);
+    std::regex_search(s, match, rgx);
+    expects(match.size() == 4, "[rect::from_string] input string is ill formed, couldn't parse it");
+    if constexpr (std::is_floating_point_v<T>) {
         return rectf{{std::stof(match[0]), std::stof(match[1])},
-                     {std::stof(match[2]), std::stof(match[3])}};
+            {std::stof(match[2]), std::stof(match[3])}};
+    }
+    else if constexpr (std::is_integral_v<T>) {
+        return rect<int>{{std::stoi(match[0]), std::stoi(match[1])},
+            {std::stoi(match[2]), std::stoi(match[3])}};
+    }
+    else {
+        static_assert(false, "Unknown numeric type not compatible with from_string. Please implement it.");
     }
 
-    return rectf{};
+    return rect<T>{};
 }
 
-template <> inline rect<int> from_string(string s) {
-    std::regex rgx("[+-]?([0-9]*[.])?[0-9]+");
-    std::smatch match;
-
-    if (std::regex_search(s, match, rgx)) {
-        expects(match.size() == 4);
-        return rect<int>{{std::stoi(match[0]), std::stoi(match[1])},
-                         {std::stoi(match[2]), std::stoi(match[3])}};
+template<class T> inline void flip(rect<T>& r, axis axis) {
+    if (axis == axis::x) {
+        std::swap(r.my_top_left.x, r.my_bottom_right.x);
     }
-
-    return rect<int>{};
+    else if (axis == axis::y) {
+        std::swap(r.my_top_left.y, r.my_bottom_right.y);
+    }
 }
 
 } // namespace kairos

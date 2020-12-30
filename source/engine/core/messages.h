@@ -2,6 +2,7 @@
 
 #include <queue>
 
+#include <core/enum_utils.h>
 #include <core/message.h>
 #include <core/types.h>
 
@@ -18,7 +19,7 @@ class MessageDispatcher {
   public:
     MessageDispatcher();
     array<EventListener*>& operator[](size_t index);
-    static_array<array<EventListener*>, static_cast<size_t>(MessageType::count)> my_listeners;
+    static_array<array<EventListener*>, to_index(MessageType::count)> my_listeners;
 };
 inline MessageDispatcher message_dispatcher = MessageDispatcher();
 

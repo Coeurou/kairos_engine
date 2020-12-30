@@ -35,7 +35,7 @@ public:
         glBindBuffer(gl_target, my_gl_id);
         using data_container = typename std::remove_reference_t<container>;
         using data_type = typename data_container::value_type;
-        my_size = static_cast<uint32>(data.size());
+        my_size = static_cast<uint32>(count(data));
         glBufferData(gl_target, my_size * sizeof(data_type), data.data(), my_usage);
     }
 

@@ -44,7 +44,7 @@ bool shader::compile() const {
     glGetShaderiv(my_gl_id, GL_COMPILE_STATUS, &success);
     if (success == GL_FALSE) {
         static_array<char, 512> info_log = { 0 };
-        glGetShaderInfoLog(my_gl_id, static_cast<GLsizei>(info_log.size()), nullptr, info_log.data());
+        glGetShaderInfoLog(my_gl_id, static_cast<GLsizei>(count(info_log)), nullptr, info_log.data());
         log_error(LoggerName::GRAPHICS, "Shader compilation failed: {}\n", info_log.data());
     }
 

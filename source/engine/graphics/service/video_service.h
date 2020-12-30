@@ -7,7 +7,7 @@ namespace kairos {
 
 class video_service : public service {
   public:
-    result<uint32> setup();
+    result<uint32> enable();
     result<uint32> cleanup();
 };
 
