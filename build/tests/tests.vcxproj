@@ -154,9 +154,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="tests.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\extern\fmt\fmt.vcxproj">
       <Project>{65511564-5ba9-358e-90dd-b49a160a36ec}</Project>
     </ProjectReference>
@@ -166,6 +163,9 @@
     <ProjectReference Include="..\extern\SDL2-2.0.12\SDL2-static.vcxproj">
       <Project>{b2806645-c85d-3e09-92ec-93bde2b167c6}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\source\tests\tests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
