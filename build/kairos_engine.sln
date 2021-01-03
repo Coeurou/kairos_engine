@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "event", "event\event.vcxite
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "input", "input\input.vcxitems", "{94ED78C5-C0D6-4D95-8546-4D6FE608EB97}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "physics", "physics\physics.vcxitems", "{C6ED7773-6548-4F6B-8267-056F8589EA30}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		renderer\renderer.vcxitems*{3bbe0d16-dedc-4d38-9d0a-198e814a669a}*SharedItemsImports = 9
@@ -43,11 +45,14 @@ Global
 		video\video.vcxitems*{783f4991-1b85-3c68-bb1c-d4394d718ef4}*SharedItemsImports = 4
 		input\input.vcxitems*{94ed78c5-c0d6-4d95-8546-4d6fe608eb97}*SharedItemsImports = 9
 		video\video.vcxitems*{c1249439-fdc9-4827-b8b0-7fd62eaef011}*SharedItemsImports = 9
+		physics\physics.vcxitems*{c6ed7773-6548-4f6b-8267-056f8589ea30}*SharedItemsImports = 9
 		core\core.vcxitems*{d61c58df-1088-395d-b697-634940f4abe9}*SharedItemsImports = 4
 		event\event.vcxitems*{d61c58df-1088-395d-b697-634940f4abe9}*SharedItemsImports = 4
 		input\input.vcxitems*{d61c58df-1088-395d-b697-634940f4abe9}*SharedItemsImports = 4
 		mathlib\mathlib.vcxitems*{d61c58df-1088-395d-b697-634940f4abe9}*SharedItemsImports = 4
+		physics\physics.vcxitems*{d61c58df-1088-395d-b697-634940f4abe9}*SharedItemsImports = 4
 		renderer\renderer.vcxitems*{d61c58df-1088-395d-b697-634940f4abe9}*SharedItemsImports = 4
+		video\video.vcxitems*{d61c58df-1088-395d-b697-634940f4abe9}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

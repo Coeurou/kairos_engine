@@ -13,6 +13,7 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
+template<size_t L, class Arithmetic> using vec = glm::vec<L, Arithmetic>;
 using vec2i = glm::ivec2;
 using vec2f = glm::vec2;
 using vec3f = glm::vec3;
