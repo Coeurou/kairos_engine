@@ -4,6 +4,8 @@
 #include <core/logger.h>
 #include <core/types.h>
 
+namespace kairos {
+
 inline void expects(bool condition, string_view message) noexcept {
     if (!condition) {
         log_error(LoggerName::SYSTEM, "Pre-condition not satisfied: {}", message.data());
@@ -11,9 +13,7 @@ inline void expects(bool condition, string_view message) noexcept {
     }
 }
 
-inline void expects(bool condition) noexcept {
-    expects(condition, "terminate program");
-}
+inline void expects(bool condition) noexcept { expects(condition, "terminate program"); }
 
 inline void ensures(bool condition, string_view message) noexcept {
     if (!condition) {
@@ -22,6 +22,6 @@ inline void ensures(bool condition, string_view message) noexcept {
     }
 }
 
-inline void ensures(bool condition) noexcept {
-    ensures(condition, "terminate program");
-}
+inline void ensures(bool condition) noexcept { ensures(condition, "terminate program"); }
+
+} // namespace kairos

@@ -54,6 +54,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\system.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\security.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\enum_utils.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\format.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\animation.cpp" />

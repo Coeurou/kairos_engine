@@ -1,5 +1,7 @@
 #pragma once
 
+#include <functional>
+
 #include <core/result.h>
 #include <core/types.h>
 

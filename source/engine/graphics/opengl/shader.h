@@ -1,16 +1,20 @@
 #pragma once
 
+#include <glad/glad.h>
+
 #include <core/types.h>
 
+namespace kairos {
+
 struct shader {
-    uint32 my_gl_id{ 0 };
-    GLenum my_shader_type{ GL_NONE };
-    string my_shader_name{ "" };
-    string my_shader_source{ "" };
+    uint32 my_gl_id{0};
+    GLenum my_shader_type{GL_NONE};
+    string my_shader_name{""};
+    string my_shader_source{""};
 
     shader() = default;
-    shader(const shader & other) = delete;
-    shader& operator=(const shader & other) = delete;
+    shader(const shader& other) = delete;
+    shader& operator=(const shader& other) = delete;
 
     shader(shader&& other) noexcept;
     shader& operator=(shader&& other) noexcept;
@@ -26,3 +30,5 @@ struct shader {
 
 inline array<shader> our_vertex_shaders;
 inline array<shader> our_fragment_shaders;
+
+} // namespace kairos

@@ -6,9 +6,11 @@
 
 #include <core/contract.h>
 
-buffer_object::buffer_object(buffer_object&& other) noexcept :
-    my_gl_id(std::move(other.my_gl_id)), my_usage(std::move(other.my_usage)),
-    my_target(std::move(other.my_target)), my_size(std::move(other.my_size)) {
+namespace kairos {
+
+buffer_object::buffer_object(buffer_object&& other) noexcept
+    : my_gl_id(std::move(other.my_gl_id)), my_usage(std::move(other.my_usage)),
+      my_target(std::move(other.my_target)), my_size(std::move(other.my_size)) {
     other.my_gl_id = 0;
     other.my_target = buffer_target::count;
     other.my_usage = GL_STATIC_DRAW;
@@ -28,13 +30,9 @@ buffer_object& buffer_object::operator=(buffer_object&& other) noexcept {
     return *this;
 }
 
-void buffer_object::bind() const {
-    glBindBuffer(as_gl_target(my_target), my_gl_id);
-}
+void buffer_object::bind() const { glBindBuffer(as_gl_target(my_target), my_gl_id); }
 
-void buffer_object::unbind() const {
-    glBindBuffer(as_gl_target(my_target), 0);
-}
+void buffer_object::unbind() const { glBindBuffer(as_gl_target(my_target), 0); }
 
 void buffer_object::cleanup() {
     if (my_gl_id != 0) {
@@ -63,3 +61,5 @@ GLenum buffer_object::as_gl_target(buffer_target target) {
 
     return gl_target;
 }
+
+} // namespace kairos

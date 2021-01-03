@@ -125,7 +125,7 @@ void opengl_renderer::setup(const sizef& canvas_size) {
         glUniform1f(glGetUniformLocation(program, "border_width"), 0.f);
         glUniform4f(glGetUniformLocation(program, "border_color"), 0.f, 0.f, 0.f, 0.f);
         for (auto i = 0; i < texture::our_limit; i++) {
-            glUniform1i(glGetUniformLocation(program, fmt::format("textures[{}]", i).c_str()), i);
+            glUniform1i(glGetUniformLocation(program, format("textures[{}]", i).c_str()), i);
         }
         glUseProgram(0);
         check_gl_error(__FUNCTION__);

@@ -1,22 +1,21 @@
 #pragma once
 
+#include <glad/glad.h>
 
 #include <core/logger.h>
 #include <core/types.h>
 #include <graphics/vertex.h>
 
-enum class buffer_target {
-    geometry,
-    indices,
-    count
-};
+namespace kairos {
+
+enum class buffer_target { geometry, indices, count };
 
 class buffer_object {
-public:
-    uint32 my_gl_id{ 0 };
-    GLenum my_usage{ GL_STATIC_DRAW };
-    buffer_target my_target{ buffer_target::count };
-    uint32 my_size{ 0 };
+  public:
+    uint32 my_gl_id{0};
+    GLenum my_usage{GL_STATIC_DRAW};
+    buffer_target my_target{buffer_target::count};
+    uint32 my_size{0};
 
     buffer_object() = default;
 
@@ -26,8 +25,7 @@ public:
     buffer_object(buffer_object&& other) noexcept;
     buffer_object& operator=(buffer_object&& other) noexcept;
 
-    template<typename container>
-    void setup(const container& data) {
+    template <typename container> void setup(const container& data) {
         glGenBuffers(1, &my_gl_id);
 
         GLenum gl_target = as_gl_target(my_target);
@@ -45,3 +43,5 @@ public:
 
     static GLenum as_gl_target(buffer_target target);
 };
+
+} // namespace kairos

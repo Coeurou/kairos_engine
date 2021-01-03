@@ -4,6 +4,8 @@
 #include <fmt/chrono.h>
 #include <nameof.hpp>
 
+namespace kairos {
+
 std::string get_formatted_date() {
     using namespace std::chrono;
     system_clock::time_point now = system_clock::now();
@@ -17,10 +19,12 @@ std::string get_formatted_date() {
 #else
     localtime_s(&tm_info, &timer);
 #endif
-    return fmt::format("{:%Y-%m-%d %H:%M:%S}.{:#03d}", tm_info,
-                       static_cast<unsigned>(fraction / milliseconds(1)));
+    return format("{:%Y-%m-%d %H:%M:%S}.{:#03d}", tm_info,
+                  static_cast<unsigned>(fraction / milliseconds(1)));
 }
 
 std::string format_log(LoggerName logger) {
-    return fmt::format("{} | {:<10} | INFO  | ", get_formatted_date(), NAMEOF_ENUM(logger));
+    return format("{} | {:<10} | INFO  | ", get_formatted_date(), NAMEOF_ENUM(logger));
 }
+
+} // namespace kairos

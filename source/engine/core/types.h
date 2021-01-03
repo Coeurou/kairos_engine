@@ -9,8 +9,6 @@
 #include <variant>
 #include <vector>
 
-#include <fmt/format.h>
-#include <glad/glad.h>
 #include <glm/glm.hpp>
 
 template<size_t L, class Arithmetic> using vec = glm::vec<L, Arithmetic>;

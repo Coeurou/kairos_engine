@@ -3,7 +3,9 @@
 #include <cmath>
 #include <type_traits>
 
+#include <core/format.h>
 #include <core/result.h>
+#include <core/types.h>
 #include <math/axis.h>
 
 namespace kairos {
@@ -11,16 +13,19 @@ namespace kairos {
 /** Need to comment class to understand the orientation of the rect is top > bottom right > left
  * ???*/
 template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>> struct rect {
-    glm::vec<2, T, glm::defaultp> my_top_left{T{}};
-    glm::vec<2, T, glm::defaultp> my_bottom_right{T{}};
+    using point = vec<2, T>;
+    using value_type = T;
 
-    inline T left() const { return my_top_left.x; }
+    point my_top_left{value_type{}};
+    point my_bottom_right{value_type{}};
 
-    inline T right() const { return my_bottom_right.x; }
+    inline value_type left() const { return my_top_left.x; }
 
-    inline T top() const { return my_top_left.y; }
+    inline value_type right() const { return my_bottom_right.x; }
 
-    inline T bottom() const { return my_bottom_right.y; }
+    inline value_type top() const { return my_top_left.y; }
+
+    inline value_type bottom() const { return my_bottom_right.y; }
 };
 
 using rectf = rect<float>;
@@ -54,23 +59,23 @@ template <class T> result<rect<T>> intersection(const rect<T>& lhs, const rect<T
     const T right = std::min(lhs.right(), rhs.right());
 
     if (top > bottom && right > left) { // sure about top > bottom ?
-        return result<rect<T>>{{top, left} {bottom, right}};
+        return result<rect<T>>{rect<T>::point{top, left} rect<T>::point{bottom, right}};
     } else {
         return result<rect<T>>(error_type::runtime_error);
     }
 }
 
 template <class T> void normalize(rect<T>& rect) {
-    rect.my_bottom_right = my_top_left + glm::vec<2, T, glm::defaultp>{static_cast<T>(1)};
+    rect.my_bottom_right = my_top_left + rect<T>::point{static_cast<T>(1)};
 }
 
 inline string to_string(const rect<int>& r) {
-    return fmt::format("Rectangle - x: {}, y: {}, width: {}, height: {}", r.my_top_left.x,
+    return format("Rectangle - x: {}, y: {}, width: {}, height: {}", r.my_top_left.x,
                        r.my_top_left.y, width(r), height(r));
 }
 
 inline string to_string(const rectf& r) {
-    return fmt::format("Rectangle - x: {}, y: {}, width: {}, height: {}", r.my_top_left.x,
+    return format("Rectangle - x: {}, y: {}, width: {}, height: {}", r.my_top_left.x,
                        r.my_top_left.y, width(r), height(r));
 }
 

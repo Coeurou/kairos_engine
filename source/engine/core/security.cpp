@@ -4,6 +4,8 @@
 #include <filesystem>
 #include <fstream>
 
+#include <core/format.h>
+
 namespace kairos {
 
 static const std::filesystem::path cmd_output_filename{"processes.txt"};
@@ -26,10 +28,10 @@ bool is_unique_instance(string_view program_name) {
         }
     };
 
-    if (std::system(fmt::format("tasklist > {}", cmd_output_filename.string()).c_str()) == 0) {
+    if (std::system(format("tasklist > {}", cmd_output_filename.string()).c_str()) == 0) {
         executable_name = executable_name.substr(executable_name.find_last_of('\\')+1);
         return is_running_multiple_instances();
-    } else if (std::system(fmt::format("pgrep -l {} > {}", program_name.data(),
+    } else if (std::system(format("pgrep -l {} > {}", program_name.data(),
                                        cmd_output_filename.string())
                                .c_str()) == 0) {
         return is_running_multiple_instances();

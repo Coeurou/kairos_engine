@@ -1,6 +1,9 @@
 #pragma once
 
+#include <glad/glad.h>
+
 #include <graphics/opengl/program.h>
+
 #include <core/contract.h>
 #include <core/logger.h>
 

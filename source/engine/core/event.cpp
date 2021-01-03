@@ -1,5 +1,7 @@
 #include <core/event.h>
 
+#include <algorithm>
+
 namespace kairos {
 
 /** Member functions */

@@ -2,6 +2,7 @@
 
 #include <graphics/texture.h>
 
+#include <glad/glad.h>
 #include <nameof.hpp>
 #define STB_IMAGE_IMPLEMENTATION
 #include <graphics/stb_image.h>

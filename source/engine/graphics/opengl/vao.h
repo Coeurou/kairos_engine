@@ -3,10 +3,12 @@
 #include <core/types.h>
 #include <graphics/opengl/buffer_object.h>
 
+namespace kairos {
+
 class vao {
-public:
-    uint32 my_gl_id{ 0 };
-    string my_name{ "" };
+  public:
+    uint32 my_gl_id{0};
+    string my_name{""};
 
     vao();
 
@@ -34,3 +36,5 @@ inline bool operator==(const vao& lhs, const vao& rhs) {
 }
 
 inline array<vao> our_vaos;
+
+} // namespace kairos

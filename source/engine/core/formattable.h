@@ -14,35 +14,35 @@ template <> inline string to_string(string s) { return s; }
 template <> inline string to_string(string_view s) { return s.data(); }
 
 template <> inline string to_string(vec2f v) {
-    return fmt::format("vector 2D - x: {}, y: {}", v.x, v.y);
+    return format("vector 2D - x: {}, y: {}", v.x, v.y);
 }
 
 template <> inline string to_string(linef l) {
-    return fmt::format("line - first: {}, second: {}", to_string(l.first), to_string(l.second));
+    return format("line - first: {}, second: {}", to_string(l.first), to_string(l.second));
 }
 
 template <> inline string to_string(const linef& l) {
-    return fmt::format("line - first: {}, second: {}", to_string(l.first), to_string(l.second));
+    return format("line - first: {}, second: {}", to_string(l.first), to_string(l.second));
 }
 
 template <> inline string to_string(vec2i v) {
-    return fmt::format("vector 2D - x: {}, y: {}", v.x, v.y);
+    return format("vector 2D - x: {}, y: {}", v.x, v.y);
 }
 
 template <> inline string to_string(vec3f v) {
-    return fmt::format("vector 3D - x: {}, y: {}, z: {}", v.x, v.y, v.z);
+    return format("vector 3D - x: {}, y: {}, z: {}", v.x, v.y, v.z);
 }
 
 template <> inline string to_string(const vec3f& v) {
-    return fmt::format("vector 3D - x: {}, y: {}, z: {}", v.x, v.y, v.z);
+    return format("vector 3D - x: {}, y: {}, z: {}", v.x, v.y, v.z);
 }
 
 template <> inline string to_string(vec4f v) {
-    return fmt::format("vector 4D - x: {}, y: {}, z: {}, w: {}", v.x, v.y, v.z, v.w);
+    return format("vector 4D - x: {}, y: {}, z: {}, w: {}", v.x, v.y, v.z, v.w);
 }
 
 template <> inline string to_string(const vec4f& v) {
-    return fmt::format("vector 4D - x: {}, y: {}, z: {}, w: {}", v.x, v.y, v.z, v.w);
+    return format("vector 4D - x: {}, y: {}, z: {}, w: {}", v.x, v.y, v.z, v.w);
 }
 
 template <> inline string to_string(const variant* v) {

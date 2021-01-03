@@ -126,7 +126,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\x64\Debug\kairos_engine.lib;..\extern\fmt\Debug\fmtd.lib;..\extern\glad\Debug\glad.lib;..\extern\SDL2-2.0.12\Debug\SDL2d.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;kernel32.lib;winspool.lib;comdlg32.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(ProjectDir)..\x64\Debug\kairos_engine.lib;$(ProjectDir)..\extern\fmt\Debug\fmtd.lib;$(ProjectDir)..\extern\glad\Debug\glad.lib;$(ProjectDir)..\extern\SDL2-2.0.12\Debug\SDL2d.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;kernel32.lib;winspool.lib;comdlg32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
