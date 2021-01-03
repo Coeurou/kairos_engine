@@ -24,12 +24,12 @@ void imgui_backend::update() { my_self->update(); }
 
 void imgui_backend::process_event(const system_event& event) { my_self->process_event(event); }
 
-void show(imgui_backend& imgui) { imgui.my_self->show(); }
+void show(imgui_backend& imgui) { imgui.my_self->show_imgui(); }
 
-void hide(imgui_backend& imgui) { imgui.my_self->hide(); }
+void hide(imgui_backend& imgui) { imgui.my_self->hide_imgui(); }
 
-bool is_shown(const imgui_backend& imgui) { return imgui.my_self->is_shown(); }
+bool is_shown(const imgui_backend& imgui) { return imgui.my_self->is_imgui_shown(); }
 
-bool is_hidden(const imgui_backend& imgui) { return imgui.my_self->is_hidden(); }
+bool is_hidden(const imgui_backend& imgui) { return imgui.my_self->is_imgui_hidden(); }
 
 } // namespace kairos

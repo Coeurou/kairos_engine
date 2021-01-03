@@ -44,10 +44,10 @@ class imgui_backend {
         virtual void cleanup() = 0;
         virtual void update() = 0;
         virtual void process_event(const system_event& event) = 0;
-        virtual void show() = 0;
-        virtual bool is_shown() const = 0;
-        virtual void hide() = 0;
-        virtual bool is_hidden() const = 0;
+        virtual void show_imgui() = 0;
+        virtual bool is_imgui_shown() const = 0;
+        virtual void hide_imgui() = 0;
+        virtual bool is_imgui_hidden() const = 0;
     };
 
     template <class T> struct imgui_backend_impl : public imgui_backend_t {
@@ -60,10 +60,10 @@ class imgui_backend {
         void cleanup() override { concrete_backend.cleanup(); }
         void update() override { concrete_backend.update(); }
         void process_event(const system_event& event) { concrete_backend.process_event(event); }
-        void show() override { ::kairos::show(concrete_backend); }
-        bool is_shown() const override { return kairos::is_shown(concrete_backend); }
-        void hide() override { ::kairos::hide(concrete_backend); }
-        bool is_hidden() const override { return kairos::is_hidden(concrete_backend); }
+        void show_imgui() override { show(concrete_backend); }
+        bool is_imgui_shown() const override { return is_shown(concrete_backend); }
+        void hide_imgui() override { hide(concrete_backend); }
+        bool is_imgui_hidden() const override { return is_hidden(concrete_backend); }
 
         T concrete_backend;
     };

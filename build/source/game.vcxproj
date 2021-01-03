@@ -91,14 +91,17 @@
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\gameplay;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\gameplay;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -112,6 +115,10 @@
       <WarningLevel>Level4</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;FMT_LOCALE;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;FMT_LOCALE;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -136,7 +143,7 @@
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -287,6 +294,9 @@
     <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\source\engine\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\engine\kairos_engine.vcxproj">
+      <Project>{783f4991-1b85-3c68-bb1c-d4394d718ef4}</Project>
+    </ProjectReference>
     <ProjectReference Include="C:\Users\guill\Source\Repos\kairos_engine\build\extern\SDL2-2.0.12\SDL2-static.vcxproj">
       <Project>{B2806645-C85D-3E09-92EC-93BDE2B167C6}</Project>
       <Name>SDL2-static</Name>
