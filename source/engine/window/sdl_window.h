@@ -1,8 +1,7 @@
 #pragma once
 
 #include <SDL.h>
-
-#include <window/window.h>
+#include <window/window_params.h>
 
 namespace kairos {
 

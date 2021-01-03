@@ -4,6 +4,7 @@
     <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
     <ItemsProjectGuid>{94ed78c5-c0d6-4d95-8546-4d6fe608eb97}</ItemsProjectGuid>
+    <ItemsProjectName>system</ItemsProjectName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -14,6 +15,8 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\event.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\event\sdl_event.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\controller.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\input.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\keyboard.h" />
@@ -23,6 +26,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\service\input_service.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\event.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\event\sdl_event.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\controller.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\keyboard.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\service\detail\input_service_helpers.cpp" />

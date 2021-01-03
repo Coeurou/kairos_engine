@@ -56,8 +56,8 @@ class painter {
       struct painter_t {
           /** Call destructor of derived class. */
           virtual void destruct() = 0;
-          virtual void clear(const color& color) = 0;
-          virtual void draw(drawable shape_type, const void* shape, size_t count) = 0;
+          virtual void clear_canvas(const color& color) = 0;
+          virtual void render(drawable shape_type, const void* shape, size_t count) = 0;
           virtual ~painter_t() {}
 
           int ref_count = 0;
@@ -78,36 +78,36 @@ class painter {
           /** Call destructor. */
           void destruct() override { this->~painter_impl(); }
 
-          void clear(const color& color) override {
-              kairos::clear(renderer, color);
+          void clear_canvas(const color& color) override {
+              clear(renderer, color);
           }
 
-          void draw(drawable shape_type, const void* shape, size_t count) override {
+          void render(drawable shape_type, const void* shape, size_t count) override {
             switch (shape_type) {
             case drawable::line: {
                 if (count > 1) {
-                    kairos::draw(renderer, *reinterpret_cast<const array<linef>*>(shape));
+                    draw(renderer, *reinterpret_cast<const array<linef>*>(shape));
                 }
                 else {
-                    kairos::draw(renderer, *reinterpret_cast<const linef*>(shape));
+                    draw(renderer, *reinterpret_cast<const linef*>(shape));
                 }
                 break;
             }
             case drawable::rectangle: {
                 if (count > 1) {
-                    kairos::draw(renderer, *reinterpret_cast<const array<rectf>*>(shape));
+                    draw(renderer, *reinterpret_cast<const array<rectf>*>(shape));
                 }
                 else {
-                    kairos::draw(renderer, *reinterpret_cast<const rectf*>(shape));
+                    draw(renderer, *reinterpret_cast<const rectf*>(shape));
                 }
                 break;
             }
             case drawable::sprite: {
                 if (count > 1) {
-                    kairos::draw(renderer, *reinterpret_cast<const array<sprite>*>(shape));
+                    draw(renderer, *reinterpret_cast<const array<sprite>*>(shape));
                 }
                 else {
-                    kairos::draw(renderer, *reinterpret_cast<const sprite*>(shape));
+                    draw(renderer, *reinterpret_cast<const sprite*>(shape));
                 }
                 break;
             }

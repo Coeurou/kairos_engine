@@ -17,10 +17,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, INT) { return main(__argc, __arg
 #include <core/animation.h>
 #include <core/contract.h>
 #include <core/event.h>
-#include <core/opengl_renderer.h>
 #include <core/security.h>
 #include <core/time.h>
 #include <event/sdl_event.h>
+#include <graphics/opengl/opengl_renderer.h>
 #include <graphics/opengl/SDL/sdl_opengl_context.h>
 #include <graphics/service/video_service.h>
 #include <graphics/texture.h>

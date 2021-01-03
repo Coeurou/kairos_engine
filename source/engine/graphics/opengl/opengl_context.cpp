@@ -46,22 +46,22 @@ const opengl_context::opengl_context_t* opengl_context::get() const {
 
 /** Non-member functions */
 
-bool setup(opengl_context& gl_context, uint32 window_id) { return gl_context.get()->setup(window_id); }
+bool setup(opengl_context& gl_context, uint32 window_id) { return gl_context.get()->setup_context(window_id); }
 
-void swap_buffers(opengl_context& gl_context) { gl_context.get()->swap_buffers(); }
+void swap_buffers(opengl_context& gl_context) { gl_context.get()->swap_gl_buffers(); }
 
-int version(const opengl_context& gl_context) { return gl_context.get()->version(); }
+int version(const opengl_context& gl_context) { return gl_context.get()->gl_version(); }
 
 int get_attribute(const opengl_context& gl_context, gl_attribute attr) {
-    return gl_context.get()->get_attribute(attr);
+    return gl_context.get()->get_gl_attribute(attr);
 }
 
 void set_attribute(opengl_context& gl_context, gl_attribute attr, int value) {
-    gl_context.get()->set_attribute(attr, value);
+    gl_context.get()->set_gl_attribute(attr, value);
 }
 
 void destroy(opengl_context& gl_context) {
-    gl_context.get()->destroy();
+    gl_context.get()->destroy_context();
 }
 
 /** Utils */

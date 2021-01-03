@@ -152,7 +152,7 @@ class system_event_queue {
         virtual void move(void* memory) noexcept = 0;
         /** Call destructor of derived class. */
         virtual void destruct() = 0;
-        virtual void peek_events(array<system_event>& output) = 0;
+        virtual void peek_system_events(array<system_event>& output) = 0;
         virtual ~event_queue_t() {}
     };
 
@@ -175,8 +175,8 @@ class system_event_queue {
         }
         /** Call destructor. */
         void destruct() override { this->~event_queue_impl(); }
-        void peek_events(array<system_event>& output) override {
-            return ::kairos::peek_events(event_queue, output);
+        void peek_system_events(array<system_event>& output) override {
+            return peek_events(event_queue, output);
         }
 
         /** Type instance where the logic of an event queue is implemented */

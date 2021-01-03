@@ -1,8 +1,10 @@
 #pragma once
 
 #include <cmath>
+#include <regex>
 #include <type_traits>
 
+#include <core/contract.h>
 #include <core/format.h>
 #include <core/result.h>
 #include <core/types.h>
@@ -59,14 +61,14 @@ template <class T> result<rect<T>> intersection(const rect<T>& lhs, const rect<T
     const T right = std::min(lhs.right(), rhs.right());
 
     if (top > bottom && right > left) { // sure about top > bottom ?
-        return result<rect<T>>{rect<T>::point{top, left} rect<T>::point{bottom, right}};
+        return result<rect<T>>{rect<T>::point(top, left), rect<T>::point(bottom, right)};
     } else {
         return result<rect<T>>(error_type::runtime_error);
     }
 }
 
-template <class T> void normalize(rect<T>& rect) {
-    rect.my_bottom_right = my_top_left + rect<T>::point{static_cast<T>(1)};
+template <class T> void normalize(rect<T>& r) {
+    r.my_bottom_right = r.my_top_left + rect<T>::point(static_cast<T>(1));
 }
 
 inline string to_string(const rect<int>& r) {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <core/formattable.h>
+#include <core/types.h>
 
 namespace kairos {
 
@@ -75,14 +75,14 @@ class window {
         virtual void* clone() const = 0;
         /** Call destructor of derived class. */
         virtual void destruct() = 0;
-        virtual uint32 id() const = 0;
-        virtual vec2i size() const = 0;
-        virtual void resize(const vec2i& size) = 0;
-        virtual void show() = 0;
-        virtual bool is_shown() const = 0;
-        virtual void hide() = 0;
-        virtual bool is_hidden() const = 0;
-        virtual void destroy() = 0;
+        virtual uint32 window_id() const = 0;
+        virtual vec2i window_size() const = 0;
+        virtual void resize_window(const vec2i& size) = 0;
+        virtual void show_window() = 0;
+        virtual bool is_window_shown() const = 0;
+        virtual void hide_window() = 0;
+        virtual bool is_window_hidden() const = 0;
+        virtual void destroy_window() = 0;
         virtual ~window_t() {}
 
         int ref_count = 0;
@@ -110,14 +110,14 @@ class window {
         void* clone() const override {
             return new window_impl(concrete_window);
         }
-        void destroy() override { ::kairos::destroy(concrete_window); }
-        uint32 id() const override { return kairos::id(concrete_window); }
-        vec2i size() const override { return kairos::size(concrete_window); }
-        void resize(const vec2i& size) override { kairos::resize(concrete_window, size); }
-        void show() override { ::kairos::show(concrete_window); }
-        bool is_shown() const override { return kairos::is_shown(concrete_window); }
-        void hide() override { ::kairos::hide(concrete_window); }
-        bool is_hidden() const override { return kairos::is_hidden(concrete_window); }
+        void destroy_window() override { destroy(concrete_window); }
+        uint32 window_id() const override { return id(concrete_window); }
+        vec2i window_size() const override { return size(concrete_window); }
+        void resize_window(const vec2i& size) override { resize(concrete_window, size); }
+        void show_window() override { show(concrete_window); }
+        bool is_window_shown() const override { return is_shown(concrete_window); }
+        void hide_window() override { hide(concrete_window); }
+        bool is_window_hidden() const override { return is_hidden(concrete_window); }
 
         /** Type instance where the logic of a window is implemented */
         T concrete_window;
@@ -168,18 +168,5 @@ bool is_hidden(const window& w);
 
 /** Destroy a window. */
 void destroy(window& w);
-
-struct window_params {
-    static constexpr float our_undefined_pos = -1.f;
-    string my_title{""};
-    sizef my_size{0.f, 0.f};
-    pointf my_pos{our_undefined_pos, our_undefined_pos};
-    uint32 my_flags = 0;
-};
-
-inline string to_string(const window_params& params) {
-    return fmt::format("size: {}, pos: {}, title: {}", to_string(params.my_size),
-                       to_string(params.my_pos), params.my_title);
-}
 
 } // namespace kairos

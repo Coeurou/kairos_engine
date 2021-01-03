@@ -4,6 +4,9 @@
 #include <window/window.h>
 
 namespace kairos {
+
+struct window_params;
+
 namespace detail {
 
 bool init_video_system();

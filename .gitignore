@@ -46,3 +46,5 @@
 /build/source/processes.txt
 /build/x64/Debug
 /build/CMakeCache.txt
+/build/tests/x64/Debug/tests.tlog
+/build/tests/x64/Debug

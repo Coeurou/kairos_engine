@@ -20,5 +20,6 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\window\sdl_window.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\window\window.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\window\window_params.h" />
   </ItemGroup>
 </Project>

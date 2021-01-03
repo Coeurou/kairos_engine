@@ -79,12 +79,12 @@ class opengl_context {
         virtual void move(void* memory) noexcept = 0;
         /** Call destructor of derived class. */
         virtual void destruct() = 0;
-        virtual bool setup(uint32 window_id) = 0;
-        virtual void swap_buffers() = 0;
-        virtual int version() const = 0;
-        virtual int get_attribute(gl_attribute attr) const = 0;
-        virtual void set_attribute(gl_attribute attr, int value) = 0;
-        virtual void destroy() = 0;
+        virtual bool setup_context(uint32 window_id) = 0;
+        virtual void swap_gl_buffers() = 0;
+        virtual int gl_version() const = 0;
+        virtual int get_gl_attribute(gl_attribute attr) const = 0;
+        virtual void set_gl_attribute(gl_attribute attr, int value) = 0;
+        virtual void destroy_context() = 0;
     };
 
     /** opengl_context_impl implements the context interface, by forwarding calls to type-erased
@@ -106,18 +106,16 @@ class opengl_context {
         }
         /** Call destructor. */
         void destruct() override { this->~opengl_context_impl(); }
-        bool setup(uint32 window_id) override { return ::kairos::setup(gl_context, window_id); }
-        void swap_buffers() override { ::kairos::swap_buffers(gl_context); }
-        int version() const override { return ::kairos::version(gl_context); }
-        int get_attribute(gl_attribute attr) const {
-            return ::kairos::get_attribute(gl_context, attr);
+        bool setup_context(uint32 window_id) override { return setup(gl_context, window_id); }
+        void swap_gl_buffers() override { swap_buffers(gl_context); }
+        int gl_version() const override { return version(gl_context); }
+        int get_gl_attribute(gl_attribute attr) const { return get_attribute(gl_context, attr); }
+        void set_gl_attribute(gl_attribute attr, int value) override {
+            set_attribute(gl_context, attr, value);
         }
-        void set_attribute(gl_attribute attr, int value) override {
-            ::kairos::set_attribute(gl_context, attr, value);
-        }
-        void destroy() override { ::kairos::destroy(gl_context); }
+        void destroy_context() override { destroy(gl_context); }
 
-        /** Type instance where the logic of a window is implemented */
+        /** Type instance where the logic of an opengl context is implemented */
         T gl_context;
     };
 
@@ -138,21 +136,24 @@ int get_attribute(const opengl_context& gl_context, gl_attribute attr);
 void set_attribute(opengl_context& gl_context, gl_attribute attr, int value);
 void destroy(opengl_context& gl_context);
 
-
 /** Utils */
 
 namespace {
-    static const dictionary<int, string> gl_error_to_string = {
-        {GL_NO_ERROR, "No error."},
-        {GL_INVALID_ENUM, "an enumeration parameter is not a legal enumeration for that function."},
-        {GL_INVALID_VALUE, "a value parameter is not a legal value."},
-        {GL_INVALID_OPERATION, "the set of state for a command is not legal for the parameters given to that command."},
-        {GL_OUT_OF_MEMORY, "an operation had allocated memory, and the memory cannot be allocated. The results of OpenGL functions that return this error are undefined."},
-        {GL_INVALID_FRAMEBUFFER_OPERATION, "attempt to read from or write/render to a framebuffer that is not complete."},
-        /*{GL_STACK_OVERFLOW, "a stack pushing operation cannot be done because it would overflow the limit of that stack's size."},
-        {GL_STACK_UNDERFLOW, "a stack popping operation cannot be done because the stack is already at its lowest point."},
-        {GL_CONTEXT_LOST, "the OpenGL context has been lost, due to a graphics card reset."},*/
-    };
+static const dictionary<int, string> gl_error_to_string = {
+    {GL_NO_ERROR, "No error."},
+    {GL_INVALID_ENUM, "an enumeration parameter is not a legal enumeration for that function."},
+    {GL_INVALID_VALUE, "a value parameter is not a legal value."},
+    {GL_INVALID_OPERATION,
+     "the set of state for a command is not legal for the parameters given to that command."},
+    {GL_OUT_OF_MEMORY, "an operation had allocated memory, and the memory cannot be allocated. The "
+                       "results of OpenGL functions that return this error are undefined."},
+    {GL_INVALID_FRAMEBUFFER_OPERATION,
+     "attempt to read from or write/render to a framebuffer that is not complete."},
+    /*{GL_STACK_OVERFLOW, "a stack pushing operation cannot be done because it would overflow the
+    limit of that stack's size."}, {GL_STACK_UNDERFLOW, "a stack popping operation cannot be done
+    because the stack is already at its lowest point."}, {GL_CONTEXT_LOST, "the OpenGL context has
+    been lost, due to a graphics card reset."},*/
+};
 }
 
 void check_gl_error(const char* caller);

@@ -1,34 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\controller.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\input.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\keyboard.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\mouse.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\sdl_input_backend.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\service\input_service.h">
-      <Filter>service</Filter>
+      <Filter>input\service</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\service\detail\input_service_helpers.h">
-      <Filter>service\detail</Filter>
+      <Filter>input\service\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\event.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\event\sdl_event.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\controller.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\input.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\keyboard.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\mouse.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\sdl_input_backend.h">
+      <Filter>input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="service">
+    <Filter Include="input">
+      <UniqueIdentifier>{bd619486-d89f-4f60-9ed3-1b1bd2859f45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="event">
+      <UniqueIdentifier>{e537facc-9434-4ecf-b654-b33c26631b57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="input\service">
       <UniqueIdentifier>{c83cbe44-4892-4479-92df-7ec37e544142}</UniqueIdentifier>
     </Filter>
-    <Filter Include="service\detail">
+    <Filter Include="input\service\detail">
       <UniqueIdentifier>{3c374c26-951c-454c-8517-19acc30c9eff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\service\input_service.cpp">
-      <Filter>service</Filter>
+      <Filter>input\service</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\service\detail\input_service_helpers.cpp">
-      <Filter>service\detail</Filter>
+      <Filter>input\service\detail</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\controller.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\keyboard.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\event.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\event\sdl_event.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\controller.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\input\keyboard.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

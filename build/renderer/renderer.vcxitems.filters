@@ -50,6 +50,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\SDL\sdl_opengl_context.h">
       <Filter>opengl\SDL</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\opengl_renderer.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\opengl_draw_data.cpp">
@@ -81,6 +84,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\SDL\sdl_opengl_context.cpp">
       <Filter>opengl\SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\opengl_renderer.cpp">
+      <Filter>opengl</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

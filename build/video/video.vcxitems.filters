@@ -20,5 +20,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\window\sdl_window.h">
       <Filter>window</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\window\window_params.h">
+      <Filter>window</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -47,7 +47,7 @@ const system_event_queue::event_queue_t* system_event_queue::get() const {
 /** Non-member functions */
 
 void peek_events(system_event_queue& eq, array<system_event>& output) {
-    eq.get()->peek_events(output);
+    eq.get()->peek_system_events(output);
 }
 
 } // namespace kairos

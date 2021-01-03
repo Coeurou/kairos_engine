@@ -3,6 +3,7 @@
 #include <core/types.h>
 #include <core/contract.h>
 #include <graphics/opengl/buffer_object.h>
+#include <graphics/opengl/opengl_context.h>
 #include <graphics/opengl/program.h>
 #include <graphics/opengl/vao.h>
 

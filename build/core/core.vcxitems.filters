@@ -24,7 +24,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\contract.h">
       <Filter>library</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\animation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\easing_curve.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\easing_lib.h" />
@@ -33,7 +32,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\globals.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\logger.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\messages.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\opengl_renderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\types.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\result.h">
       <Filter>library</Filter>
@@ -57,12 +55,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\format.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\animation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\easing_lib.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\event_listener.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\logger.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\messages.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\opengl_renderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\security.cpp" />
   </ItemGroup>
 </Project>

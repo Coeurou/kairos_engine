@@ -1,7 +1,5 @@
-#include "window.h"
-#pragma once
-
 #include <window/window.h>
+#include <algorithm>
 
 namespace kairos {
 
@@ -86,27 +84,27 @@ void window::detach() {
 /** Non-member functions */
 
 void show(window& w) { /*w.detach();*/
-    w.get()->show();
+    w.get()->show_window();
 }
 
 void hide(window& w) { /*w.detach();*/
-    w.get()->hide();
+    w.get()->hide_window();
 }
 
-uint32 id(const window& w) { return w.get()->id(); }
+uint32 id(const window& w) { return w.get()->window_id(); }
 
-vec2i size(const window& w) { return w.get()->size(); }
+vec2i size(const window& w) { return w.get()->window_size(); }
 
 void resize(window& w, const vec2i& size) { /*w.detach();*/
-    w.get()->resize(size);
+    w.get()->resize_window(size);
 }
 
-bool is_shown(const window& w) { return w.get()->is_shown(); }
+bool is_shown(const window& w) { return w.get()->is_window_shown(); }
 
-bool is_hidden(const window& w) { return w.get()->is_hidden(); }
+bool is_hidden(const window& w) { return w.get()->is_window_hidden(); }
 
 void destroy(window& w) {
-    w.get()->destroy();
+    w.get()->destroy_window();
 }
 
 } // namespace kairos

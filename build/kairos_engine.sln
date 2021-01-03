@@ -27,29 +27,36 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "video", "video\video.vcxite
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kairos_engine", "engine\kairos_engine.vcxproj", "{783F4991-1B85-3C68-BB1C-D4394D718EF4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "event", "event\event.vcxitems", "{43331E66-E85B-4C4F-90E1-6B85370F27AB}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "input", "input\input.vcxitems", "{94ED78C5-C0D6-4D95-8546-4D6FE608EB97}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "system", "input\input.vcxitems", "{94ED78C5-C0D6-4D95-8546-4D6FE608EB97}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "physics", "physics\physics.vcxitems", "{C6ED7773-6548-4F6B-8267-056F8589EA30}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tests", "tests\tests.vcxproj", "{05804EDA-18EA-4038-8C2A-3EFD539CED0B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "animation", "animation\animation.vcxitems", "{9311A3D6-A88B-460C-AA46-A27A1BAC6E76}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		animation\animation.vcxitems*{05804eda-18ea-4038-8c2a-3efd539ced0b}*SharedItemsImports = 4
+		core\core.vcxitems*{05804eda-18ea-4038-8c2a-3efd539ced0b}*SharedItemsImports = 4
+		input\input.vcxitems*{05804eda-18ea-4038-8c2a-3efd539ced0b}*SharedItemsImports = 4
+		mathlib\mathlib.vcxitems*{05804eda-18ea-4038-8c2a-3efd539ced0b}*SharedItemsImports = 4
+		physics\physics.vcxitems*{05804eda-18ea-4038-8c2a-3efd539ced0b}*SharedItemsImports = 4
+		renderer\renderer.vcxitems*{05804eda-18ea-4038-8c2a-3efd539ced0b}*SharedItemsImports = 4
+		video\video.vcxitems*{05804eda-18ea-4038-8c2a-3efd539ced0b}*SharedItemsImports = 4
 		renderer\renderer.vcxitems*{3bbe0d16-dedc-4d38-9d0a-198e814a669a}*SharedItemsImports = 9
-		event\event.vcxitems*{43331e66-e85b-4c4f-90e1-6b85370f27ab}*SharedItemsImports = 9
 		mathlib\mathlib.vcxitems*{54ed540e-0c11-4e38-a7a6-42e75765ebe1}*SharedItemsImports = 9
 		core\core.vcxitems*{63063338-989b-4c3d-9352-d5adba223888}*SharedItemsImports = 9
 		core\core.vcxitems*{783f4991-1b85-3c68-bb1c-d4394d718ef4}*SharedItemsImports = 4
 		mathlib\mathlib.vcxitems*{783f4991-1b85-3c68-bb1c-d4394d718ef4}*SharedItemsImports = 4
 		renderer\renderer.vcxitems*{783f4991-1b85-3c68-bb1c-d4394d718ef4}*SharedItemsImports = 4
 		video\video.vcxitems*{783f4991-1b85-3c68-bb1c-d4394d718ef4}*SharedItemsImports = 4
+		animation\animation.vcxitems*{9311a3d6-a88b-460c-aa46-a27a1bac6e76}*SharedItemsImports = 9
 		input\input.vcxitems*{94ed78c5-c0d6-4d95-8546-4d6fe608eb97}*SharedItemsImports = 9
 		video\video.vcxitems*{c1249439-fdc9-4827-b8b0-7fd62eaef011}*SharedItemsImports = 9
 		physics\physics.vcxitems*{c6ed7773-6548-4f6b-8267-056f8589ea30}*SharedItemsImports = 9
+		animation\animation.vcxitems*{d61c58df-1088-395d-b697-634940f4abe9}*SharedItemsImports = 4
 		core\core.vcxitems*{d61c58df-1088-395d-b697-634940f4abe9}*SharedItemsImports = 4
-		event\event.vcxitems*{d61c58df-1088-395d-b697-634940f4abe9}*SharedItemsImports = 4
 		input\input.vcxitems*{d61c58df-1088-395d-b697-634940f4abe9}*SharedItemsImports = 4
 		mathlib\mathlib.vcxitems*{d61c58df-1088-395d-b697-634940f4abe9}*SharedItemsImports = 4
 		physics\physics.vcxitems*{d61c58df-1088-395d-b697-634940f4abe9}*SharedItemsImports = 4

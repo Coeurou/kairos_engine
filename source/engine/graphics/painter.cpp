@@ -39,30 +39,30 @@ painter::~painter() {
     }
 }
 
-void clear(const painter& painter, const color& color) { painter.my_self->clear(color); }
+void clear(const painter& painter, const color& color) { painter.my_self->clear_canvas(color); }
 
 void draw(painter& painter, const sprite& sprite) {
-    painter.my_self->draw(painter::drawable::sprite, &sprite, 1);
+    painter.my_self->render(painter::drawable::sprite, &sprite, 1);
 }
 
 void draw(painter& painter, const array<sprite>& sprites) {
-    painter.my_self->draw(painter::drawable::sprite, &sprites, count(sprites));
+    painter.my_self->render(painter::drawable::sprite, &sprites, count(sprites));
 }
 
 void draw(painter& painter, const rectf& rect) {
-    painter.my_self->draw(painter::drawable::rectangle, &rect, 1);
+    painter.my_self->render(painter::drawable::rectangle, &rect, 1);
 }
 
 void draw(painter& painter, const array<rectf>& rects) {
-    painter.my_self->draw(painter::drawable::rectangle, &rects, count(rects));
+    painter.my_self->render(painter::drawable::rectangle, &rects, count(rects));
 }
 
 void draw(painter& painter, const linef& line) {
-    painter.my_self->draw(painter::drawable::line, &line, 1);
+    painter.my_self->render(painter::drawable::line, &line, 1);
 }
 
 void draw(painter& painter, const array<linef>& lines) {
-    painter.my_self->draw(painter::drawable::line, &lines, count(lines));
+    painter.my_self->render(painter::drawable::line, &lines, count(lines));
 }
 
 } // namespace kairos

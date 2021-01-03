@@ -14,16 +14,13 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\animation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\easing_lib.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\event_listener.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\logger.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\messages.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\opengl_renderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\security.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\animation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\enum_utils.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\format.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\security.h" />
@@ -46,7 +43,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\makable.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\member_object.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\messages.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\opengl_renderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\renderer_engine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\result.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\types.h" />

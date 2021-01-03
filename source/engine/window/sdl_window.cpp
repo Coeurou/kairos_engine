@@ -5,7 +5,6 @@
 #include <core/contract.h>
 #include <core/logger.h>
 #include <core/messages.h>
-#include <graphics/opengl/opengl_context.h>
 
 namespace kairos {
 

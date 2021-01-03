@@ -3,8 +3,8 @@
 #include <cmath>
 #include <glm/gtx/transform.hpp>
 
-#include <math/rect.h>
 #include <core/types.h>
+#include <math/rect.h>
 
 namespace kairos {
 

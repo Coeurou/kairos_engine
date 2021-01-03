@@ -17,6 +17,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\buffer_object.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\opengl_context.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\opengl_draw_data.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\opengl_renderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\program.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\SDL\sdl_opengl_context.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\shader.cpp" />
@@ -33,6 +34,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\buffer_object.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\opengl_context.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\opengl_draw_data.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\opengl_renderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\program.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\SDL\sdl_opengl_context.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\graphics\opengl\shader.h" />
