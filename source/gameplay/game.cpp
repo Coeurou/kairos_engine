@@ -5,7 +5,6 @@
 #include <core/renderer_engine.h>
 #include <core/time.h>
 #include <graphics/painter.h>
-#include <math/transform.h>
 
 void game::run() {
     // should be in setup

@@ -96,7 +96,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\gameplay;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source\gameplay;$(SolutionDir)..\source\engine;$(SolutionDir)..\source\editor;$(SolutionDir)..\extern\fmt\include;$(SolutionDir)..\extern\nameof\include;$(SolutionDir)..\extern\glad\include;$(SolutionDir)..\extern\glm;$(SolutionDir)..\extern\imgui;$(SolutionDir)..\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -148,7 +148,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\gameplay;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source\gameplay;$(SolutionDir)..\source\engine;$(SolutionDir)..\source\editor;$(SolutionDir)..\extern\fmt\include;$(SolutionDir)..\extern\nameof\include;$(SolutionDir)..\extern\glad\include;$(SolutionDir)..\extern\glm;$(SolutionDir)..\extern\imgui;$(SolutionDir)..\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -181,7 +181,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\Release\kairos_engine.lib;..\extern\fmt\Release\fmt.lib;..\extern\glad\Release\glad.lib;..\extern\SDL2-2.0.12\Release\SDL2.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(ProjectDir)..\x64\Release\kairos_engine.lib;$(ProjectDir)..\extern\fmt\Release\fmtd.lib;$(ProjectDir)..\extern\glad\Release\glad.lib;$(ProjectDir)..\extern\SDL2-2.0.12\Release\SDL2d.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;kernel32.lib;winspool.lib;comdlg32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -196,7 +196,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\gameplay;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source\gameplay;$(SolutionDir)..\source\engine;$(SolutionDir)..\source\editor;$(SolutionDir)..\extern\fmt\include;$(SolutionDir)..\extern\nameof\include;$(SolutionDir)..\extern\glad\include;$(SolutionDir)..\extern\glm;$(SolutionDir)..\extern\imgui;$(SolutionDir)..\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -244,7 +244,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\source\gameplay;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\cxxopts\include;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_image-2.0.5\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_mixer-2.0.4\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source\gameplay;$(SolutionDir)..\source\engine;$(SolutionDir)..\source\editor;$(SolutionDir)..\extern\fmt\include;$(SolutionDir)..\extern\nameof\include;$(SolutionDir)..\extern\glad\include;$(SolutionDir)..\extern\glm;$(SolutionDir)..\extern\imgui;$(SolutionDir)..\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>

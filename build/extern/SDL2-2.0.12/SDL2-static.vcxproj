@@ -78,7 +78,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\src\hidapi\hidapi;C:\Users\guill\Source\Repos\kairos_engine\build\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\src\video\khronos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\extern\SDL2-2.0.12\src\hidapi\hidapi;$(SolutionDir)\extern\SDL2-2.0.12\include;$(SolutionDir)..\extern\SDL2-2.0.12\include;$(SolutionDir)..\extern\SDL2-2.0.12\src\video\khronos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <CompileAs>CompileAsC</CompileAs>
@@ -113,7 +113,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\src\hidapi\hidapi;C:\Users\guill\Source\Repos\kairos_engine\build\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\src\video\khronos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\extern\SDL2-2.0.12\src\hidapi\hidapi;$(SolutionDir)\extern\SDL2-2.0.12\include;$(SolutionDir)..\extern\SDL2-2.0.12\include;$(SolutionDir)..\extern\SDL2-2.0.12\src\video\khronos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <CompileAs>CompileAsC</CompileAs>
@@ -149,7 +149,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\src\hidapi\hidapi;C:\Users\guill\Source\Repos\kairos_engine\build\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\src\video\khronos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\extern\SDL2-2.0.12\src\hidapi\hidapi;$(SolutionDir)\extern\SDL2-2.0.12\include;$(SolutionDir)..\extern\SDL2-2.0.12\include;$(SolutionDir)..\extern\SDL2-2.0.12\src\video\khronos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <CompileAs>CompileAsC</CompileAs>
@@ -185,7 +185,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\src\hidapi\hidapi;C:\Users\guill\Source\Repos\kairos_engine\build\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\src\video\khronos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\extern\SDL2-2.0.12\src\hidapi\hidapi;$(SolutionDir)\extern\SDL2-2.0.12\include;$(SolutionDir)..\extern\SDL2-2.0.12\include;$(SolutionDir)..\extern\SDL2-2.0.12\src\video\khronos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <CompileAs>CompileAsC</CompileAs>

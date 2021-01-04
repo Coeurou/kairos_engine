@@ -20,9 +20,5 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\math\axis.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\math\mathlib.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\math\rect.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\math\transform.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="$(MSBuildThisFileDirectory)..\..\source\engine\math\requirements.txt" />
   </ItemGroup>
 </Project>

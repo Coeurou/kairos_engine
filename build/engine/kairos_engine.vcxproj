@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\extern\json\include;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\extern\json\include;$(SolutionDir)..\source\engine;$(SolutionDir)..\source\editor;$(SolutionDir)..\extern\fmt\include;$(SolutionDir)..\extern\nameof\include;$(SolutionDir)..\extern\glad\include;$(SolutionDir)..\extern\glm;$(SolutionDir)..\extern\imgui;$(SolutionDir)..\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -101,6 +101,7 @@
       <UseFullPaths>false</UseFullPaths>
       <PreprocessorDefinitions>WIN32;_WINDOWS;FMT_LOCALE;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
+      <WarningLevel>Level4</WarningLevel>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;FMT_LOCALE;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -120,7 +121,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\extern\json\include;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\extern\json\include;$(SolutionDir)..\source\engine;$(SolutionDir)..\source\editor;$(SolutionDir)..\extern\fmt\include;$(SolutionDir)..\extern\nameof\include;$(SolutionDir)..\extern\glad\include;$(SolutionDir)..\extern\glm;$(SolutionDir)..\extern\imgui;$(SolutionDir)..\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -135,6 +136,7 @@
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
+      <WarningLevel>Level4</WarningLevel>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -154,7 +156,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\extern\json\include;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\extern\json\include;$(SolutionDir)..\source\engine;$(SolutionDir)..\source\editor;$(SolutionDir)..\extern\fmt\include;$(SolutionDir)..\extern\nameof\include;$(SolutionDir)..\extern\glad\include;$(SolutionDir)..\extern\glm;$(SolutionDir)..\extern\imgui;$(SolutionDir)..\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -169,6 +171,7 @@
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
+      <WarningLevel>Level4</WarningLevel>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -188,7 +191,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\guill\Source\Repos\kairos_engine\extern\json\include;C:\Users\guill\Source\Repos\kairos_engine\source\engine;C:\Users\guill\Source\Repos\kairos_engine\source\editor;C:\Users\guill\Source\Repos\kairos_engine\extern\fmt\include;C:\Users\guill\Source\Repos\kairos_engine\extern\nameof\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glad\include;C:\Users\guill\Source\Repos\kairos_engine\extern\glm;C:\Users\guill\Source\Repos\kairos_engine\extern\imgui;C:\Users\guill\Source\Repos\kairos_engine\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\extern\json\include;$(SolutionDir)..\source\engine;$(SolutionDir)..\source\editor;$(SolutionDir)..\extern\fmt\include;$(SolutionDir)..\extern\nameof\include;$(SolutionDir)..\extern\glad\include;$(SolutionDir)..\extern\glm;$(SolutionDir)..\extern\imgui;$(SolutionDir)..\extern\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -202,6 +205,7 @@
       <UseFullPaths>false</UseFullPaths>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
+      <WarningLevel>Level4</WarningLevel>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
