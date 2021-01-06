@@ -1,15 +1,9 @@
 #include <unit_tests/physics_tests.h>
 
-#include <core/logger.h>
 #include <physics/particle.h>
+#include <unit_tests/core.h>
 
 using namespace kairos;
-
-uint32 to_integer(bool condition) { return (condition) ? 1 : 0; }
-
-void log_test_result(const string& test_name, bool condition) {
-    log(LoggerName::MISC, "[UNIT_TEST] {} : {}\n", test_name, (condition) ? "PASSED" : "FAIL");
-}
 
 std::pair<uint32, uint32> test_particle() {
     constexpr uint32 nb_tests = 5;
