@@ -297,18 +297,6 @@
     <ProjectReference Include="..\engine\kairos_engine.vcxproj">
       <Project>{783f4991-1b85-3c68-bb1c-d4394d718ef4}</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\guill\Source\Repos\kairos_engine\build\extern\SDL2-2.0.12\SDL2-static.vcxproj">
-      <Project>{B2806645-C85D-3E09-92EC-93BDE2B167C6}</Project>
-      <Name>SDL2-static</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\guill\Source\Repos\kairos_engine\build\extern\fmt\fmt.vcxproj">
-      <Project>{65511564-5BA9-358E-90DD-B49A160A36EC}</Project>
-      <Name>fmt</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\guill\Source\Repos\kairos_engine\build\extern\glad\glad.vcxproj">
-      <Project>{8FBA1F3E-0FF9-3A41-B71C-D6BE8238FE62}</Project>
-      <Name>glad</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\gameplay\game.h" />

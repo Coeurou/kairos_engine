@@ -1,17 +1,17 @@
-#if defined(WIN32)
-
-#include <windows.h>
-
-extern int main(int argc, char* argv[]);
-
-////////////////////////////////////////////////////////////
-int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, INT) { return main(__argc, __argv); }
-
-#endif // WIN32
-
 #include <iostream>
+#include <core/types.h>
+#include <unit_tests/physics_tests.h>
 
-int main(int /*argc*/, char* /*argv*/[])
-{
-    std::cout << "Hello World!\n";
+void run_tests(string_view mode) {
+    if (mode == "-u" || mode == "--unit") {
+        test_particle();
+    }
+}
+
+int main(int argc, char* argv[]) {
+    for (auto i = 1; i < argc; i++) {
+        run_tests(argv[i]);
+    }
+
+    return EXIT_SUCCESS;
 }

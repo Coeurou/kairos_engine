@@ -4,3 +4,4 @@
 
 using real = float;
 using real_vec2 = vec<2, real>;
+using time_span = float;

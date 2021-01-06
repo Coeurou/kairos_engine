@@ -126,7 +126,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;WIN32;_WINDOWS;FMT_LOCALE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\source\gameplay;$(SolutionDir)..\source\engine;$(SolutionDir)..\source\editor;$(SolutionDir)..\extern\cxxopts\include;$(SolutionDir)..\extern\fmt\include;$(SolutionDir)..\extern\nameof\include;$(SolutionDir)..\extern\glad\include;$(SolutionDir)..\extern\glm;$(SolutionDir)..\extern\imgui;$(SolutionDir)..\extern\SDL2-2.0.12\include;$(SolutionDir)..\extern\SDL2_mixer-2.0.4\include;$(SolutionDir)..\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source\gameplay;$(SolutionDir)..\source\engine;$(SolutionDir)..\source\editor;$(SolutionDir)..\extern\cxxopts\include;$(SolutionDir)..\extern\fmt\include;$(SolutionDir)..\extern\nameof\include;$(SolutionDir)..\extern\glad\include;$(SolutionDir)..\extern\glm;$(SolutionDir)..\extern\imgui;$(SolutionDir)..\extern\SDL2-2.0.12\include;$(SolutionDir)..\extern\SDL2_mixer-2.0.4\include;$(SolutionDir)..\extern\SDL2_ttf-2.0.15\include;$(SolutionDir)..\source\tests;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
@@ -147,7 +147,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\source\gameplay;$(SolutionDir)..\source\engine;$(SolutionDir)..\source\editor;$(SolutionDir)..\extern\cxxopts\include;$(SolutionDir)..\extern\fmt\include;$(SolutionDir)..\extern\nameof\include;$(SolutionDir)..\extern\glad\include;$(SolutionDir)..\extern\glm;$(SolutionDir)..\extern\imgui;$(SolutionDir)..\extern\SDL2-2.0.12\include;$(SolutionDir)..\extern\SDL2_mixer-2.0.4\include;$(SolutionDir)..\extern\SDL2_ttf-2.0.15\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\source\gameplay;$(SolutionDir)..\source\engine;$(SolutionDir)..\source\editor;$(SolutionDir)..\extern\cxxopts\include;$(SolutionDir)..\extern\fmt\include;$(SolutionDir)..\extern\nameof\include;$(SolutionDir)..\extern\glad\include;$(SolutionDir)..\extern\glm;$(SolutionDir)..\extern\imgui;$(SolutionDir)..\extern\SDL2-2.0.12\include;$(SolutionDir)..\extern\SDL2_mixer-2.0.4\include;$(SolutionDir)..\extern\SDL2_ttf-2.0.15\include;$(SolutionDir)..\source\tests;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,18 +157,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\extern\fmt\fmt.vcxproj">
-      <Project>{65511564-5ba9-358e-90dd-b49a160a36ec}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\extern\glad\glad.vcxproj">
-      <Project>{8fba1f3e-0ff9-3a41-b71c-d6be8238fe62}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\extern\SDL2-2.0.12\SDL2-static.vcxproj">
-      <Project>{b2806645-c85d-3e09-92ec-93bde2b167c6}</Project>
-    </ProjectReference>
+    <ClCompile Include="..\..\source\tests\tests.cpp" />
+    <ClCompile Include="..\..\source\tests\unit_tests\physics_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\source\tests\tests.cpp" />
+    <ClInclude Include="..\..\source\tests\unit_tests\physics_tests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
