@@ -34,8 +34,10 @@
     <ClCompile Include="C:\Users\guill\Source\Repos\kairos_engine\extern\imgui\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\editor\imgui_backend.cpp" />
     <ClCompile Include="..\..\source\editor\imgui_renderer.cpp">
+      <Filter>source\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\editor\imgui_backend.cpp">
       <Filter>source\editor</Filter>
     </ClCompile>
   </ItemGroup>
