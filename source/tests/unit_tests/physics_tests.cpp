@@ -47,7 +47,7 @@ std::pair<uint32, uint32> test_particle() {
         particle moved(particle(expected_pos, expected_vel, expected_mass, expected_damping));
         bool has_expected_properties =
             moved.position() == expected_pos && moved.velocity() == expected_vel &&
-            moved.mass() == expected_mass && moved.damping() != expected_damping;
+            moved.mass() == expected_mass && moved.damping() == expected_damping;
         nb_tests_passed += to_integer(has_expected_properties);
         log_test_result("particle_is_move_constructible", has_expected_properties);
     }
@@ -70,7 +70,7 @@ std::pair<uint32, uint32> test_particle() {
         moved = particle(expected_pos, expected_vel, expected_mass, expected_damping);
         bool has_expected_properties =
             moved.position() == expected_pos && moved.velocity() == expected_vel &&
-            moved.mass() == expected_mass && moved.damping() != expected_damping;
+            moved.mass() == expected_mass && moved.damping() == expected_damping;
         nb_tests_passed += to_integer(has_expected_properties);
         log_test_result("particle_r_value_assignment", has_expected_properties);
     }
