@@ -2,7 +2,6 @@
 
 #include <algorithm>
 
-#include <physics/particle.h>
 #include <core.h>
 #include <core/formattable.h>
 #include <core/random.h>
