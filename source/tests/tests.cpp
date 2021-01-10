@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include <core/types.h>
-#include <unit_tests/core.h>
+#include <core.h>
 #include <unit_tests/physics_tests.h>
 
 void run_tests(string_view mode) {
