@@ -41,8 +41,7 @@ int main(int /*argc*/, char* argv[]) {
     }
 
     video_service video;
-    video.enable(); // bad don't know the necessity of this, need to look at impl to understand
-                   // what's going on
+    video.enable();
 
     input_service input;
     input.enable(input_device::controller);
@@ -66,7 +65,7 @@ int main(int /*argc*/, char* argv[]) {
     window w{sdl_window{window_params}};
     {
         ensures(setup(gl_context,
-                      id(w))); // need to comment this function setup is okay since in opengl it
+                      id(w)), "Couldn't setup opengl context"); // need to comment this function setup is okay since in opengl it
                                // has a meaning but adding an explanation is necessary
         show(w);
     }
@@ -143,7 +142,7 @@ int main(int /*argc*/, char* argv[]) {
         }
 
         // update logic
-        auto current_time = clock::get_time();
+        const auto current_time = clock::get_time();
         float deltatime = static_cast<float>(current_time - time) * 0.001f;
         time = current_time;
 
@@ -156,8 +155,8 @@ int main(int /*argc*/, char* argv[]) {
         clear(painter, color(1.f, 0.57f, 0.2f, 1.f));
         translate(agent.my_bounds, agent_movement);
         draw(painter, agent);
-        ensures(imgui.update().error() == error_type::no_error);
-        ensures(imgui.render().error() == error_type::no_error);
+        ensures(bool(imgui.update()), "imgui update failure");
+        ensures(bool(imgui.render()), "imgui render failure");
 
         swap_buffers(gl_context);
     }

@@ -35,10 +35,10 @@ void particle::set_damping(real damping) { my_damping = damping; }
 void apply_gravity(particle& p, real gravity) { p.apply_force(real_vec2{0.f, gravity}); }
 
 void integrate(particle& p, time_span dt) {
-    expects(dt > 0.f);
+    expects(dt > 0.f, __FUNCTION__);
 
-    p.set_velocity((p.velocity() * p.damping()) + (p.applied_forces() * p.inverse_mass() * dt));
-    p.set_position(p.velocity() * dt);
+    p.set_velocity((p.velocity() * powf(p.damping(), dt)) + (p.applied_forces() * p.inverse_mass() * dt));
+    p.set_position(p.position() + (p.velocity() * dt));
     p.clear_applied_force();
 }
 

@@ -8,6 +8,7 @@
 #include <graphics/stb_image.h>
 
 #include <core/algorithms.h>
+#include <core/format.h>
 #include <core/formattable.h>
 
 namespace kairos {
@@ -86,7 +87,7 @@ result<texture> load(const path& img_path) {
                                          &res.my_data->my_size.y, &res.my_data->my_channels, 0);
         {
             ensures(image != nullptr,
-                    fmt::format("Couldn't load texture image: {}", img_path.string()));
+                    format("Couldn't load texture image: {}", img_path.string()));
 
             glGenTextures(1, &res.my_data->my_id);
             texture::our_textures_idx[res.my_data->my_index] = res.my_data->my_id;

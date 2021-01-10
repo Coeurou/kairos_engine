@@ -11,7 +11,7 @@ namespace kairos {
 /** Member functions */
 
 sdl_window::sdl_window(const window_params& params) : my_native_window(nullptr) {
-    expects(SDL_WasInit(SDL_INIT_VIDEO) != 0);
+    expects(SDL_WasInit(SDL_INIT_VIDEO) != 0, "SDL video not initialized");
     int pos_x = (params.my_pos.x == window_params::our_undefined_pos)
                     ? SDL_WINDOWPOS_UNDEFINED
                     : static_cast<int>(params.my_pos.x);

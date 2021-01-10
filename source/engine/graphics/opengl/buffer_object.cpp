@@ -5,6 +5,7 @@
 #include <nameof.hpp>
 
 #include <core/contract.h>
+#include <core/format.h>
 
 namespace kairos {
 
@@ -54,7 +55,7 @@ GLenum buffer_object::as_gl_target(buffer_target target) {
         break;
     }
     default: {
-        ensures(false, fmt::format("Unhandled buffer target {}", NAMEOF_ENUM(target)));
+        ensures(false, format("Unhandled buffer target {}", NAMEOF_ENUM(target)));
         break;
     }
     }

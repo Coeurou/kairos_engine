@@ -28,6 +28,8 @@ class window {
   public:
     /** Member functions */
 
+    window() = default;
+
     /** Construct a window.
     * Will do a dynamic allocation for its internal implementation, if sizeof(T) > small_type_size.
     * A small type will be constructed with placement new.

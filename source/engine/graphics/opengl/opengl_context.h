@@ -43,6 +43,8 @@ class opengl_context {
   public:
     /** Member functions */
 
+    opengl_context() = default;
+
     /** Construct an opengl_context.
      * This constructor accept any type where sizeof(T) < small_type_size, and implements the
      * interface with free functions.

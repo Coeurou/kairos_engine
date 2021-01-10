@@ -62,7 +62,7 @@ int get_attribute(const sdl_opengl_context& /*gl_context*/, gl_attribute attr) {
     const auto it = find_if(our_sdl_gl_attribute_adapter, [&attr](const auto& sdl_kairos_pair) {
         return sdl_kairos_pair.second == attr;
     });
-    ensures(it != our_sdl_gl_attribute_adapter.end());
+    ensures(it != our_sdl_gl_attribute_adapter.end(), __FUNCTION__);
 
     int output = 0;
     SDL_GL_GetAttribute(it->first, &output);
@@ -73,7 +73,7 @@ void set_attribute(sdl_opengl_context& /*gl_context*/, gl_attribute attr, int va
     const auto it = find_if(our_sdl_gl_attribute_adapter, [&attr](const auto& sdl_kairos_pair) {
         return sdl_kairos_pair.second == attr;
     });
-    ensures(it != our_sdl_gl_attribute_adapter.end());
+    ensures(it != our_sdl_gl_attribute_adapter.end(), __FUNCTION__);
 
     if (attr == gl_attribute::context_profile) {
         value = our_sdl_gl_profile_adapter.at(static_cast<opengl_context::opengl_profile>(value));

@@ -3,6 +3,7 @@
 #include <graphics/opengl/opengl_context.h>
 
 #include <core/contract.h>
+#include <core/format.h>
 
 namespace kairos {
 
@@ -67,7 +68,7 @@ void destroy(opengl_context& gl_context) {
 /** Utils */
 void check_gl_error(const char* caller) {
     const auto error = glGetError();
-    ensures(error == GL_NO_ERROR, fmt::format("{} raises a GL error: {}", caller, gl_error_to_string.at(error)));
+    ensures(error == GL_NO_ERROR, format("{} raises a GL error: {}", caller, gl_error_to_string.at(error)));
 }
 
 } // namespace kairos

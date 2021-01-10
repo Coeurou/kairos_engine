@@ -140,14 +140,14 @@ bool imgui_opengl_renderer::setup_opengl_data() {
     my_vertex_shader.my_shader_type = GL_VERTEX_SHADER;
     my_vertex_shader.my_shader_name = "imgui_vs";
     my_vertex_shader.my_shader_source = fmt::format("{}\n{}", gl_version, vertex_shader);
-    ensures(my_vertex_shader.setup());
+    ensures(my_vertex_shader.setup(), "[imgui_opengl_renderer::setup_opengl_data()] Couldn't setup vertex shader");
 
     my_fragment_shader.my_shader_type = GL_FRAGMENT_SHADER;
     my_fragment_shader.my_shader_name = "imgui_fs";
     my_fragment_shader.my_shader_source = fmt::format("{}\n{}", gl_version, fragment_shader);
-    ensures(my_fragment_shader.setup());
+    ensures(my_fragment_shader.setup(), "[imgui_opengl_renderer::setup_opengl_data()] Couldn't setup frag shader");
 
-    ensures(my_program.setup({my_vertex_shader, my_fragment_shader}));
+    ensures(my_program.setup({my_vertex_shader, my_fragment_shader}), "[imgui_opengl_renderer::setup_opengl_data()] Couldn't setup shader program");
 
     my_attribute_location_texture = glGetUniformLocation(my_program, "Texture");
     my_attribute_location_projection_matrix = glGetUniformLocation(my_program, "ProjMtx");

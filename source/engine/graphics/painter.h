@@ -21,6 +21,8 @@ class painter {
   public:
     /** Member functions */
 
+    painter() = default;
+
     /** Construct a painter.
     * Will do a dynamic allocation for its internal implementation.
     */
