@@ -3,7 +3,7 @@
 #include <iostream>
 #include <core/logger.h>
 #include <core/types.h>
-
+#include <functional_tests/game_test.h>
 
 inline void print_test_results(const string& test_category,
     const std::pair<uint32, uint32>& test_results) {
@@ -21,3 +21,5 @@ inline void log_unit_test_result(const string& test_name, bool condition) {
 inline void log_func_test_result(const string& test_name, bool condition) {
     kairos::log(kairos::LoggerName::MISC, "[FUNC_TEST] {} : {}\n", test_name, (condition) ? "PASSED" : "FAIL");
 }
+
+inline kairos::game_test test_game;

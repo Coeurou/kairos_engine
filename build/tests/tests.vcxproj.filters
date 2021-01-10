@@ -24,6 +24,9 @@
     <ClCompile Include="..\..\source\tests\functional_tests\physics_functional_tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\tests\functional_tests\game_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\tests\unit_tests\physics_tests.h">
@@ -33,6 +36,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\tests\core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\functional_tests\game_test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

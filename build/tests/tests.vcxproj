@@ -157,12 +157,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\source\tests\functional_tests\game_test.cpp" />
     <ClCompile Include="..\..\source\tests\functional_tests\physics_functional_tests.cpp" />
     <ClCompile Include="..\..\source\tests\tests.cpp" />
     <ClCompile Include="..\..\source\tests\unit_tests\physics_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\tests\core.h" />
+    <ClInclude Include="..\..\source\tests\functional_tests\game_test.h" />
     <ClInclude Include="..\..\source\tests\functional_tests\physics_functional_tests.h" />
     <ClInclude Include="..\..\source\tests\unit_tests\physics_tests.h" />
   </ItemGroup>
