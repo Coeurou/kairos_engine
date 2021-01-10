@@ -53,6 +53,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\security.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\enum_utils.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\format.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\random.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\easing_lib.cpp" />

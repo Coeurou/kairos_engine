@@ -23,6 +23,7 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\enum_utils.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\format.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\random.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\security.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\service.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\core\system.h" />

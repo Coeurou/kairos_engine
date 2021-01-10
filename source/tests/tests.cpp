@@ -11,7 +11,8 @@ void run_tests(string_view mode) {
     }
     if (mode == "-f" || mode == "--func") {
         run(test_game);
-        print_test_results("particle_func", test_ballistic());
+        //print_test_results("particle_ballistic", test_ballistic());
+        print_test_results("particle_firework", test_firework());
         quit(test_game);
     }
 }
