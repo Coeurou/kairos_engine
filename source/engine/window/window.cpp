@@ -78,6 +78,7 @@ const window::window_t* window::get() const {
 void window::detach() {
     if (is_allocated && my_self.w->ref_count > 1) {
         my_self.w = static_cast<window_t*>(my_self.w->clone());
+        my_self.w->ref_count = 1;
     }
 }
 

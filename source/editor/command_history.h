@@ -17,7 +17,7 @@ template <size_t N> class command_history {
     void set_current_command_index(int index) { my_current_command_index = index; }
 
     string at(int index) const noexcept {
-        expects(index >= 0 && index < N, , __FUNCTION__);
+        expects(index >= 0 && index < N, __FUNCTION__);
         return my_command_history[index]->to_string();
     }
 

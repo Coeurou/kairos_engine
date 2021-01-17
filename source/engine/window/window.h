@@ -68,7 +68,6 @@ class window {
 
     /** window_t represents the window interface. */
     struct window_t {
-
         /** Copy window_t with placement new. */
         virtual void copy(void* memory) const = 0;
         /** Move window_t with placement new. */
@@ -125,12 +124,14 @@ class window {
         T concrete_window;
     };
 
-    static constexpr size_t small_type_size = 24;
+    static constexpr size_t small_type_size = 16;
+    static constexpr size_t pointer_size = 8;
+    static constexpr size_t padding = 7;
     /** buffer is a union type describing either an dynamically allocated window_t
     * or a small buffer used for small buffer optimisation. */
     union buffer {
         window_t* w;
-        std::array<char, small_type_size> memory{ '\0' };
+        static_array<char, small_type_size + pointer_size + padding> memory{ '\0' };
     };
 
     /** Return a pointer to window_t whether or not my_self is allocated. */

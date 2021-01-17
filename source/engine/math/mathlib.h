@@ -22,8 +22,21 @@ template <typename number> constexpr number to_degrees(number radians) {
 
 mat4f ortho(const rectf& bounds);
 
-template <size_t L, class Arithmetic> Arithmetic length(const vec<L, Arithmetic>& v) {
+float length(const vec2f& v) {
     return glm::length(v);
+}
+
+vec2f normalize(const vec2f& v)
+{
+    return glm::normalize(v);
+}
+
+float square_length(const vec2f& v) {
+    return v.x * v.x + v.y * v.y;
+}
+
+uint32 square_length(const vec2i& v) {
+    return static_cast<uint32>(v.x * v.x + v.y * v.y);
 }
 
 template <class Vector> Vector normalize(const Vector& v) { return glm::normalize(v); }

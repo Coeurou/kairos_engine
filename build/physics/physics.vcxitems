@@ -14,12 +14,18 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\physics\drag_force.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\physics\force.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\physics\particle.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\physics\particle_force_registry.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\physics\physics_world.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\source\engine\physics\types.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\physics\drag_force.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\physics\force.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\physics\particle.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\physics\particle_force_registry.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\source\engine\physics\physics_world.cpp" />
   </ItemGroup>
 </Project>
